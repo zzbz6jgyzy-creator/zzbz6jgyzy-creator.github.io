@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
-import { findElement, one, between, replaceOnce, children, htmlText, buildHome, buildArticle, buildDispatchList, buildNews, ARTICLES, articles, HOME_TOOLS, PAGES } from "../scripts/build-design-preview.mjs";
+import { findElement, one, between, replaceOnce, children, htmlText, newestDate, buildHome, buildArticle, buildDispatchList, buildNews, buildTeslaHub, buildSpacexHub, buildGrokHub, ARTICLES, articles, HOME_TOOLS, PAGES } from "../scripts/build-design-preview.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
@@ -277,6 +277,55 @@ test("news preview: compact masthead keeps the date news-studio.js updates, then
   for (const id of ids(live)) assert.ok(ids(html).has(id), "keeps #" + id);
   for (const h of hooks(live, "data-ns-")) assert.ok(hooks(html, "data-ns-").has(h), "keeps " + h);
   assert.equal(buildNews(), html, "the build is deterministic");
+});
+
+test("newestDate reads datetime attributes and written dates, and refuses to guess", () => {
+  assert.equal(newestDate('<time datetime="2026-11-19T10:00:00Z"></time> <span> / 20 Nov 2026</span> 21 Sept 2026'), "20 Nov 2026");
+  assert.throws(() => newestDate("<p>no dates</p>"), /No dated story/);
+});
+
+const HUBS = [
+  { slug: "tesla", build: buildTeslaHub, title: "Tesla news, trackers and guides", numbers: 'id="to-brief-grid"', band: true, data: "data-source-", hero: /<section class="to-hero"/ },
+  { slug: "spacex", build: buildSpacexHub, title: "SpaceX launches, Starship and Starlink", numbers: 'id="sx-next"', band: true, data: "data-sx-", hero: /<header class="sx-hero"/ },
+  { slug: "grok", build: buildGrokHub, title: "Grok and xAI: models, plans and news", numbers: 'class="ds-stats"', band: false, data: "data-gx-", hero: /<header class="gx-hero"/ },
+];
+/** Ids that lived only inside a removed hero and are referenced nowhere else on the live page (e.g. an SVG gradient). */
+const heroOnlyIds = (live, heroRe) => {
+  const hero = one(live, heroRe, "hero");
+  const rest = live.replace(hero, "");
+  return new Set([...ids(hero)].filter((id) => !new RegExp(`(?:#|["\\s])${id.replace(/[-]/g, "\\-")}(?=["\\s)])`).test(rest)));
+};
+for (const hub of HUBS) {
+  test(`${hub.slug} hub preview: plain title, its own key numbers, then its latest stories, with every id kept`, () => {
+    const live = read(`${hub.slug}.html`);
+    const html = hub.build();
+    hidden(html);
+    assert.ok(html.includes(`<link rel="canonical" href="https://superchargeddaily.com/${hub.slug}.html" />`));
+    assert.match(html, new RegExp(`<html[^>]*data-section="${hub.slug}"`));
+    assert.deepEqual([...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)].map((m) => m[1]), [hub.title]);
+    const mast = one(html, /<header class="ds-masthead"/, "masthead");
+    assert.ok(mast.includes(hub.numbers), "the masthead carries the hub's key numbers");
+    assert.equal(mast.includes('class="ds-band"'), hub.band);
+    // The latest stories follow the masthead directly
+    const after = html.slice(html.indexOf(mast) + mast.length, html.indexOf(mast) + mast.length + 200);
+    assert.match(after, /^<section class="[^"]*\bds-hub-stories\b/);
+    assert.match(after, /<h2 id="ds-hub-stories-h">Latest stories<\/h2>/);
+    const gone = heroOnlyIds(live, hub.hero);
+    for (const id of ids(live)) assert.ok(ids(html).has(id) || gone.has(id), "keeps #" + id);
+    const heroHtml = one(live, hub.hero, "hero");
+    const restHooks = hooks(live.replace(heroHtml, ""), hub.data);
+    for (const h of hooks(live, hub.data)) assert.ok(hooks(html, hub.data).has(h) || !restHooks.has(h), "keeps " + h);
+    assert.equal((html.match(/<script[^>]*id="(?:to|sx|gx)-data"/g) || []).length, (live.match(/<script[^>]*id="(?:to|sx|gx)-data"/g) || []).length);
+    assert.equal(hub.build(), html, "the build is deterministic");
+  });
+}
+
+test("Grok key numbers are the newest official release per product, each dated and linked", () => {
+  const html = buildGrokHub();
+  const tiles = [...html.matchAll(/<li class="ds-stat"><span class="ds-stat-label">([^<]+)<\/span><span class="ds-stat-value">([^<]+)<\/span><span class="ds-stat-src">As of ([^<]+) · <a href="(https:[^"]+)">/g)];
+  assert.ok(tiles.length >= 2 && tiles.length <= 3, "two or three release tiles");
+  assert.equal(new Set(tiles.map((t) => t[1])).size, tiles.length, "one tile per product");
+  for (const t of tiles) assert.match(t[3], /^\d{1,2} [A-Z][a-z]{2,3} \d{4}$/);
 });
 
 test("committed previews are whole pages whose local files exist", () => {

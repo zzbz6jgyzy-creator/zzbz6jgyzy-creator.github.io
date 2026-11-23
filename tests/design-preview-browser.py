@@ -7,6 +7,7 @@ errors, and layout shift under 0.1. At 390x844 the news-first targets from the a
   articles: the lead photo or video (or the first paragraph when there is none) starts above 700px, with the
   headline, standfirst and byline above it; the h1 is the live article's own.
   Dispatch list and news: the first story card starts above 450px.
+  hubs: the first story headline starts in the first screen (above 800px, so at least its first line shows).
 Run: python3 tests/design-preview-browser.py   (CHROMIUM_PATH may point at Chrome or Chromium)
 """
 import asyncio, html, os, pathlib, re, shutil, socket, subprocess, sys, time
@@ -29,7 +30,11 @@ PAGES = [
     {"path": "/preview/index.html", "h1": "Tesla, SpaceX and xAI news", "kind": "home"},
     {"path": "/preview/dispatch.html", "h1": "Dispatch", "kind": "list", "card": "[data-disp-grid] > .story-card:not([hidden])"},
     {"path": "/preview/news.html", "h1": live_h1("news.html").rstrip("."), "kind": "list", "card": "#latest .ns-feature"},
-] + [{"path": f"/preview/dispatch/{s}.html", "h1": live_h1(f"dispatch/{s}.html"), "kind": "article"} for s in ARTICLES]
+] + [{"path": f"/preview/dispatch/{s}.html", "h1": live_h1(f"dispatch/{s}.html"), "kind": "article"} for s in ARTICLES] + [
+    {"path": "/preview/tesla.html", "h1": "Tesla news, trackers and guides", "kind": "hub"},
+    {"path": "/preview/spacex.html", "h1": "SpaceX launches, Starship and Starlink", "kind": "hub"},
+    {"path": "/preview/grok.html", "h1": "Grok and xAI: models, plans and news", "kind": "hub"},
+]
 
 
 def free_port():
@@ -76,6 +81,11 @@ async def check_list(page, tag, card):
     assert top < 450, (tag, "the first story card starts too low", top)
 
 
+async def check_hub(page, tag):
+    top = await page.evaluate("Math.round(document.querySelector('.ds-hub-stories h3').getBoundingClientRect().top + scrollY)")
+    assert top < 800, (tag, "the first story headline is below the first screen", top)
+
+
 async def main():
     SHOTS.mkdir(parents=True, exist_ok=True)
     port = free_port()
@@ -113,6 +123,8 @@ async def main():
                                 await check_article(page, tag)
                             if w == 390 and spec["kind"] == "list":
                                 await check_list(page, tag, spec["card"])
+                            if w == 390 and spec["kind"] == "hub":
+                                await check_hub(page, tag)
                             if w in (390, 1440):
                                 await page.screenshot(path=str(SHOTS / f"{spec['path'].strip('/').replace('/', '_')}-{w}-{scheme}.png"), full_page=True)
                             print("PASS", tag)

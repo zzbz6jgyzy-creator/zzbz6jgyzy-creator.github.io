@@ -17,7 +17,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const DS = require("../ds-components.js");
 const SITE = "https://superchargeddaily.com";
-export const DS_CSS_V = "20261123b"; // bump when ds.css or ds-preview.css changes
+export const DS_CSS_V = "20261123c"; // bump when ds.css or ds-preview.css changes
 
 const read = (rel, root = ROOT) => fs.readFileSync(path.join(root, rel), "utf8");
 
@@ -359,6 +359,132 @@ export function buildNews(root = ROOT) {
   return previewHead(page, { live: "/news.html", keepImagePreloads: true, root });
 }
 
+// ---- Hubs: compact masthead with the hub's own key numbers and a slim photo band, then its latest stories ----
+
+/** A slim photo band from a live <picture> (kept as is: its sources, sizes and credits are the live page's). */
+function bandFrom(pictureHtml, captionHtml) {
+  const pic = pictureHtml.replace(/(<img\b[^>]*?)\s+class="[^"]*"/, "$1"); // the old hero's image classes position it full-screen
+  return `<figure class="ds-band">${pic}${captionHtml ? `<figcaption>${captionHtml}</figcaption>` : ""}</figure>`;
+}
+
+const MONTH = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, sept: 9, oct: 10, nov: 11, dec: 12 };
+
+/** Newest date in a story list (datetime attributes or "20 Nov 2026" text), for the masthead's "Updated" line. */
+export function newestDate(html) {
+  const iso = [...html.matchAll(/datetime="(\d{4}-\d{2}-\d{2})/g)].map((m) => m[1]);
+  for (const m of html.matchAll(/\b(\d{1,2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept?|Oct|Nov|Dec)\w* (\d{4})\b/g)) {
+    iso.push(`${m[3]}-${String(MONTH[m[2].toLowerCase()]).padStart(2, "0")}-${m[1].padStart(2, "0")}`);
+  }
+  if (!iso.length) throw new Error("No dated story to take an Updated date from");
+  return DS.fmtDate(iso.sort().pop() + "T12:00:00Z");
+}
+
+function hubSection(id, title, href, linkText, inner, attrs = "") {
+  return `<section class="ds-section ds-hub-stories"${attrs} aria-labelledby="${id}">` + DS.sectionHead({ id, title, href, linkText }) + inner + "</section>";
+}
+
+function finishHub(page, liveUrl, section, root) {
+  page = addBodyClass(page, `ds-page ds-hub ds-hub-${section}`);
+  page = replaceOnce(page, "</main>", DS.previewFlag(liveUrl) + "\n</main>");
+  return previewHead(page, { live: liveUrl, section, keepImagePreloads: true, root });
+}
+
+/** Tesla hub: the masthead takes the hub's own numbers (#to-brief-grid and its note); #to-stories moves up under it. */
+export function buildTeslaHub(root = ROOT) {
+  const liveUrl = "/tesla.html";
+  const live = read("tesla.html", root);
+  assertRootRelative(live, liveUrl);
+  const hero = one(live, /<section class="to-hero"/, "Tesla hero");
+  const pic = one(hero, /<picture>/, "Tesla hero picture");
+  const grid = one(live, /<div id="to-brief-grid"/, "#to-brief-grid");
+  const after = live.slice(live.indexOf(grid) + grid.length);
+  const fine = (after.match(/^\s*<p class="to-fine">[\s\S]*?<\/p>/) || [])[0];
+  if (!fine) throw new Error("tesla.html: the numbers note no longer follows #to-brief-grid");
+  const stories = one(live, /<div id="to-stories"/, "#to-stories");
+  const caption = hero.match(/<a class="to-hero-caption" href="(\/[^"]+)"><span>([^<]*)<\/span>[\s\S]*?<small>([^<]*)<\/small>/);
+  if (!caption) throw new Error("tesla.html: hero caption changed shape");
+  const subject = caption[2].split("/").pop().trim();
+  const mast = DS.masthead({
+    kicker: "Tesla",
+    title: "Tesla news, trackers and guides",
+    titleId: "to-title",
+    dek: "The cars, the software, Robotaxi and the numbers, from an owner and shareholder.",
+    metaHtml: `Updated ${newestDate(stories)} · <a href="#sources">Sources</a>`,
+    statsHtml: `<div class="ds-hub-numbers">${grid}<details class="ds-hub-note"><summary>About these numbers</summary>${fine.trim()}</details></div>`,
+    band: null,
+    extraHtml: bandFrom(pic, `<a href="${DS.esc(caption[1])}">${DS.esc(subject)}</a> · ${DS.esc(caption[3].trim())}`),
+  });
+  let page = replaceOnce(live, grid + fine, "");
+  page = replaceOnce(page, stories, "");
+  page = replaceOnce(page, hero, mast + hubSection("ds-hub-stories-h", "Latest stories", "/dispatch.html?topic=tesla", "All Tesla stories", stories));
+  return finishHub(page, liveUrl, "tesla", root);
+}
+
+/** SpaceX hub: the next-launch card (#sx-next, kept live by spacex-studio.js) joins the masthead; the stories move up. */
+export function buildSpacexHub(root = ROOT) {
+  const liveUrl = "/spacex.html";
+  const live = read("spacex.html", root);
+  assertRootRelative(live, liveUrl);
+  const hero = one(live, /<header class="sx-hero"/, "SpaceX hero");
+  const pic = one(hero, /<picture>/, "SpaceX hero picture");
+  const credit = hero.match(/<div class="sx-hero-bottom">[\s\S]*?<a href="(#[^"]+)">([^<]+)<\/a>/);
+  if (!credit) throw new Error("spacex.html: photo credit changed shape");
+  const next = one(live, /<aside class="sx-next" id="sx-next"/, "#sx-next");
+  const section = one(live, /<section class="sx-section" id="stories"/, "SpaceX stories section");
+  const head = one(section, /<header class="sx-section-head"/, "SpaceX stories heading");
+  const asOf = (live.match(/"scheduleAsOf":\s*"([^"]+)"/) || [])[1];
+  const mast = DS.masthead({
+    kicker: "SpaceX",
+    title: "SpaceX launches, Starship and Starlink",
+    dek: "The launch schedule, the fleet and our reporting, with dated sources.",
+    metaHtml: (asOf ? `Schedule as of ${DS.fmtDate(asOf)} · ` : "") + '<a href="#sources">Sources</a>',
+    statsHtml: `<div class="ds-hub-numbers">${next}</div>`,
+    extraHtml: bandFrom(pic, DS.esc(credit[2].trim())),
+  });
+  const stories = section
+    .replace(head, DS.sectionHead({ id: "ds-hub-stories-h", title: "Latest stories", href: "/dispatch.html?topic=spacex", linkText: "All SpaceX stories" }))
+    .replace('<section class="sx-section" id="stories">', '<section class="sx-section ds-section ds-hub-stories" id="stories" aria-labelledby="ds-hub-stories-h">');
+  let page = replaceOnce(live, next, "");
+  page = replaceOnce(page, section, "");
+  page = replaceOnce(page, hero, mast + stories);
+  return finishHub(page, liveUrl, "spacex", root);
+}
+
+const GROK_LABEL = { model: "Grok model", bot: "Grok Bot", voice: "Grok Voice", imagine: "Grok Imagine", api: "xAI API" };
+
+/** Grok hub: the newest official release per product line as key numbers; the reporting grid moves up from #latest. */
+export function buildGrokHub(root = ROOT) {
+  const liveUrl = "/grok.html";
+  const live = read("grok.html", root);
+  assertRootRelative(live, liveUrl);
+  const hero = one(live, /<header class="gx-hero"/, "Grok hero");
+  const latest = one(live, /<section class="gx-section" id="latest"/, "Grok #latest");
+  const sub = one(latest, /<div class="gx-subhead" id="stories"/, "Grok reporting heading");
+  const grid = one(latest, /<div class="gx-story-grid"/, "Grok reporting grid");
+  const note = (latest.slice(latest.indexOf(sub) + sub.length, latest.indexOf(grid)).match(/<p class="gx-fine">[\s\S]*?<\/p>/) || [""])[0];
+  const description = htmlText((hero.match(/<p class="gx-hero-description">([\s\S]*?)<\/p>/) || [])[1] || "");
+  const checked = (hero.match(/Source reference checked ([^<]+)</) || [])[1];
+  if (!description || !checked) throw new Error("grok.html: hero description or source date missing");
+  const seen = new Set();
+  const releases = [...latest.matchAll(/<article class="gx-release"><p class="gx-kicker">([^<]+)<\/p><span>([^<]+)<\/span>[\s\S]*?<a class="gx-source-link" href="(https:[^"]+)"/g)]
+    .map((m) => ({ date: m[1].trim(), product: m[2].split("/")[0].trim(), version: m[2].split("/").slice(1).join("/").trim(), href: m[3] }))
+    .filter((r) => r.version && !seen.has(r.product.toLowerCase()) && seen.add(r.product.toLowerCase()))
+    .slice(0, 3);
+  if (releases.length < 2) throw new Error("grok.html: fewer than two dated releases in #latest");
+  const mast = DS.masthead({
+    kicker: "Grok and xAI",
+    title: "Grok and xAI: models, plans and news",
+    dek: description.split(/(?<=\.)\s/)[0],
+    metaHtml: `Source reference checked ${DS.esc(checked.trim())} · <a href="#sources">Sources</a>`,
+    statsHtml: DS.stats(releases.map((r) => ({ label: GROK_LABEL[r.product.toLowerCase()] || r.product, value: r.version, asOf: r.date, source: { href: r.href, label: "Release notes" } })), { label: "Newest official releases" }),
+  });
+  let page = replaceOnce(live, sub, "");
+  page = replaceOnce(page, grid, "");
+  if (note) page = replaceOnce(page, note, "");
+  page = replaceOnce(page, hero, mast + hubSection("ds-hub-stories-h", "Latest stories", "/dispatch.html?topic=xai", "All Grok stories", note + grid, ' id="stories"'));
+  return finishHub(page, liveUrl, "grok", root);
+}
+
 /** Three article types: a news story, a long feature, and a finance story with the share disclosure. */
 export const ARTICLES = ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-15", "spacex-q3-2026-results"];
 
@@ -366,6 +492,9 @@ export const PAGES = [
   { out: "preview/index.html", build: buildHome },
   { out: "preview/dispatch.html", build: buildDispatchList },
   { out: "preview/news.html", build: buildNews },
+  { out: "preview/tesla.html", build: buildTeslaHub },
+  { out: "preview/spacex.html", build: buildSpacexHub },
+  { out: "preview/grok.html", build: buildGrokHub },
   ...ARTICLES.map((slug) => ({ out: `preview/dispatch/${slug}.html`, build: (root) => buildArticle(slug, root) })),
 ];
 

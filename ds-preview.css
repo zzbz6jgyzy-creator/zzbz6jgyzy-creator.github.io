@@ -444,3 +444,104 @@ html body.ds-article .rs-article figcaption small a,
 html body.ds-article .rs-article th,
 html body.ds-article .rel-tag { font-size: var(--ds-fs-12) !important; }
 html main.ds-home :is(.lw-when, .lw-when time, .lv-tz, .lh-next-label, .lh-cd-label, .lh-cd-time, .lh-next-links a, .hs-hero-signup .sd-btn, .hs-form-note, .hs-sample-link, .hs-author, .hs-author a, .hv-c-w, .hv-head a, .intel-chip, .intel-k, .intel-m, .intel-m time, .intel-ev, .hv-f-t, .hv-f-m, .hv-f-on) { font-size: var(--ds-fs-12) !important; }
+
+/* ---- Hubs: compact masthead with the hub's own key numbers and a slim photo band, then its latest stories ---- */
+html body.ds-hub .ds-masthead { gap: var(--ds-sp-2); margin-block: var(--ds-sp-4) var(--ds-sp-4); }
+html body.ds-hub .ds-masthead .ds-dek, html body.ds-hub .ds-masthead .ds-meta { line-height: 1.5; }
+html body.ds-hub .ds-hub-note summary { width: max-content; min-height: 32px; display: flex; align-items: center; font: 500 var(--ds-fs-12) / 1.4 var(--ds-font); color: var(--ds-ink-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+html body.ds-hub .ds-hub-note[open] summary { margin-bottom: var(--ds-sp-1); }
+/* SpaceX's main already pads by the gutter; Grok's is brought to it. Tesla's main is full width, so the defaults hold. */
+html body.ds-hub-grok main#main { padding-inline: var(--ds-gutter) !important; }
+html body.ds-hub-spacex :is(.ds-masthead, .ds-hub-stories),
+html body.ds-hub-grok :is(.ds-masthead, .ds-hub-stories) { width: min(var(--ds-max), 100%); }
+html body.ds-hub .ds-hub-numbers { display: grid; gap: var(--ds-sp-2); margin-top: var(--ds-sp-1); }
+html body.ds-hub .ds-hub-numbers .to-stats { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(176px, 52%); grid-template-columns: none; gap: var(--ds-sp-2); margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
+html body.ds-hub .ds-hub-numbers .to-stats::-webkit-scrollbar { display: none; }
+html body.ds-hub .ds-hub-numbers .to-stat {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  min-width: 0;
+  padding: var(--ds-sp-3);
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-r-card);
+  background: var(--ds-surface);
+  color: inherit;
+  text-decoration: none;
+}
+html body.ds-hub .ds-hub-numbers .to-stat span { font: 500 var(--ds-fs-12) / 1.4 var(--ds-mono); letter-spacing: 0.02em; text-transform: uppercase; color: var(--ds-ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+html body.ds-hub .ds-hub-numbers .to-stat strong { font: 650 var(--ds-fs-22) / 1.15 var(--ds-font); font-variant-numeric: tabular-nums; color: var(--ds-ink); overflow-wrap: anywhere; }
+html body.ds-hub .ds-hub-numbers .to-stat strong em { font: 500 var(--ds-fs-14) / 1 var(--ds-font); font-style: normal; color: var(--ds-ink-2); }
+html body.ds-hub .ds-hub-numbers .to-stat small { font: 400 var(--ds-fs-12) / 1.4 var(--ds-font); color: var(--ds-ink-2); }
+html body.ds-hub .ds-hub-numbers .to-fine { margin: 0; max-width: 72ch; font: 400 var(--ds-fs-12) / 1.5 var(--ds-font); color: var(--ds-ink-2); }
+html body.ds-hub .ds-hub-numbers .sx-next {
+  position: static;
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  min-height: 0 !important;
+  max-width: 560px;
+  margin: 0;
+  padding: var(--ds-sp-3) var(--ds-sp-4);
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-r-card);
+  background: var(--ds-surface);
+}
+html body.ds-hub .ds-hub-numbers .sx-next > * { margin: 0 !important; }
+html body.ds-hub .ds-hub-numbers .sx-next .sx-kicker { margin: 0; font: 500 var(--ds-fs-12) / 1.4 var(--ds-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ds-accent); }
+html body.ds-hub .ds-hub-numbers .sx-next strong { font: 650 var(--ds-fs-22) / 1.2 var(--ds-font); color: var(--ds-ink); }
+html body.ds-hub .ds-hub-numbers .sx-next p { margin: 0; font: 400 var(--ds-fs-14) / 1.5 var(--ds-font); color: var(--ds-ink-2); }
+html body.ds-hub .ds-hub-numbers .sx-next .sx-countdown { font: 500 var(--ds-fs-14) / 1.4 var(--ds-mono); color: var(--ds-ink) !important; }
+html body.ds-hub .ds-hub-numbers .sx-next a { justify-self: start; margin-top: var(--ds-sp-1) !important; font: 600 var(--ds-fs-14) / 1.4 var(--ds-font); color: var(--ds-ink); text-decoration: underline; text-underline-offset: 3px; }
+html body.ds-hub .ds-hub-numbers .sx-next a svg { display: none; }
+html body.ds-hub .ds-band img { position: static !important; inset: auto !important; opacity: 1 !important; }
+html body.ds-hub .ds-band figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Each hub's story list becomes rows like the homepage's Latest list; the markup stays the hub's own */
+html body.ds-hub .ds-hub-stories { margin-block: var(--ds-sp-4) var(--ds-sp-7); padding: 0 !important; }
+@media (max-width: 767px) { html body.ds-hub .ds-band picture { height: 96px; } }
+html body.ds-hub .ds-hub-stories :is(.to-stories, .sx-stories, .gx-story-grid) { display: grid !important; grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; margin: var(--ds-sp-2) 0 0; }
+html body.ds-hub .ds-hub-stories :is(.to-story, .sx-story, .gx-story) { margin: 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; transform: none !important; animation: none !important; min-width: 0; }
+html body.ds-hub .ds-hub-stories :is(.to-story > a, .sx-story, .gx-story > a) {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 72px;
+  gap: var(--ds-sp-3);
+  align-items: start;
+  padding: 10px 0;
+  border-top: 1px solid var(--ds-line);
+  color: inherit;
+  text-decoration: none;
+}
+html body.ds-hub .ds-hub-stories :is(.to-story > a > img, .sx-story > .sx-story-photo, .gx-story > a > picture) {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 3 / 2;
+  margin: 0;
+  border-radius: var(--ds-r-input);
+  overflow: hidden;
+  object-fit: cover;
+  background: var(--ds-surface);
+}
+html body.ds-hub .ds-hub-stories :is(.sx-story-photo, .gx-story > a > picture) img { display: block; width: 100% !important; height: 100% !important; object-fit: cover; transform: none !important; }
+html body.ds-hub .ds-hub-stories :is(.to-story > a > div, .sx-story > div, .gx-story > a > div) { grid-column: 1; grid-row: 1; min-width: 0; padding: 0 !important; }
+html body.ds-hub .ds-hub-stories :is(.to-story, .sx-story, .gx-story) :is(.to-eyebrow, .sx-kicker, .gx-kicker) { margin: 0 0 var(--ds-sp-1) !important; font: 500 var(--ds-fs-12) / 1.3 var(--ds-mono) !important; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ds-accent); }
+html body.ds-hub .ds-hub-stories :is(.to-story, .sx-story, .gx-story) :is(.to-eyebrow, .sx-kicker, .gx-kicker) :is(span, time) { color: var(--ds-ink-2); }
+html body.ds-hub .ds-hub-stories :is(.to-story, .sx-story, .gx-story) h3 { margin: 0 !important; font: 600 var(--ds-fs-16) / 1.32 var(--ds-font) !important; letter-spacing: 0 !important; color: var(--ds-ink); text-wrap: pretty; }
+html body.ds-hub .ds-hub-stories :is(.to-story, .sx-story, .gx-story) h3 a { color: inherit; text-decoration: none; }
+html body.ds-hub .ds-hub-stories :is(.to-story, .sx-story, .gx-story) :is(a:hover h3, h3 a:hover) { text-decoration: underline; text-underline-offset: 3px; }
+html body.ds-hub .ds-hub-stories :is(.to-story > a > div, .sx-story > div, .gx-story > a > div) > p:not(:first-child) { display: none; margin: var(--ds-sp-1) 0 0; font: 400 var(--ds-fs-14) / 1.5 var(--ds-font) !important; color: var(--ds-ink-2); }
+html body.ds-hub .ds-hub-stories :is(.to-text-link, .gx-story-link, .sx-text-link) { display: none !important; }
+html body.ds-hub .ds-hub-stories .gx-fine { margin: 0 0 var(--ds-sp-2); font: 400 var(--ds-fs-12) / 1.5 var(--ds-font); color: var(--ds-ink-2); }
+html body.ds-hub .ds-hub-stories .sx-filter-row { display: flex; flex-wrap: nowrap; gap: var(--ds-sp-2); margin: var(--ds-sp-2) 0; overflow-x: auto; scrollbar-width: none; }
+html body.ds-hub .ds-hub-stories .sx-filter-row button { flex: none; min-height: 36px; padding: 0 14px; border: 1px solid var(--ds-line-2); border-radius: var(--ds-r-pill); background: transparent; color: var(--ds-ink); font: 500 var(--ds-fs-14) / 1 var(--ds-font); }
+html body.ds-hub .ds-hub-stories .sx-filter-row button[aria-pressed="true"] { border-color: var(--ds-ink) !important; background: var(--ds-ink) !important; color: var(--ds-bg) !important; }
+html body.ds-hub .ds-hub-stories .sx-fine { margin: 0; font: 500 var(--ds-fs-12) / 1.4 var(--ds-mono); color: var(--ds-ink-2); }
+@media (min-width: 768px) {
+  html body.ds-hub .ds-hub-numbers .to-stats { grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); overflow: visible; }
+  html body.ds-hub .ds-hub-stories :is(.to-story > a, .sx-story, .gx-story > a) { grid-template-columns: minmax(0, 1fr) 200px; gap: var(--ds-sp-5); padding: var(--ds-sp-4) 0; }
+  html body.ds-hub .ds-hub-stories :is(.to-story, .sx-story, .gx-story) h3 { font-size: var(--ds-fs-18) !important; }
+  html body.ds-hub .ds-hub-stories :is(.to-story > a > div, .sx-story > div, .gx-story > a > div) > p:not(:first-child) { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+}
