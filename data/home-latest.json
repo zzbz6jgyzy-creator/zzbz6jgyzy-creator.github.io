@@ -1,6 +1,27 @@
 {
  "cards": [
   {
+   "href": "/dispatch/spacex-pad-4e-32-hours.html",
+   "img": "/assets/dispatch/vandenberg-ussf317-slc4e-ussf.jpg",
+   "tag": "Falcon 9",
+   "h": "SpaceX turned pad 4E around in 32 hours. If Tuesday's launch goes on time, that's three national security missions in 3.5 days",
+   "p": "NROL-136 lifted off from Vandenberg's SLC-4E on Sunday, 32 hours after USSF-317, which SpaceX says is its fastest turnaround between launches from the same pad. USSF-266 is next from the same pad on Tuesday, on a booster making its 29th flight."
+  },
+  {
+   "href": "/dispatch/tesla-starlink-every-model.html",
+   "img": "/assets/dispatch/cybercab-zurich-migl.jpg",
+   "tag": "Starlink",
+   "h": "Musk says built-in Starlink could reach every Tesla by late 2027. New Cybercabs already have it in the trunk lid",
+   "p": "Elon Musk said on Sunday that embedded Starlink across Tesla's lineup is \"hopefully\" coming toward the end of next year, except in China. Tesla's own Cybercab first-responder guide, dated 20 Nov, says Cybercabs built from November 2026 already carry it."
+  },
+  {
+   "href": "/dispatch/spacex-cochise-ag-delay.html",
+   "img": "/assets/dispatch/willcox-playa-blm.jpg",
+   "tag": "Arizona",
+   "h": "Arizona's attorney general wants Cochise County to hold off on SpaceX's 6 GW campus vote",
+   "p": "In a 19 Nov letter, Attorney General Kris Mayes asked the Cochise County Planning and Zoning Commission to delay its 9 Dec vote on SpaceX's special use permit SU26-22 until state and federal regulators have reviewed it. A town hall is set for 3 Dec."
+  },
+  {
    "href": "/dispatch/spacex-louisiana-coastal-permit.html",
    "img": "/assets/dispatch/pecan-island-marsh-map-commons.jpg",
    "tag": "Louisiana",
@@ -34,27 +55,6 @@
    "tag": "AI",
    "h": "Anthropic closes its IPO at $93.5 billion and takes SpaceX's record outright. Its new cash nearly matches its SpaceX compute deal",
    "p": "Anthropic's IPO closed at about $93.5 billion after underwriters bought all 147 million optional shares, passing SpaceX's record, and a $26 billion placement takes its new cash close to its SpaceX compute deal."
-  },
-  {
-   "href": "/dispatch/tesla-cybercab-dallas-launch.html",
-   "img": "/assets/dispatch/tesla-cybercab-santana-row-2024.jpg",
-   "tag": "Tesla / Robotaxi",
-   "h": "Cybercab rides start in Dallas, the second city after Austin, and Tesla kept its \"next month\" promise",
-   "p": "Tesla's Robotaxi account says the Cybercab has arrived in Dallas, keeping a mid-October 'next month' promise. Tesla has not given a Dallas fleet size, service area, hours or rider rules."
-  },
-  {
-   "href": "/dispatch/anthropic-ipo-spacex-record.html",
-   "img": "/assets/dispatch/nasdaq-marketsite-2021.jpg",
-   "tag": "SpaceX / AI",
-   "h": "Anthropic's $81.3 billion IPO beats SpaceX's base deal, and its prospectus still owes SpaceX $3.1 billion a month",
-   "p": "Anthropic priced 980 million shares at $83 and opened at $111.50 as of 11:53 a.m. ET on 19 Nov. That beats SpaceX's $75 billion base deal; the all-time record still depends on Anthropic's option."
-  },
-  {
-   "href": "/dispatch/grok-bot-books-travel.html",
-   "img": "/assets/dispatch/twenty-air-street-spacexsi-2026.jpg",
-   "tag": "Grok / Grok Bot",
-   "h": "Grok Bot now books flights, hotels and rental cars. What it checks before you pay, and where it hands back to you",
-   "p": "SpaceXSI's Grok Bot can now book flights, hotels and rental cars. The changelog adds a bags, changes and refunds panel, and sends you the airline link if a purchase can't be confirmed."
   }
  ],
  "pins": [
@@ -68,6 +68,24 @@
   }
  ],
  "stories": [
+  {
+   "url": "/dispatch/spacex-pad-4e-32-hours.html",
+   "title": "SpaceX turned pad 4E around in 32 hours. If Tuesday's launch goes on time, that's three national security missions in 3.5 days",
+   "tag": "Falcon 9",
+   "date": "2026-11-23T17:12:00Z"
+  },
+  {
+   "url": "/dispatch/tesla-starlink-every-model.html",
+   "title": "Musk says built-in Starlink could reach every Tesla by late 2027. New Cybercabs already have it in the trunk lid",
+   "tag": "Starlink",
+   "date": "2026-11-23T17:10:00Z"
+  },
+  {
+   "url": "/dispatch/spacex-cochise-ag-delay.html",
+   "title": "Arizona's attorney general wants Cochise County to hold off on SpaceX's 6 GW campus vote",
+   "tag": "Arizona",
+   "date": "2026-11-23T17:08:00Z"
+  },
   {
    "url": "/dispatch/spacex-louisiana-coastal-permit.html",
    "title": "SpaceX has applied to excavate 5.2 million cubic yards at Pecan Island. Louisiana has opened public comment through 16 Dec",

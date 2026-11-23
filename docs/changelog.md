@@ -1,5 +1,12 @@
 ## 23 Nov 2026
 
+- Dispatch: Arizona Attorney General Kris Mayes asked Cochise County to delay its 9 Dec vote on SpaceX's 6 GW data-center permit (SU26-22). This is a request, not a ruling. The hero is a licensed Commons photo of the Willcox Playa (Bureau of Land Management Arizona, public domain).
+- Dispatch: Elon Musk said an embedded Starlink option across Tesla's models is "hopefully" available towards the end of next year, except in China — a target, not a committed date. Tesla's Cybercab first-responder guide v1.3 (20 Nov) says Cybercabs built from November 2026 already carry Starlink in the trunk lid. The hero is Alexander Migl's Auto Zürich show-car photo, CC BY-SA 4.0; the caption notes it is not a confirmed Starlink-equipped vehicle.
+- Dispatch: SpaceX turned pad 4E around in 32 hours between USSF-317 and NROL-136, which it calls its fastest same-pad turnaround. USSF-266 is scheduled for Tuesday 24 Nov, 10:55 a.m. ET / 7:55 a.m. PT, and has not launched. The hero is a U.S. Space Force photo of the USSF-317 liftoff (Staff Sgt. Joshua LeRoi, public domain).
+- Homepage / live-data: the USSF-266 next-livestream card still showed Monday 23 Nov (16:04 UTC). It now shows the official Tuesday 24 Nov window, opening 7:55 a.m. PT / 10:55 a.m. ET (15:55 UTC), with a four-hour close. The Wednesday 25 Nov backup is noted in live-data.
+
+## 23 Nov 2026
+
 - Dispatch: SpaceX has applied to excavate about 5.2 million cubic yards at Pecan Island, and Louisiana has opened public comment through 16 Dec on coastal use permit P20260831. The hero is a licensed Commons map of the marsh around Pecan Island (Paul H., CC0), not SpaceX permit drawings. This is a comment window, not an approval.
 
 ## 23 Nov 2026 — Redesign step 4: switch prep (no visual change)
