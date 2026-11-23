@@ -1,3 +1,8 @@
+## 23 Nov 2026 — Redesign step 3: corrected "Updated" dates
+
+- Editorial dates: the reading toolbar is now page furniture for `scripts/editorial-dates.py`. Relabelling its buttons on 9 Nov 2026 had re-stamped 83 of 166 stories "Updated 9 Nov 2026" without any change to their reporting (editorial rule 6). After this merges, home-build corrects them: 47 lose the Updated line, 36 show their last real edit. Every page and date is listed in `docs/updated-dates-correction-2026-11.md`.
+- Previews: the footer sync no longer rewrites `preview/` pages (it was replacing the Grok preview's disclaimer, which the daily preview refresh would then restore).
+
 ## 23 Nov 2026 — Redesign step 2: all 15 previews
 
 - Hidden article previews at `/preview/dispatch/` for three story types (news, long feature, finance with the disclosure). The headline, standfirst, byline and lead photo now share the first phone screen (lead photo at 549–636px on a 390×844 phone, from about 1,100px live); the reading tools and "On this page" follow the photo. Header, tools and text share one reading column on desktop.
