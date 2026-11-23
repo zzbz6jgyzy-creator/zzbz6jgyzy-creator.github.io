@@ -12,12 +12,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
+import { execFileSync } from "node:child_process";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const DS = require("../ds-components.js");
 const SITE = "https://superchargeddaily.com";
-export const DS_CSS_V = "20261123d"; // bump when ds.css or ds-preview.css changes
+export const DS_CSS_V = "20261123e"; // bump when ds.css or ds-preview.css changes
 
 const read = (rel, root = ROOT) => fs.readFileSync(path.join(root, rel), "utf8");
 
@@ -107,6 +108,21 @@ export function assertRootRelative(html, label) {
   if (bad.length) throw new Error(`${label}: relative URLs would break under /preview/: ${bad.slice(0, 3).join(", ")}`);
 }
 
+const navCache = new Map();
+/**
+ * Swaps the live navigation for the proposed one in scripts/nav.next.json (no duplicate links, a Grok menu, "Cybercab
+ * fleet", no phone "Quick access" list). sync-nav.py renders it, so the markup is exactly what the switch would ship.
+ */
+export function withNextNav(html, root = ROOT) {
+  const block = between(html, "<!--sd:navigation-->", "<!--/sd:navigation-->");
+  const tag = (block.match(/<nav class="pn"[^>]*>/) || [])[0];
+  if (!tag) throw new Error('No <nav class="pn"> in the navigation block');
+  if (!navCache.has(tag)) {
+    navCache.set(tag, execFileSync("python3", [path.join(root, "scripts/sync-nav.py"), "--block", "scripts/nav.next.json"], { input: tag, encoding: "utf8", cwd: root }));
+  }
+  return replaceOnce(html, block, navCache.get(tag));
+}
+
 /** Head changes shared by every preview: noindex, canonical check, section theme, design CSS, LCP preload. */
 export function previewHead(html, { live, section = "", preload = "", keepImagePreloads = false, root = ROOT }) {
   let h = html.replace(/<title>(?!Preview · )/, "<title>Preview · ");
@@ -122,6 +138,7 @@ export function previewHead(html, { live, section = "", preload = "", keepImageP
   if (section && !h.includes("/section-theme.css")) css.push(`<link rel="stylesheet" href="/section-theme.css?v=${sectionCssVersion(root)}" />`);
   css.push(`<link rel="stylesheet" href="/ds.css?v=${DS_CSS_V}" />`, `<link rel="stylesheet" href="/ds-preview.css?v=${DS_CSS_V}" />`);
   h = replaceOnce(h, "</head>", (preload ? "    " + preload + "\n" : "") + "    " + css.join("\n    ") + "\n  </head>");
+  h = withNextNav(h, root);
   // inject-js-bundles.py (run by the bots on every page, previews included) collapses blank-line runs the same way;
   // matching it keeps the bots and the preview refresh from rewriting each other's output.
   return h.replace(/\n{3,}/g, "\n\n");

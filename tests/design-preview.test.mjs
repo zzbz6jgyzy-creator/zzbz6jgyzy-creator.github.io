@@ -368,6 +368,41 @@ test("tracker previews keep the script contracts the plan names", () => {
   assert.match(pd, /<div hidden><div class="pd-spotlight" id="pd-spotlight">/, "#pd-spotlight stays for production-studio.js, hidden");
 });
 
+test("the proposed nav has no duplicate links, a Grok menu and only links that resolve", () => {
+  const live = JSON.parse(read("scripts/nav.json"));
+  const next = JSON.parse(read("scripts/nav.next.json"));
+  const groupLinks = (cfg) => cfg.dropdowns.flatMap((d) => d.groups.flatMap((g) => g.items.map((i) => i[1])));
+  const dupes = (list) => list.length - new Set(list).size;
+  assert.ok(dupes(groupLinks(live)) > 0, "today's nav repeats links (the reason for the change)");
+  assert.equal(dupes(groupLinks(next)), 0, "no link appears in two menus");
+  assert.deepEqual(next.dropdowns.map((d) => d.label), ["News", "Tesla", "SpaceX", "Grok", "Trackers", "Explore"]);
+  assert.deepEqual(next.mobileShortcuts, [], "the phone Quick access list goes");
+  assert.ok(groupLinks(next).includes("/cybercab.html"));
+  assert.ok(next.dropdowns.flatMap((d) => d.groups.flatMap((g) => g.items)).some((i) => i[0] === "Cybercab fleet" && i[1] === "/cybercab.html"));
+  // Nothing reachable today disappears from the menus
+  for (const h of groupLinks(live)) assert.ok(groupLinks(next).includes(h) || next.dropdowns.some((d) => (d.landing || [])[1] === h || (d.feature || {}).href === h), "keeps " + h);
+  for (const d of next.dropdowns) {
+    for (const h of [...d.groups.flatMap((g) => g.items.map((i) => i[1])), (d.landing || [])[1], (d.feature || {}).href].filter(Boolean)) {
+      const [file, hash] = h.replace(/\?[^#]*/, "").split("#");
+      const rel = file === "/" ? "index.html" : file.slice(1);
+      assert.ok(fs.existsSync(path.join(ROOT, rel)), h + " points to a missing page");
+      if (hash) assert.ok(read(rel).includes(`id="${hash}"`), h + " points to a missing anchor");
+    }
+  }
+});
+
+test("every preview carries the proposed nav and the hooks members.js needs", () => {
+  for (const p of PAGES) {
+    const html = fs.readFileSync(path.join(ROOT, p.out), "utf8");
+    const nav = between(html, "<!--sd:navigation-->", "<!--/sd:navigation-->");
+    assert.ok(nav.includes('aria-controls="pn-grok"'), p.out + " has the Grok menu");
+    assert.ok(!nav.includes("Quick access"), p.out + " still has the Quick access list");
+    assert.match(nav, /<nav class="pn"[^>]*data-nav-studio/);
+    assert.ok(nav.includes("data-ns-account"));
+  }
+  assert.ok(read("index.html").includes("Quick access"), "the live nav is unchanged until the switch");
+});
+
 test("committed previews are whole pages whose local files exist", () => {
   for (const p of PAGES) {
     const file = path.join(ROOT, p.out);

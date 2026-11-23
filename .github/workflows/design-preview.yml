@@ -11,6 +11,8 @@ on:
       - 'ds-preview.css'
       - 'ds-components.js'
       - 'scripts/build-design-preview.mjs'
+      - 'scripts/nav.next.json'
+      - 'scripts/sync-nav.py'
   schedule:
     - cron: "41 5 * * *"
   workflow_dispatch:

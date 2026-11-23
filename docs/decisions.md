@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-11-23 · Navigation: six menus, no repeats, Menu button below 1280px
+
+- **Decision:** the proposed nav (`scripts/nav.next.json`, shown on every preview) keeps each link in one menu, renames "Robotaxi tracker" to "Cybercab fleet", adds a Grok menu and drops the phone "Quick access" list. To fit six menus the bar loses its "Ctrl K" hint, tightens the menu buttons and switches to the Menu button below 1280px.
+- **Why:** 8 of the 44 menu links appeared in two menus, Grok (one of the site's three topics) had no menu of its own, and the Quick access list repeated four menu links on phones. A sixth menu overflowed today's bar by up to 68px at 1280px and 28px at 1440px.
+- **Rejected:** merging Explore into another menu (not asked for; it keeps explainers, wallpapers and games), icon-only Members or Your Daily (both are key entry points), a horizontally scrolling menu bar.
+
 ## 2026-11-23 · Articles: the reading tools move below the lead photo
 
 - **Decision:** on article pages the reading tools and "On this page" move from between the standfirst and the byline to just after the lead photo or video. The approved plan said "CSS only, DOM unchanged"; this is the one exception, and it only moves page furniture.
