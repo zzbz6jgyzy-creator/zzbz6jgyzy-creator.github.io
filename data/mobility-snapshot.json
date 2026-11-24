@@ -1344,7 +1344,7 @@
     ]
   },
   "registry": {
-    "checked": "2026-11-22T22:41:47Z",
+    "checked": "2026-11-23T16:21:19Z",
     "source": {
       "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
       "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
@@ -1639,6 +1639,13 @@
       },
       {
         "date": "2026-11-22",
+        "cybercab": 773,
+        "modelY": 734,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "date": "2026-11-23",
         "cybercab": 773,
         "modelY": 734,
         "other": 0,
@@ -2245,11 +2252,19 @@
         "modelY": 734,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "at": "2026-11-23T16:21:19Z",
+        "date": "2026-11-23",
+        "cybercab": 773,
+        "modelY": 734,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
     ]
   },
   "regional": {
-    "checked": "2026-11-22T22:41:47Z",
+    "checked": "2026-11-23T16:21:19Z",
     "aggregator": {
       "name": "Platform Aeronaut AV Tracker",
       "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
@@ -2258,7 +2273,7 @@
       "Texas": {
         "count": 734,
         "kind": "registered",
-        "asOf": "2026-11-22",
+        "asOf": "2026-11-23",
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
         "note": "Model Y robotaxis on the TxDMV automated-vehicle registry (Cybercabs excluded). The registry has no city split."
       },
@@ -2862,6 +2877,21 @@
           "count": 18,
           "asOf": "2026-07-22"
         }
+      },
+      {
+        "date": "2026-11-23",
+        "Texas": {
+          "count": 734,
+          "asOf": "2026-11-23"
+        },
+        "California": {
+          "count": 164,
+          "asOf": "2026-08-26"
+        },
+        "Florida": {
+          "count": 18,
+          "asOf": "2026-07-22"
+        }
       }
     ]
   },
@@ -2874,7 +2904,7 @@
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "revision": "3857624ca629688cbfbedde1b75d2ece7c2af0f6"
     },
-    "checked": "2026-11-22T22:41:47Z",
+    "checked": "2026-11-23T16:21:19Z",
     "features": [
       {
         "type": "Feature",
@@ -3847,16 +3877,16 @@
         "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
       }
     },
-    "checked": "2026-11-22T22:41:47Z"
+    "checked": "2026-11-23T16:21:19Z"
   },
   "checks": {
     "schemaVersion": 1,
-    "updated": "2026-11-22T14:30:26Z",
+    "updated": "2026-11-23T18:00:08Z",
     "sources": {
       "s-ccaaee3c9c8d": {
         "id": "s-ccaaee3c9c8d",
         "url": "https://www.tesla.com/support/robotaxi",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "unavailable",
         "baselineHash": "d6a72df59611a08feff1b9ece7225093c2270c75e728dac8c18120c80bcccde2",
         "observedHash": "d6a72df59611a08feff1b9ece7225093c2270c75e728dac8c18120c80bcccde2",
@@ -3867,7 +3897,7 @@
       "s-0cffd265d479": {
         "id": "s-0cffd265d479",
         "url": "https://www.tesla.com/support/robotaxi/cybercab",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "unavailable",
         "baselineHash": "6bd1acd72bec8647377ba85d8c73185649ab9dc4e90ed35b02911168d8959ffd",
         "observedHash": "6bd1acd72bec8647377ba85d8c73185649ab9dc4e90ed35b02911168d8959ffd",
@@ -3878,14 +3908,14 @@
       "s-ff84ae0cf870": {
         "id": "s-ff84ae0cf870",
         "url": "https://www.tesla.com/robotaxi",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "unavailable",
         "error": "HTTP Error 403: Forbidden"
       },
       "s-c9f84c001b2c": {
         "id": "s-c9f84c001b2c",
         "url": "https://www.tesla.com/robotaxi/safety",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "unavailable",
         "baselineHash": "d078b8bb854a5d32d737da67ed092bc3983ed83349143f25f29784ad1be18184",
         "observedHash": "d078b8bb854a5d32d737da67ed092bc3983ed83349143f25f29784ad1be18184",
@@ -3896,22 +3926,22 @@
       "s-1c8cd934cb0d": {
         "id": "s-1c8cd934cb0d",
         "url": "https://ir.tesla.com/_flysystem/s3/sec/000162828026066738/tsla-20261021-gen.pdf",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "ok",
         "error": null,
         "baselineHash": "aa54399a30a20b7685f9a5369cf4b601d5b2919c45f5d524eb7528b21be097af",
         "observedHash": "aa54399a30a20b7685f9a5369cf4b601d5b2919c45f5d524eb7528b21be097af",
-        "lastSuccessAt": "2026-11-22T14:30:26Z",
+        "lastSuccessAt": "2026-11-23T18:00:08Z",
         "pendingReview": false
       },
       "s-b58b31837c2f": {
         "id": "s-b58b31837c2f",
         "url": "https://www.txdmv.gov/AVprogram",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "ok",
         "baselineHash": "b7cb44268c1d78c7d2ca778459f6db3c131c0630f69a29a8c3d56c7f76768b13",
         "observedHash": "dcb3789fd0d4c561896079ed66df1708e55b90dfcda8b0888f522f35aee2a767",
-        "lastSuccessAt": "2026-11-22T14:30:26Z",
+        "lastSuccessAt": "2026-11-23T18:00:08Z",
         "pendingReview": true,
         "error": null,
         "firstChangedAt": "2026-10-30T12:48:59Z"
@@ -3919,14 +3949,14 @@
       "s-37faae23b50d": {
         "id": "s-37faae23b50d",
         "url": "https://txmccs.txdmv.gov/automated-vehicles/operators/AV8313426653583",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "unavailable",
         "error": "Source text unavailable or a challenge page"
       },
       "s-7bb593b2c07d": {
         "id": "s-7bb593b2c07d",
         "url": "https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "unavailable",
         "baselineHash": "e99f906adb36a8836a36f23a29d2666ae52a64c2506572eaff7381d1f664196e",
         "observedHash": "e99f906adb36a8836a36f23a29d2666ae52a64c2506572eaff7381d1f664196e",
@@ -3937,22 +3967,22 @@
       "s-b3eb5460565a": {
         "id": "s-b3eb5460565a",
         "url": "https://www.cpuc.ca.gov/regulatory-services/licensing/transportation-licensing-and-analysis-branch/autonomous-vehicle-programs",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "ok",
         "baselineHash": "1958a643f17954c18db893a8711d8c0a990bff56e027dad6cf33379990cca458",
         "observedHash": "1958a643f17954c18db893a8711d8c0a990bff56e027dad6cf33379990cca458",
-        "lastSuccessAt": "2026-11-22T14:30:26Z",
+        "lastSuccessAt": "2026-11-23T18:00:08Z",
         "pendingReview": false,
         "error": null
       },
       "s-6e3ef17542df": {
         "id": "s-6e3ef17542df",
         "url": "https://www.fool.com/earnings/call-transcripts/2026/10/22/tesla-tsla-q3-2026-earnings-call-transcript/",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "ok",
         "baselineHash": "a05bfd608b098eef8d7d57d55cd60019fe26ae3d1015c4c507303407f86914c9",
-        "observedHash": "1094a6a68c86642aa648033abcf5201041dd6b1ca495463a72519b6bf1885a9a",
-        "lastSuccessAt": "2026-11-22T14:30:26Z",
+        "observedHash": "d9eece57ca1d709d75637ed8f31bdc34c1b2b0444fc62155c35499e2f9dc27f5",
+        "lastSuccessAt": "2026-11-23T18:00:08Z",
         "pendingReview": true,
         "error": null,
         "firstChangedAt": "2026-10-27T06:48:30Z"
@@ -3960,11 +3990,11 @@
       "s-ea5d5c90d766": {
         "id": "s-ea5d5c90d766",
         "url": "https://x.com/robotaxi/status/2108981691436224816",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "ok",
         "baselineHash": "cde3b47f85b51c58b7aaf9bb0ce6f7dbc29fe6e12b3c124f7ef6f3839527b4fb",
         "observedHash": "34fc4f850cdb558514c0f1efcf95124b08baa05275e379f448f90cedc6be21a4",
-        "lastSuccessAt": "2026-11-22T14:30:26Z",
+        "lastSuccessAt": "2026-11-23T18:00:08Z",
         "pendingReview": true,
         "error": null,
         "firstChangedAt": "2026-10-27T06:48:30Z"
@@ -3972,11 +4002,11 @@
       "s-5c0f1eaa7aec": {
         "id": "s-5c0f1eaa7aec",
         "url": "https://x.com/robotaxi/status/2045564609504116771",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "ok",
         "baselineHash": "627a4c13895bba930f2b5b55e7420eb138b3e3f43cfd979647dd79c63a5849fd",
-        "observedHash": "e70a30190f734099b112ba546d909a21ed568f80b2fcf8430657bab06433986d",
-        "lastSuccessAt": "2026-11-22T14:30:26Z",
+        "observedHash": "b0455c71436d5ae2c3663984cf8afef2fbd785ff624d819ba3bfb82fedcffb69",
+        "lastSuccessAt": "2026-11-23T18:00:08Z",
         "pendingReview": true,
         "error": null,
         "firstChangedAt": "2026-10-27T06:48:30Z"
@@ -3984,11 +4014,11 @@
       "s-a746ebe95e33": {
         "id": "s-a746ebe95e33",
         "url": "https://x.com/robotaxi/status/2116029730793431481",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "ok",
         "baselineHash": "dd20f7618602803f03386700e86131b6b6424330caa3d68865427ef3bfd44780",
-        "observedHash": "4945bac6546be74e8d7ae6f91b49dffbce72865c209661c165698026b8b7a549",
-        "lastSuccessAt": "2026-11-22T14:30:26Z",
+        "observedHash": "1c981269fd672d32aa8901176299e8f13e9a19ff6bd0b041b5b480038a431039",
+        "lastSuccessAt": "2026-11-23T18:00:08Z",
         "pendingReview": true,
         "error": null,
         "firstChangedAt": "2026-11-01T13:15:48Z"
@@ -3996,11 +4026,11 @@
       "s-9063fbb6d2bb": {
         "id": "s-9063fbb6d2bb",
         "url": "https://x.com/robotaxi/status/2117128711761985656",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "ok",
         "baselineHash": "1ecfa327dd21dbdb44687e92b7d397c43952bf68dcd34246acb869166399cf2e",
-        "observedHash": "f054b5f404ac264deab5a523cccd46fd5ac03a4c1c173dd7da909d052493fefd",
-        "lastSuccessAt": "2026-11-22T14:30:26Z",
+        "observedHash": "9e2e231bcf25fe24472135e4f68daeb8a41c1b4eb8dcd37d7b43d402d5787f9a",
+        "lastSuccessAt": "2026-11-23T18:00:08Z",
         "pendingReview": true,
         "error": null,
         "firstChangedAt": "2026-11-04T14:27:00Z"
@@ -4008,11 +4038,11 @@
       "s-143126f5ffcb": {
         "id": "s-143126f5ffcb",
         "url": "https://x.com/robotaxi/status/2119678179963187564",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "ok",
         "baselineHash": "dc10ba3eae785a8e0711a495809b8f609bae9568556a0665f27748703b721282",
-        "observedHash": "55ec1d361f3efcccd9dfcdfbc035523ba67ffa913375fa13f84b02613c09e9e5",
-        "lastSuccessAt": "2026-11-22T14:30:26Z",
+        "observedHash": "56fdd846936daec8df8d722941aaa056bb9011a062240759d68b3a117b7feea0",
+        "lastSuccessAt": "2026-11-23T18:00:08Z",
         "pendingReview": true,
         "error": null,
         "firstChangedAt": "2026-11-10T14:49:04Z"
@@ -4020,11 +4050,11 @@
       "s-81f24987225b": {
         "id": "s-81f24987225b",
         "url": "https://x.com/robotaxi/status/2119746828191027346",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "ok",
         "baselineHash": "7d82821bffd13db68e389d4f71a0a4d8e892c290e4195e0dbc98f988a931daf6",
-        "observedHash": "b82ff8a81f46d7d682ed0fc42cb04634cd7777fa9fed552e98af3994624d205f",
-        "lastSuccessAt": "2026-11-22T14:30:26Z",
+        "observedHash": "c84ae4d4d026ccb956eebe7d3b734b3a568a4a4179fbdcceb9980c3c679c9244",
+        "lastSuccessAt": "2026-11-23T18:00:08Z",
         "pendingReview": true,
         "error": null,
         "firstChangedAt": "2026-11-10T14:49:04Z"
@@ -4032,11 +4062,11 @@
       "s-01e76b9da884": {
         "id": "s-01e76b9da884",
         "url": "https://x.com/robotaxi/status/2120736143566344324",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "ok",
         "baselineHash": "b0870b5f9f0d24e1b38b68379240ab105dc27d2fbcde8ef10683394c2e8731a1",
-        "observedHash": "89149dab00ced5c6a7a00ab334c00dfc94e3916e669ddf8022c02e15e576e0fa",
-        "lastSuccessAt": "2026-11-22T14:30:26Z",
+        "observedHash": "1309315319e145cbdb76bd0114050b8bfb0988faa4a0e74ee66e0b2556e9741e",
+        "lastSuccessAt": "2026-11-23T18:00:08Z",
         "pendingReview": true,
         "error": null,
         "firstChangedAt": "2026-11-13T14:30:28Z"
@@ -4044,11 +4074,11 @@
       "s-6a7242664e86": {
         "id": "s-6a7242664e86",
         "url": "https://x.com/robotaxi/status/2122234442328740005",
-        "lastAttemptAt": "2026-11-22T14:30:26Z",
+        "lastAttemptAt": "2026-11-23T18:00:08Z",
         "state": "ok",
         "baselineHash": "af91d75ce799dff5964b1cfd170b78490def5ae4f730b99ee44aa01837e87fee",
-        "observedHash": "a5e5696a8e61cc202c50a84417ee7296ccb7d463b43166f785b14ec715730544",
-        "lastSuccessAt": "2026-11-22T14:30:26Z",
+        "observedHash": "dfbf567d0c0f5f827dea7dd7c233eb04c01578baa34d9a74c14e59de174a348f",
+        "lastSuccessAt": "2026-11-23T18:00:08Z",
         "pendingReview": true,
         "error": null,
         "firstChangedAt": "2026-11-18T15:35:21Z"

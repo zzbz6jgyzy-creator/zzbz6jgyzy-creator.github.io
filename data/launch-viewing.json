@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-23T07:40:05Z",
+ "checked": "2026-11-23T20:08:31Z",
  "editorialUpdated": "2026-11-17T08:45:00+00:00",
  "presets": [
   {
@@ -864,6 +864,36 @@
     "lon": -80.5774,
     "az": 48,
     "coast": "east"
+   }
+  },
+  {
+   "id": "ll2-5591cfa3-6336-41ab-a37a-7c57aa28ab5f",
+   "title": "Falcon 9 Block 5 | NROL-132",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-12-02T20:30:00Z",
+   "end": "",
+   "date": "2026-12-02",
+   "precision": "datetime",
+   "status": "TBC",
+   "note": "Government/Top Secret · Low Earth Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "5591cfa3-6336-41ab-a37a-7c57aa28ab5f",
+   "windowStart": "2026-12-02T20:30:00Z",
+   "windowEnd": "2026-12-03T00:30:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "To Be Confirmed",
+   "pad": {
+    "id": "slc4e",
+    "name": "Vandenberg · SLC-4E",
+    "short": "Vandenberg",
+    "lat": 34.632,
+    "lon": -120.611,
+    "az": 186,
+    "coast": "west"
    }
   },
   {

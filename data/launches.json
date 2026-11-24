@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-23T07:40:05Z",
- "checked": "2026-11-23T07:40:05Z",
+ "updated": "2026-11-23T20:08:31Z",
+ "checked": "2026-11-23T20:08:31Z",
  "results": [
   {
    "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
@@ -393,6 +393,38 @@
    "mission": {
     "name": "Cygnus CRS-2 NG-25",
     "type": "Resupply",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
+  },
+  {
+   "id": "5591cfa3-6336-41ab-a37a-7c57aa28ab5f",
+   "name": "Falcon 9 Block 5 | NROL-132",
+   "net": "2026-12-02T20:30:00Z",
+   "window_start": "2026-12-02T20:30:00Z",
+   "window_end": "2026-12-03T00:30:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/5591cfa3-6336-41ab-a37a-7c57aa28ab5f/",
+   "status": {
+    "name": "To Be Confirmed",
+    "abbrev": "TBC"
+   },
+   "net_precision": {
+    "name": "Minute",
+    "abbrev": "MIN"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   },
+   "last_updated": "2026-11-23T16:43:43Z",
+   "mission": {
+    "name": "NROL-132",
+    "type": "Government/Top Secret",
     "orbit": {
      "name": "Low Earth Orbit",
      "abbrev": "LEO"
