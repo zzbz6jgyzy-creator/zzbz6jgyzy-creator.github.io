@@ -289,7 +289,7 @@ const TRACKERS = [
   { file: "cybercab", title: "Cybercab fleet", inMast: ['class="ds-band"', "Texas registry as of"] },
   { file: "calendar", title: "Launch calendar", inMast: ["Launch times as of"] },
   { file: "starlink", title: "Starlink tracker", inMast: ['class="so-source-strip"', 'class="so-metrics"'] },
-  { file: "production", title: "Tesla production and deliveries", inMast: ['id="pd-quarter"', 'id="pd-stats"', 'id="pd-spotlight"', 'id="pd-view-note"'] },
+  { file: "production", title: "Tesla production and deliveries", inMast: ['id="pd-quarter"', 'id="pd-stats"', 'id="pd-view-note"'] },
 ];
 for (const t of TRACKERS) {
   test(`${t.file} tracker: plain title and its own key numbers in the masthead`, () => {
@@ -314,7 +314,7 @@ test("trackers keep the script contracts the plan names", () => {
   const ws = sl.indexOf('<div class="so-workspace"');
   assert.ok(ws > -1 && sl.indexOf('<header class="ds-masthead') > ws, "the Starlink masthead is inside .so-workspace");
   assert.match(sl, /<section class="so-hero" id="overview"[^>]*>[\s\S]*?<h2 id="so-title"/, "#overview stays, with its old h1 as an h2");
-  assert.match(read("production.html"), /<div hidden><div class="pd-spotlight" id="pd-spotlight">/, "#pd-spotlight stays for production-studio.js, hidden");
+  assert.doesNotMatch(read("production.html"), /id="pd-spotlight"/, "the old hero's spotlight is gone; the stats row shows the quarter");
 });
 
 test("no nav menu list repeats a link, Grok has a menu, and every link resolves", () => {
