@@ -121,14 +121,14 @@ window.SEE_LAUNCH = {
     {
       id: "ll-ussf-266",
       title: "Falcon 9 · USSF-266",
-      start: "2026-11-24T15:55:00Z",
+      start: "2026-11-24T16:08:59Z",
       pad: "slc4e",
       vehicle: "falcon",
       orbit: "leo",
-      status: "go",
+      status: "success",
       precision: "datetime",
       href: "https://www.spacex.com/launches/ussf266",
-      note: "Classified US Space Force mission from Vandenberg; SpaceX is targeting Tuesday 24 Nov, four-hour window opens 7:55 a.m. PT (15:55 UTC / 10:55 a.m. ET), backup Wednesday 25 Nov 7:46 a.m. PT (10:46 a.m. ET). 29th-flight booster, landing on Of Course I Still Love You (checked 23 Nov 2026).",
+      note: "USSF-266 launched from Vandenberg at 16:08:59 UTC (11:08:59 a.m. ET / 8:08:59 a.m. PT) on Tuesday 24 Nov 2026. Falcon 9 first stage B1081 landed on Of Course I Still Love You on its 29th flight. Liftoff and booster landing from Launch Library 2 and official @SpaceX posts (checked 24 Nov 2026). This note covers liftoff and the booster landing, not a separate confirmation that the upper-stage mission is complete.",
     },
   ],
 };

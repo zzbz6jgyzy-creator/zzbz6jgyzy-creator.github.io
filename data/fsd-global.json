@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "reviewed": "2026-11-22",
-  "revision": "2026-11-22-global-1",
+  "reviewed": "2026-11-24",
+  "revision": "2026-11-24-global-1",
   "listed": [
     "US",
     "CA",
@@ -499,12 +499,20 @@
       "checked": "2026-11-10"
     },
     {
-      "id": "electrek-v15",
-      "label": "Electrek: Tesla launches FSD v15",
-      "url": "https://electrek.co/2026/11/21/tesla-fsd-v15-rollout-25x-safety-reality-view/",
+      "id": "tesla-v15-x",
+      "label": "Tesla on X: FSD v15 now starting to roll out",
+      "url": "https://x.com/Tesla/status/2124222447855743019",
+      "type": "manufacturer",
+      "note": "Official Tesla post, 21 Nov 2026, 2:24 p.m. ET (11:24 a.m. PT). Announces that FSD v15 is now starting to roll out, and lists 25x better handling of safety critical cases, Tesla Reality View and learned navigation. Opened 24 Nov 2026.",
+      "checked": "2026-11-24"
+    },
+    {
+      "id": "scd-fsd-v15-first-wave",
+      "label": "Supercharged Daily: FSD v15 is in owners' cars",
+      "url": "https://superchargeddaily.com/dispatch/tesla-fsd-v15-first-wave.html",
       "type": "media",
-      "note": "Electrek, 21 Nov 2026, quoting Tesla's X posts and release notes. We did not open Tesla's posts directly. The article gives no point-release number, build number or country list.",
-      "checked": "2026-11-22"
+      "note": "24 Nov 2026 Dispatch piece on Tesla's official rollout post, the release notes, the three 25x wordings and what independent trackers have reported about the first wave.",
+      "checked": "2026-11-24"
     }
   ],
   "versions": [
@@ -576,10 +584,11 @@
       "precision": "day",
       "type": "software",
       "title": "Tesla announces the FSD v15 rollout",
-      "summary": "Electrek reports Tesla said on X on 21 Nov that it has started rolling out FSD v15, and did not say which vehicles get it first. Listed changes include a shared vision encoder, a combined driving visualisation Tesla calls Reality View, navigation learned from fleet data (start and end of trips for now), parking suggestions from your history, driver-monitoring changes, and detection of signs, animals, debris and potholes. Tesla says the encoder improves the critical intervention rate by 25x; it has not published the baseline or data. Electrek notes Tesla has told investors AI4 (HW4) is enough to run v15 and does not address HW3. No build number or country list was published in what we read.",
+      "summary": "Tesla said on X on 21 Nov that FSD v15 is now starting to roll out. The official post lists 25x better handling of safety critical cases, Tesla Reality View, learned start/end navigation and other changes. Same-day release notes describe a shared vision encoder and say it improves the critical intervention rate by 25x; Tesla has not published the baseline or data. The official post did not say which vehicles get it first. Our 24 Nov Dispatch piece covers the posts, the notes and what independent trackers have seen.",
       "countries": [],
       "sources": [
-        "electrek-v15"
+        "tesla-v15-x",
+        "scd-fsd-v15-first-wave"
       ]
     },
     {
