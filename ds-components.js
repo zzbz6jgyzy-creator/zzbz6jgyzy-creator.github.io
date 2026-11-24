@@ -140,7 +140,6 @@
   }
 
   const note = (html) => '<p class="ds-note">' + html + "</p>";
-  const previewFlag = (liveUrl) => '<p class="ds-preview-flag" role="note">Preview of the new design. Readers still see the <a href="' + esc(liveUrl) + '">current page</a>.</p>';
 
-  return { esc, fmtDay, fmtDate, picture, story, storyList, stat, stats, sectionHead, band, masthead, note, previewFlag, TOPICS, STATUS };
+  return { esc, fmtDay, fmtDate, picture, story, storyList, stat, stats, sectionHead, band, masthead, note, TOPICS, STATUS };
 });

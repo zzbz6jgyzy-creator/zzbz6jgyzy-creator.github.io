@@ -14,8 +14,8 @@
    block (CollectionPage / WebApplication / Dataset / WebPage). name and
    description come from existing meta; url is the canonical; publisher is
    Supercharged Daily. Replaces only the seo:ld markers, so it is idempotent.
-5. sitemap.xml is rebuilt from every public page (skips noindex pages, 404
-   and /preview/). staging.html is the public Hot Staging game — it stays
+5. sitemap.xml is rebuilt from every public page (skips noindex pages and
+   404). staging.html is the public Hot Staging game — it stays
    in the sitemap unless it has noindex. Article lastmod uses supported
    editorial history; other pages retain their existing git date behavior.
 Idempotent: re-running produces no diff.
@@ -774,7 +774,7 @@ def sitemap():
     rows = []
     for p in pages:
         rel = os.path.relpath(p, ROOT).replace(os.sep, "/")
-        if rel in ("404.html",) or rel.startswith("preview/"):
+        if rel in ("404.html",):
             continue
         src = open(p, encoding="utf-8").read()
         if re.search(r'name="robots"[^>]*noindex', src[:8000]):

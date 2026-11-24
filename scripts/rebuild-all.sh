@@ -1,6 +1,6 @@
 #!/bin/sh
 # Regenerate every generated page from the data already in the repo, in pipeline order:
-# articles -> trackers and studios -> homepage -> images -> nav, footer, members, bundles -> SEO -> previews.
+# articles -> trackers and studios -> homepage -> images -> nav, footer, members, bundles -> SEO.
 #
 # Use it after a merge conflict in a generated page: take main's copy of the page, run this, review
 # `git diff`, commit. It follows home-build.yml's order and adds the studio builders that each run in
@@ -73,7 +73,7 @@ step python3 scripts/inject-members.py
 step sh scripts/rebuild-js.sh
 step node scripts/build-personal-home.mjs
 
-# 6. Trust pages, share images, structured data, sitemap and RSS. Previews last: they copy the live pages.
+# 6. Trust pages, share images, structured data, sitemap and RSS.
 step python3 scripts/build-trust-pages.py
 if python3 -c "import PIL" 2>/dev/null; then
   step python3 scripts/generate-og.py
@@ -81,7 +81,6 @@ else
   echo "share images skipped (pip install pillow)"
 fi
 step python3 scripts/build-seo.py
-step node scripts/build-design-preview.mjs
 
 if [ "$restore_sky" = 1 ]; then git checkout -- templates/starlink-sky.html; fi
 trap - EXIT

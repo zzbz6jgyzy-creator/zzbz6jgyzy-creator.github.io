@@ -1,7 +1,7 @@
 /* Supercharged Daily design system (ds): tokens and shared components.
    Built on the site's existing tokens (styles.css :root for dark, theme.css for light), so it adds no new palette.
    Section colours: Tesla and the site are red, SpaceX ice blue, Grok silver (html[data-section], set by theme-boot.js).
-   Contrast of every token pair is pinned by tests/design-preview.test.mjs. See docs/design-system.md. */
+   Contrast of every token pair is pinned by tests/design-system.test.mjs. See docs/design-system.md. */
 
 :root {
   --ds-bg: var(--bg, #0c0d10);
@@ -222,14 +222,3 @@ html[data-theme="light"][data-section="grok"] { --ds-accent: #39425a; --ds-accen
   .ds-btn, .ds-chip { transition: background-color var(--ds-dur-1) var(--ds-ease), border-color var(--ds-dur-1) var(--ds-ease), color var(--ds-dur-1) var(--ds-ease); }
 }
 
-/* ---- Preview flag (preview pages only; removed with the preview at the switch) ---------- */
-.ds-page .ds-preview-flag {
-  width: min(var(--ds-max), calc(100% - 2 * var(--ds-gutter)));
-  margin: var(--ds-sp-3) auto 0;
-  padding: var(--ds-sp-2) var(--ds-sp-3);
-  border: 1px dashed var(--ds-line-2);
-  border-radius: var(--ds-r-input);
-  font: 500 var(--ds-fs-12) / 1.5 var(--ds-mono);
-  color: var(--ds-ink-2);
-}
-.ds-page .ds-preview-flag a { color: var(--ds-ink); text-decoration: underline; text-underline-offset: 3px; }

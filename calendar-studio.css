@@ -1631,7 +1631,7 @@ html body.ds-tracker .ds-tracker-numbers :is(.ft-kpis, .so-metrics, .pd-stats) {
 html body.ds-tracker .ds-tracker-numbers :is(.so-metrics, .pd-stats) strong { font-size: var(--ds-fs-28) !important; }
 }
 /* The calendar and FSD tracker studios are dark in both themes, so their mastheads always take the dark tokens */
-html body:is(.ds-tracker-calendar, .ds-tracker-fsd) :is(.ds-masthead, .ds-preview-flag) {
+html body:is(.ds-tracker-calendar, .ds-tracker-fsd) .ds-masthead {
   --ds-ink: #f6f5f5;
   --ds-ink-2: #a9adb6;
   --ds-accent: #f23a52;
