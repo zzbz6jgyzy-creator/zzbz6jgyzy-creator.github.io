@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-24T04:44:47Z",
+ "checked": "2026-11-24T15:49:01Z",
  "editorialUpdated": "2026-11-17T08:45:00+00:00",
  "presets": [
   {
@@ -295,6 +295,31 @@
     "lon": -80.6043,
     "az": 48,
     "coast": "east"
+   }
+  },
+  {
+   "id": "ll-sda-t1a",
+   "title": "Falcon 9 · SDA Tranche 1 Transport Layer A",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-10-10T07:39:44Z",
+   "end": "",
+   "date": "2026-10-10",
+   "precision": "day",
+   "status": "done",
+   "note": "Launched 10 Oct at 07:39 UTC — SpaceX confirmed the fourth SDA Tranche 1 transport launch on X.",
+   "where": "Vandenberg · SLC-4E",
+   "href": "",
+   "sources": [],
+   "origin": "Editorial calendar",
+   "pad": {
+    "id": "slc4e",
+    "name": "Vandenberg · SLC-4E",
+    "short": "Vandenberg",
+    "lat": 34.632,
+    "lon": -120.611,
+    "az": 186,
+    "coast": "west"
    }
   },
   {
