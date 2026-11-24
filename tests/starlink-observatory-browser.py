@@ -38,7 +38,7 @@ async def main():
    # A leaked display-heading style must not crush small text, even on cached pages.
    if mode=='headline-tracking':await page.locator('.so-hero-copy').evaluate("e=>e.style.letterSpacing='-3px'")
    hero=await page.evaluate("""() => {
-    const root=document.querySelector('.so-hero-copy'), heading=root.querySelector('h1');
+    const root=document.querySelector('.so-hero-copy'), heading=root.querySelector('h1, h2');  // an h2 under the page's plain h1 since the switch
     const blocks=[heading,...['.so-lede','.so-hero-total','.so-actions','.so-caption'].map(s=>root.querySelector(s))];
     const small=[...root.querySelectorAll('.so-lede,.so-hero-total>div,.so-hero-total small,.so-btn,.so-text-link,.so-caption')];
     const rect=e=>{const r=e.getBoundingClientRect();return {top:r.top,bottom:r.bottom,left:r.left,right:r.right}};

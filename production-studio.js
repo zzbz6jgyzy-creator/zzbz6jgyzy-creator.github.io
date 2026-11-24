@@ -21,5 +21,5 @@ $('#pd-share').addEventListener('click',async()=>{const u=new URL('/production.h
 $('#pd-reset').addEventListener('click',()=>{state=M.preferences({},data,editorial);drawQuarter();drawFactory();save();announce('Saved view reset to the latest quarter.');});
 const next=M.next(data,editorial);$('#pd-next h3').textContent=next.quarter;$('#pd-next-state').textContent=next.published?(Date.now()>Date.parse(next.published+'T23:59:59Z')?'Scheduled release date has passed. Check Tesla IR for the published figures.':'Release dated '+M.date(next.published)+'.'):next.awaiting?'This reporting period has ended; a newer verified release may be available on Tesla IR.':'Release date not confirmed in this saved dataset.';
 if(Date.now()-Date.parse(data.updated)>120*86400000)announce('This saved dataset was checked '+M.date(data.updated)+'. Check Tesla IR for newer releases.');
-drawQuarter();drawFactory();drawCompare();root.dataset.enhanced='true';
+drawQuarter();drawFactory();drawCompare();root.dataset.enhanced='true';window.SDProductionReady=true;
 })();

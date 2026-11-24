@@ -25,8 +25,8 @@
       ]
     },
     "home": {
-      "file": "/assets/js/home.bundle.35499733e8.js",
-      "bytes": 158664,
+      "file": "/assets/js/home.bundle.ee4b932da1.js",
+      "bytes": 158802,
       "sources": [
         "starship-data.js",
         "fsd-europe-data.js",
@@ -81,8 +81,8 @@
       ]
     },
     "my-tesla": {
-      "file": "/assets/js/my-tesla.bundle.4a88c5206f.js",
-      "bytes": 193423,
+      "file": "/assets/js/my-tesla.bundle.f43336dc89.js",
+      "bytes": 193403,
       "sources": [
         "updates-data.js",
         "fsd-data.js",
@@ -93,8 +93,8 @@
       ]
     },
     "updates": {
-      "file": "/assets/js/updates.bundle.83050ab875.js",
-      "bytes": 39177,
+      "file": "/assets/js/updates.bundle.96e37ca703.js",
+      "bytes": 39173,
       "sources": [
         "cesium-lazy.js",
         "software-data.js",
@@ -129,8 +129,8 @@
       ]
     },
     "fsd-europe": {
-      "file": "/assets/js/fsd-europe.bundle.1d83d4bdc4.js",
-      "bytes": 122686,
+      "file": "/assets/js/fsd-europe.bundle.756acec2c7.js",
+      "bytes": 122662,
       "sources": [
         "fsd-europe-data.js",
         "fsd-europe-model.js",
@@ -140,8 +140,8 @@
       ]
     },
     "fsd": {
-      "file": "/assets/js/fsd.bundle.ef3db55160.js",
-      "bytes": 36960,
+      "file": "/assets/js/fsd.bundle.c41bb165bc.js",
+      "bytes": 36923,
       "sources": [
         "fsd-global-model.js",
         "fsd-global-view.js",
@@ -149,8 +149,8 @@
       ]
     },
     "cybercab": {
-      "file": "/assets/js/cybercab.bundle.21bff8a003.js",
-      "bytes": 52566,
+      "file": "/assets/js/cybercab.bundle.112fffb31c.js",
+      "bytes": 52958,
       "sources": [
         "mobility-model.js",
         "mobility-view.js",
@@ -175,8 +175,8 @@
       ]
     },
     "news": {
-      "file": "/assets/js/news.bundle.0683c3b191.js",
-      "bytes": 45541,
+      "file": "/assets/js/news.bundle.b6aa274cb0.js",
+      "bytes": 45212,
       "sources": [
         "personal-model.js",
         "personal-sync.js",
@@ -188,8 +188,8 @@
       ]
     },
     "see-the-launch": {
-      "file": "/assets/js/see-the-launch.bundle.2a0d5c14bc.js",
-      "bytes": 116292,
+      "file": "/assets/js/see-the-launch.bundle.f36d95c91e.js",
+      "bytes": 116265,
       "sources": [
         "calendar-merge.js",
         "calendar-studio-model.js",
@@ -266,8 +266,8 @@
       ]
     },
     "production": {
-      "file": "/assets/js/production.bundle.4d3b308ba3.js",
-      "bytes": 20184,
+      "file": "/assets/js/production.bundle.1f28706376.js",
+      "bytes": 20212,
       "sources": [
         "production-studio-model.js",
         "production-studio-view.js",
@@ -376,8 +376,8 @@
       ]
     },
     "model3": {
-      "file": "/assets/js/model3.bundle.2e1853718e.js",
-      "bytes": 27679,
+      "file": "/assets/js/model3.bundle.4a3643c98d.js",
+      "bytes": 27662,
       "sources": [
         "model3-studio-model.js",
         "model3-studio-view.js",
@@ -385,8 +385,8 @@
       ]
     },
     "cybertruck": {
-      "file": "/assets/js/cybertruck.bundle.9e0f9e0c6b.js",
-      "bytes": 40452,
+      "file": "/assets/js/cybertruck.bundle.51935948f2.js",
+      "bytes": 40443,
       "sources": [
         "cybertruck-studio-model.js",
         "cybertruck-studio-view.js",

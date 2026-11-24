@@ -2,6 +2,7 @@
 // The shell (nav, footer, bundle tags) lives in the page itself. This page is separate from fsd.html on purpose:
 // the owner can compare the two and keep either.
 import fs from 'node:fs';
+import { fsdTracker } from './ds-pages.mjs'; // news-first tracker layout (redesign switch, 23 Nov 2026)
 import crypto from 'node:crypto';
 import {createRequire} from 'node:module';
 import {adoptionBars,adoptionList,attachSteps,milesArea,buildLines,dailyTable,atlasMap,regionBars,euTiles,euMeters,recognitionSteps,claimsBars} from './fsd-tracker-charts.mjs';
@@ -131,7 +132,7 @@ const meta=`<title>${e(TITLE)}</title>
 html=html.replace(/<title>[\s\S]*?(?=<link rel="icon" href="\/favicon\.ico")/,meta)
  .replace(/<!-- seo:ld -->[\s\S]*?<!-- \/seo:ld -->/,`<!-- seo:ld -->\n    <script type="application/ld+json">${JSON.stringify(ld)}</script>\n    <!-- /seo:ld -->`)
  .replace(/<main\b[\s\S]*?<\/main>/,()=>nl?main.replace(/\n<\/main>$/,'\n        '+nl+'\n</main>'):main);
-fs.writeFileSync('fsd-tracker.html',html);
+fs.writeFileSync('fsd-tracker.html',fsdTracker(html));
 
 // RSS feed of the change log, from the same data as the page.
 const rfc=x=>new Date(x+'T12:00:00Z').toUTCString();

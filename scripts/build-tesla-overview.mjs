@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';import{createRequire}from'node:module';import{fileURLToPath}from'node:url';import path from'node:path';
+import { teslaHub } from './ds-pages.mjs'; // news-first hub layout (redesign switch, 23 Nov 2026)
 const require=createRequire(import.meta.url),M=require('../tesla-overview-model.js'),V=require('../tesla-overview-view.js'),ROOT=fileURLToPath(new URL('..',import.meta.url));
 export function buildTeslaOverview(root=ROOT){const read=f=>fs.readFileSync(path.join(root,f),'utf8'),json=f=>JSON.parse(read(f));const d=M.snapshot(json('data/production.json'),json('updates-live.json'),json('data/fsd-europe.json'),json('data/articles.json')),e=M.esc;for(const a of d.stories){const candidate=a.image.replace(/\.(jpg|png)$/i,'-480w.webp');a.thumb=fs.existsSync(path.join(root,candidate))?candidate:a.image;}let html=read('tesla.html');
 const credits=(html.match(/<!--to:credits-->([\s\S]*?)<!--\/to:credits-->/)||html.match(/<section class="tz-section tz-small tz-credits"[\s\S]*?<\/section>/)||[]);const creditHTML=credits[1]||credits[0]||'';
@@ -23,5 +24,5 @@ html=html.replace(/<main\b[\s\S]*?<\/main>/,()=>main);
 if(!/href="\/section-theme\.css/.test(html)) html=html.replace('</head>','    <link rel="stylesheet" href="/section-theme.css?v=20261106e" />\n  </head>');
 // build-home.js prerenders the next Tesla livestream card into <!--hv:event--> here; it needs live.css.
 if(!/href="\/live\.css/.test(html)) html=html.replace('</head>','    <link rel="stylesheet" href="/live.css?v=202610211030" />\n  </head>');
-fs.writeFileSync(path.join(root,'tesla.html'),html);fs.writeFileSync(path.join(root,'data/tesla-overview.json'),JSON.stringify(d,null,2)+'\n');return d;}
+fs.writeFileSync(path.join(root,'tesla.html'),teslaHub(html));fs.writeFileSync(path.join(root,'data/tesla-overview.json'),JSON.stringify(d,null,2)+'\n');return d;}
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){buildTeslaOverview();console.log('Tesla overview saved HTML and snapshot built');}

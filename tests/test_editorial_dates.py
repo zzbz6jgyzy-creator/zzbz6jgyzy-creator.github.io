@@ -85,6 +85,37 @@ class Dates(unittest.TestCase):
         self.assertTrue(API['BOT_SUBJECT'].search('Pre-render homepage headlines, Dispatch and tracker numbers.'))
         self.assertIsNone(API['BOT_SUBJECT'].search('Latvia approves Tesla FSD'))
 
+    def test_redesign_switch_commits_are_presentation(self):
+        self.assertTrue(API['BOT_SUBJECT'].search('Switch: plain page titles across the site'))
+        self.commit(ARTICLE, PUBLISHED)
+        self.commit(ARTICLE.replace('<h1>A story</h1>','<h1>A plain story</h1>'), '2026-11-23T14:02:36Z', 'Switch: plain page titles')
+        self.assertEqual(self.date().replace('+00:00', 'Z'), PUBLISHED)
+
+    def merge_branch(self, source, date, subject, merge_date):
+        """Commit on a side branch, then merge it into the main line the way a pull request lands."""
+        main = self.git('rev-parse','--abbrev-ref','HEAD').stdout.decode().strip()
+        self.git('checkout','-qb','topic'); self.commit(source, date, subject); self.git('checkout','-q',main)
+        self.git('merge','--no-ff','-qm','Merge pull request #1 from owner/topic','topic',
+                 env={**os.environ,'GIT_AUTHOR_DATE':merge_date,'GIT_COMMITTER_DATE':merge_date})
+
+    def test_merged_switch_branch_stays_presentation(self):
+        self.commit(ARTICLE, PUBLISHED)
+        self.merge_branch(ARTICLE.replace('<h1>A story</h1>','<h1>A plain story</h1>'), '2026-11-23T14:02:36Z',
+                          'Switch: plain page titles', '2026-11-24T09:00:00Z')
+        self.assertEqual(self.date().replace('+00:00', 'Z'), PUBLISHED)
+
+    def test_merged_editorial_branch_moves_the_date(self):
+        self.commit(ARTICLE, PUBLISHED)
+        self.merge_branch(ARTICLE.replace('Verified reporting','Corrected reporting'), '2026-11-23T14:02:36Z',
+                          'Correct the story', '2026-11-24T09:00:00Z')
+        self.assertEqual(self.date().replace('+00:00', 'Z'), '2026-11-24T09:00:00Z')
+
+    def test_merged_audit_branch_keeps_its_merge_date(self):
+        self.commit(ARTICLE, PUBLISHED)
+        self.merge_branch(ARTICLE.replace('Verified reporting','Corrected reporting'), '2026-11-03T14:02:36Z',
+                          'Audit fixes: accessibility and source links', '2026-11-04T13:40:57Z')
+        self.assertEqual(self.date().replace('+00:00', 'Z'), '2026-11-04T13:40:57Z')
+
     def test_audit_fix_commit_does_not_steal_the_revision_date(self):
         self.commit(ARTICLE, PUBLISHED)
         self.commit(ARTICLE.replace('Verified reporting','Corrected reporting'), '2026-10-10T10:00:00Z')

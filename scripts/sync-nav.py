@@ -8,7 +8,8 @@ import html, json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CFG = json.loads((ROOT / 'scripts/nav.json').read_text())
-CSS_VERSION = '20261111-glass7'
+CSS_VERSION = '20261123-six-menus'
+DS_VERSION = '20261123f'  # ds.css; matches DS_CSS_V in build-design-preview.mjs
 CHEVRON = '<svg class="ns-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#ns-icon-chevron"/></svg>'
 ARROW = '<svg class="ns-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#ns-icon-arrow"/></svg>'
 PATHS = {
@@ -109,12 +110,18 @@ def transform(s):
   n=re.sub(r'(?<=href="/nav-pill\.css)(?:\?v=[^"]*)?(?=")','?v='+CSS_VERSION,n)
   n=re.sub(r'(?<=src="/nav-pill\.js)(?:\?v=[^"]*)?(?=")','?v='+CSS_VERSION,n)
   n=re.sub(r'(?<=src="/members\.js)(?:\?v=[^"]*)?(?=")','?v=20261028-membersnav',n)
+  # The shared design layer (tokens and ds- components) goes on every page with the site nav.
+  # It sits right after the nav-pill.css link, which only this script writes, so tools that keep their own blocks at the
+  # end of <head> (bundles, members, reader assets) never move it and every builder agrees on the order.
+  n=re.sub(r'\n[ \t]*<link rel="stylesheet" href="/ds\.css[^"]*" ?/?>','',n)
+  pill=re.search(r'<link[^>]*href="/nav-pill\.css[^"]*"[^>]*>',n)
+  if pill: n=n[:pill.end()]+'\n    <link rel="stylesheet" href="/ds.css?v='+DS_VERSION+'" />'+n[pill.end():]
  return n
 
 if __name__=='__main__':
  if '--block' in sys.argv:
   # Render the navigation block for the <nav class="pn"> tag on stdin from another config (the design preview uses
-  # scripts/nav.next.json this way, so it never writes preview pages itself).
+  # scripts/nav.json this way, so it never writes preview pages itself).
   cfg=json.loads((ROOT/sys.argv[sys.argv.index('--block')+1]).read_text())
   sys.stdout.write(block(sys.stdin.read().strip(),cfg)); sys.exit(0)
  check='--check' in sys.argv; changed=[]

@@ -110,26 +110,26 @@ async def main():
             await settled(page)
             assert await page.locator('h1').count() == 1
             assert await page.locator('[data-newsletter-form]').count() == 1, 'One main signup: the hero form'
-            assert 'Tesla, SpaceX and xAI' in await page.locator('.hv-pitch').inner_text()
+            assert (await page.locator('h1').inner_text()).strip() == 'Tesla, SpaceX and xAI news'
             assert await page.evaluate('''() => {
-                const blocks=['.hs-hero-copy','.hs-hero-visual','#newsletter'].map(s=>document.querySelector(s));
-                return blocks.every((node,i)=>!i || blocks[i-1].compareDocumentPosition(node)&Node.DOCUMENT_POSITION_FOLLOWING);
-            }'''), 'Native reading order must introduce the site, show the experience, then offer signup'
+                const blocks=['.ds-home-mast','[data-hv-lead]','.ds-home-latest','#newsletter'].map(s=>document.querySelector(s));
+                return blocks.every(Boolean) && blocks.every((node,i)=>!i || blocks[i-1].compareDocumentPosition(node)&Node.DOCUMENT_POSITION_FOLLOWING);
+            }'''), 'News first: the masthead, the top story and the latest list come before the signup'
             if width <= 600:
-                await no_overlap(page, ['.hs-hero h1', '.hv-pitch', '.hv-start', '.hs-hero-visual', '#newsletter', '.hs-wayfinder', '.hs-stories'], (width, mode))
+                await no_overlap(page, ['.ds-home-mast', '[data-hv-lead]', '.ds-home-latest', '#newsletter'], (width, mode))
                 assert await page.locator('#newsletter input[type=email]').evaluate('(i)=>parseFloat(getComputedStyle(i).fontSize)') >= 16, 'Prevent iOS input zoom'
-                roadster = await page.locator('.hs-hero-roadster').bounding_box()
-                visible_art = max(0, min(height, roadster['y'] + roadster['height']) - max(0, roadster['y']))
-                # A featured event strip (data/event-pages featureUntil, e.g. a launch week) is itself first-screen
-                # showcase content, so its height counts toward the requirement while it is shown.
-                feature = await page.locator('.hv-feature').bounding_box() if await page.locator('.hv-feature').count() else None
-                visible_art += feature['height'] if feature and feature['y'] < height else 0
-                assert visible_art >= min(180, roadster['height'] * .6), (width, mode, 'First screen needs substantial showcase imagery', roadster, visible_art)
+                if mode != 'large-text':
+                    art = await page.locator('[data-hv-lead] img').bounding_box()
+                    visible_art = max(0, min(height, art['y'] + art['height']) - max(0, art['y']))
+                    # A featured event strip (data/event-pages featureUntil) sits above the masthead and pushes the lead down.
+                    feature = await page.locator('.hv-feature').bounding_box() if await page.locator('.hv-feature').count() else None
+                    visible_art += feature['height'] if feature and feature['y'] < height else 0
+                    assert visible_art >= min(150, art['height'] * .6), (width, mode, 'The top story image belongs on the first screen', art, visible_art)
             else:
-                copy = await page.locator('.hs-hero-copy').bounding_box()
-                visual = await page.locator('.hs-hero-visual').bounding_box()
-                assert copy['x'] + copy['width'] < visual['x'], 'Desktop introduction and showcase need separate columns'
-                assert max(copy['y'], visual['y']) < min(copy['y'] + copy['height'], visual['y'] + visual['height']), 'Desktop showcase should sit beside the introduction'
+                lead = await page.locator('[data-hv-lead]').bounding_box()
+                latest = await page.locator('.ds-home-latest').bounding_box()
+                if width >= 1024:
+                    assert lead['x'] + lead['width'] <= latest['x'], 'Desktop: the top story and the latest list sit side by side'
             email_box = await page.locator('#newsletter input[type=email]').bounding_box()
             assert email_box['width'] >= 130, (width, 'Email field too narrow', email_box)
             button = await page.locator('#newsletter button[type=submit]').bounding_box()
@@ -142,28 +142,17 @@ async def main():
                 assert await page.evaluate('window.__homeCLS') < .1, (width, theme, 'Layout shift', await page.evaluate('[window.__homeCLS, window.__homeShifts]'))
             assert not any('.mp4' in u for u in requested), 'Homepage must not download autoplay films'
             assert await page.locator('iframe').count() == 0
-            assert await page.locator('.hs-hero-roadster img').evaluate('(i)=>i.complete && i.naturalWidth>0')
-            assert await page.locator('.hs-tool').count() == 5
-            for link in await page.locator('.hv-start a, .hs-wayfinder a').all():
+            if mode != 'nojs':
+                assert await page.locator('[data-hv-lead] img').evaluate('(i)=>i.complete && i.naturalWidth>0')
+            assert await page.locator('#ds-tools li').count() == 11
+            for link in await page.locator('.ds-section-head a').all():
                 box = await link.bounding_box()
-                assert box['height'] >= 44 and box['width'] >= 44, (width, 'Navigation target too small', await link.inner_text(), box)
-            assert set(await page.locator('.hs-wayfinder a').evaluate_all('(a)=>a.map(x=>x.getAttribute("href"))')) == {'#latest-stories', '#hv-trk-h', '/daily.html'}, 'First-visit routes must be useful without JavaScript'
+                assert box['height'] >= 24 and box['width'] >= 24, (width, 'Target below WCAG 2.2 AA (24px)', await link.inner_text(), box)
+            assert set(await page.locator('.ds-section-head a').evaluate_all('(a)=>a.map(x=>x.getAttribute("href"))')) >= {'/dispatch.html', '/calendar.html'}, 'Section routes work without JavaScript'
             await page.screenshot(path=str(OUT / f'home-{width}-{theme}-{mode}.png'))
             if mode == 'normal' and (width, theme) in [(390, 'dark'), (390, 'light'), (768, 'dark'), (1440, 'dark')]:
                 await preview(page, f'after-{width}-{theme}')
-                if width in [390,1440] and theme=='dark':
-                    await preview(page,f'after-showcase-{width}',page.locator('.hs-hero-visual'))
-                    await preview(page,f'after-personal-{width}',page.locator('.hs-personal'))
             if mode == 'normal' and width == 1440 and theme == 'dark':
-                await page.get_by_role('link', name='Explore trackers', exact=True).click()
-                assert page.url.endswith('#hv-trk-h')
-                await page.locator('[data-hs-filter="tesla"]').click()
-                assert await page.locator('.hs-tool:not([hidden])').count() == 3
-                await page.locator('[data-hs-filter="tesla"]').press('ArrowRight')
-                assert await page.locator('.hs-tool:not([hidden])').count() == 1
-                assert 'SpaceX' in await page.locator('#hs-filter-status').inner_text()
-                await page.locator('[data-hs-filter="all"]').click()
-                assert await page.locator('.hs-tool:not([hidden])').count() == 5
                 await preview(page, 'after-toolkit-desktop', page.locator('.hs-tools'))
                 expanded = page.locator('[data-hv-feed]')
                 assert await expanded.locator('li:visible').count() <= 4
@@ -197,7 +186,7 @@ async def main():
                 await settled(page)
                 bar = page.locator('.sd-bar')
                 assert await bar.count() == 1 and not await bar.is_visible(), 'Bar waits until the hero form has scrolled away'
-                await page.locator('#hv-trk-h').scroll_into_view_if_needed()
+                await page.locator('#hs-wire-h').scroll_into_view_if_needed()  # well past the signup, which now sits just above the trackers
                 await page.wait_for_timeout(250)
                 assert await bar.is_visible(), 'Bar appears once the hero form is off screen'
                 box = await bar.bounding_box()
@@ -206,7 +195,7 @@ async def main():
                 await page.wait_for_timeout(700)
                 assert await page.evaluate("document.activeElement && document.activeElement.id") == 'hs-hero-email'
                 assert not await bar.is_visible(), 'Bar hides while the hero form is visible'
-                await page.locator('#hv-trk-h').scroll_into_view_if_needed()
+                await page.locator('#hs-wire-h').scroll_into_view_if_needed()  # well past the signup, which now sits just above the trackers
                 await page.wait_for_timeout(250)
                 await bar.get_by_role('button', name='Close newsletter bar').click()
                 assert await page.locator('.sd-bar').count() == 0
@@ -228,12 +217,10 @@ async def main():
                 }''')
                 await page.wait_for_timeout(100)
                 assert not await page.evaluate('document.documentElement.scrollWidth > innerWidth + 1'), '200% text needs a single reading column'
-                await no_overlap(page, ['.hs-hero h1', '.hv-pitch', '.hv-start', '.hs-hero-visual', '#newsletter', '.hs-wayfinder', '.hs-stories'], '200% text')
-                for selector in ['#hs-hero-email', '#newsletter button[type=submit]', '.hs-wayfinder a:first-child']:
+                await no_overlap(page, ['.ds-home-mast', '[data-hv-lead]', '.ds-home-latest', '#newsletter'], '200% text')
+                for selector in ['#hs-hero-email', '#newsletter button[type=submit]', '.ds-home-latest .ds-section-head a']:
                     box = await page.locator(selector).bounding_box()
                     assert box and box['width'] > 0 and box['x'] >= -1 and box['x'] + box['width'] <= width + 1, ('Enlarged control clipped', selector, box)
-                for selector in ['.hs-visual-label','.hs-hero-roadster-copy','.hs-image-credit']:
-                    assert await page.locator(selector).evaluate('''e=>{const r=e.getBoundingClientRect(),p=e.closest('.hs-hero-roadster').getBoundingClientRect();return r.top>=p.top && r.bottom<=p.bottom+1 && r.left>=p.left && r.right<=p.right+1}'''),('Showcase text clipped at 200%',selector)
                 await preview(page, f'after-{width}-large-text')
             assert not errors, (width, theme, mode, errors)
             print(width, theme, mode, 'passed', flush=True)

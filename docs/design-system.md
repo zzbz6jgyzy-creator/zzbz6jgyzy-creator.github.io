@@ -1,7 +1,7 @@
 # Design system
 
 One design language for the whole site, news first: every page leads with its latest stories or its live numbers.
-The redesign is built in two layers and rolled out preview first, then switched over in one go (plan approved 22 Nov 2026,
+The redesign was built in two layers, previewed under `/preview/`, then switched over on 23 Nov 2026 (plan approved 22 Nov 2026,
 see `docs/decisions.md`).
 
 ## Files
@@ -9,8 +9,9 @@ see `docs/decisions.md`).
 |---|---|
 | `ds.css` | Tokens and shared components (`ds-*` classes). Built on the existing tokens in `styles.css :root` (dark) and `theme.css` (light). |
 | `ds-components.js` | Pure HTML renderers for those components (UMD, no Node or DOM APIs): `masthead`, `story`, `storyList`, `stat`, `stats`, `sectionHead`, `band`, `picture`, `note`. Builders use them in Node; pages whose views re-render in the browser get them in their bundle. |
-| `ds-preview.css` | Page layouts for the `/preview/` pages only. At the switch these rules move into each page's own stylesheet and the file is deleted. |
-| `scripts/build-design-preview.mjs` | Builds `/preview/*.html` from the live pages plus the renderers. Deleted at the switch. |
+| `scripts/ds-pages.mjs` | The live page transforms (hubs and builder-rendered trackers) plus shared HTML helpers. Each studio builder renders its page, then passes it through its transform just before writing; every cut must match exactly once, and each builder is idempotent. |
+| Page stylesheets | Each page's layout rules live in its own stylesheet (`home-v2.css`, `article-reader.css`, `news-studio.css`, `dispatch-list.css`, the hub and tracker CSS). `ds-preview.css` and `scripts/build-design-preview.mjs` are now empty shells, deleted in the cleanup step. |
+| `scripts/article_layout.py` | Where an article's reading tools and "On this page" go: after the lead photo or video, else after the header. |
 
 ## Tokens
 - **Surfaces:** dark first (`--bg #0c0d10`, cards `#14151a`), light supported. Light mode is a token swap under `html[data-theme=light]`; the toggle and the `sd-theme` key are unchanged.
@@ -37,7 +38,7 @@ see `docs/decisions.md`).
 - **Trackers:** plain title, dek, updated/source and the tracker's own key numbers, then the tool. No full-screen heroes. In the previews: FSD (`.ft-kpis` and its jump links), Starship (the next-flight card with `#ss-hero-next`, `#ss-hero-window`, and `#ss-source-date`), Cybercab (masthead before `#mw-app`, the old hero kept inside it hidden with its h1 demoted; the overview metrics follow), calendar (`#cs-hero` becomes an inert `<template>`; `#cs-app` ships `cs-enhanced` so the week strip is there from first paint), Starlink (inside `.so-workspace`, with the source strip and key figures; `#overview` keeps its old h1 as an h2) and production (`#pd-quarter`, `#pd-stats` and `#pd-view-note` in the masthead, `#pd-spotlight` kept hidden, `data-enhanced` shipped). The calendar and FSD studios are dark in both themes, so their masthead takes the dark tokens. Number rows whose tiles hold no link use a 2-column grid, not a sideways scroller, so keyboard users can reach every figure.
 - **Plain h1s, not slogans.** Showcases (Roadster, Model 3, Cybertruck, Cybercab guide) keep their cinematic stage under the masthead.
 
-## Preview pages (`/preview/`)
+## Preview pages (`/preview/`, retired at the switch)
 - Built by `node scripts/build-design-preview.mjs` from the live page: the old header is cut between unique anchors and the new masthead and lists are inserted. Every hook a page script needs is kept (for the homepage: all `data-hv-*` hooks and `hv:*` markers; the old supporting cards stay in the page, hidden, because `home-v2.js` repaints them).
 - Hidden: `noindex, nofollow`, canonical to the live URL, "Preview ·" in the tab title, a preview note at the end of the page, `Disallow: /preview/` in robots.txt. The sitemap, `data/pages.json`, `build-seo.py`, `sync-nav.py`, `check-site-integrity.py` and `indexnow-ping.py` skip them; `inject-js-bundles.py` gives a preview the bundles of its live page.
 - Never edit a preview by hand. `.github/workflows/design-preview.yml` refreshes them daily, on design changes and on demand; the bots that rebuild bundles (home-build, news-snapshot, starlink-refresh) also stage `preview/`. The refresh shares the `data-push-main` queue with the bots, so a preview's server-rendered lists can be up to a day older than the live page (the homepage scripts still repaint the lead, numbers and wire in the browser).

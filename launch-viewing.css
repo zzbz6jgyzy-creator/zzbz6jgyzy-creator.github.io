@@ -175,54 +175,6 @@
   gap: 22px;
   margin: 27px 0;
 }
-.lv-hero-notes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  font-size: 9px;
-  color: #8c9cb2;
-  margin-top: 10px;
-}
-.lv-hero-notes > span:before {
-  content: "";
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #ff476a;
-  margin: 0 5px 2px 0;
-}
-.lv-hero-art {
-  position: relative;
-  min-height: 540px;
-  overflow: hidden;
-  background:
-    radial-gradient(
-      ellipse at 57% 37%,
-      #2e546b50,
-      transparent 44%),
-    radial-gradient(
-      ellipse at 28% 86%,
-      #9c214338,
-      transparent 50%);
-  isolation: isolate;
-}
-.lv-hero-art:after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      90deg,
-      #0e152000,
-      transparent 25%),
-    linear-gradient(
-      0deg,
-      #0a0f19 5%,
-      transparent 60%);
-  z-index: 2;
-  pointer-events: none;
-}
 .lv-art-grid {
   position: absolute;
   inset: -30%;
@@ -1385,8 +1337,7 @@
   border-color: #7a2540;
 }
 @media (min-width: 1550px) {
-  .lv-hero,
-  .lv-hero-art {
+  .lv-hero{
     min-height: 600px;
   }
   .lv-hero > div:first-child {
@@ -1427,9 +1378,6 @@
   }
   .lv-hero .lv-actions {
     gap: 12px;
-  }
-  .lv-hero-art {
-    min-height: 545px;
   }
   .lv-art-rocket {
     left: 52%;
@@ -1549,14 +1497,6 @@
   }
   .lv-hero .lv-text-link {
     font-size: 10px;
-  }
-  .lv-hero-notes {
-    gap: 10px;
-    font-size: 8px;
-  }
-  .lv-hero-art {
-    min-height: 310px;
-    border-top: 1px solid var(--lv-edge);
   }
   .lv-art-caption {
     left: 25px;
@@ -1979,12 +1919,7 @@
   }
 }
 @media print {
-  .lv-nav,
-  .lv-js,
-  .lv-hero-art,
-  .site-footer,
-  .pn-wrap,
-  .pn-spacer {
+  .lv-nav,.lv-js,.site-footer,.pn-wrap,.pn-spacer{
     display: none !important;
   }
   .lv-page {

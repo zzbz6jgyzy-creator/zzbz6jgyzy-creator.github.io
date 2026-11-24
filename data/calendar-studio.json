@@ -100,27 +100,6 @@
    "origin": "Editorial calendar"
   },
   {
-   "id": "ll2-da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
-   "title": "Falcon 9 Block 5 | SDA Tranche 1 Transport Layer A",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "2026-10-10T07:39:44Z",
-   "end": "",
-   "date": "2026-10-10",
-   "precision": "datetime",
-   "status": "done",
-   "note": "Launched 10 Oct at 07:39 UTC — SpaceX confirmed the fourth SDA Tranche 1 transport launch on X.",
-   "where": "Vandenberg · SLC-4E",
-   "href": "",
-   "sources": [],
-   "origin": "Launch Library 2",
-   "providerId": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
-   "windowStart": "2026-10-10T07:39:44Z",
-   "windowEnd": "2026-10-10T07:39:44Z",
-   "vehicle": "",
-   "providerStatus": "Launch Successful"
-  },
-  {
    "id": "starlink-15-25",
    "title": "Falcon 9 Block 5 | Starlink Group 15-25",
    "group": "spacex",

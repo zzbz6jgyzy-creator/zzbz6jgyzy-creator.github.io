@@ -20,7 +20,7 @@ CLS_JS = "() => window.__cls || 0"
 INIT = """window.__cls=0;try{new PerformanceObserver(l=>{for(const e of l.getEntries()){if(!e.hadRecentInput)window.__cls+=e.value}}).observe({type:'layout-shift',buffered:true})}catch(e){}"""
 
 # The builder's own list, so the two cannot drift
-ARTICLES = re.findall(r'"([^"]+)"', re.search(r"export const ARTICLES = \[([^\]]*)\]", (ROOT / "scripts/build-design-preview.mjs").read_text()).group(1))
+ARTICLES = ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-15", "spacex-q3-2026-results"]  # live since the switch
 
 
 def live_h1(rel):
@@ -29,19 +29,19 @@ def live_h1(rel):
 
 
 PAGES = [
-    {"path": "/preview/index.html", "h1": "Tesla, SpaceX and xAI news", "kind": "home"},
-    {"path": "/preview/dispatch.html", "h1": "Dispatch", "kind": "list", "card": "[data-disp-grid] > .story-card:not([hidden])"},
-    {"path": "/preview/news.html", "h1": live_h1("news.html").rstrip("."), "kind": "list", "card": "#latest .ns-feature"},
-] + [{"path": f"/preview/dispatch/{s}.html", "h1": live_h1(f"dispatch/{s}.html"), "kind": "article"} for s in ARTICLES] + [
-    {"path": "/preview/tesla.html", "h1": "Tesla news, trackers and guides", "kind": "hub"},
-    {"path": "/preview/spacex.html", "h1": "SpaceX launches, Starship and Starlink", "kind": "hub"},
-    {"path": "/preview/grok.html", "h1": "Grok and xAI: models, plans and news", "kind": "hub"},
-    {"path": "/preview/fsd-tracker.html", "h1": "FSD tracker", "kind": "tracker", "key": ".ds-tracker-numbers .ft-kpi-value"},
-    {"path": "/preview/starship.html", "h1": "Starship flights", "kind": "tracker", "key": "#ss-hero-next"},
-    {"path": "/preview/cybercab.html", "h1": "Cybercab fleet", "kind": "tracker", "key": ".mw-metric strong"},
-    {"path": "/preview/calendar.html", "h1": "Launch calendar", "kind": "tracker", "key": ".cs-week-strip"},
-    {"path": "/preview/starlink.html", "h1": "Starlink tracker", "kind": "tracker", "key": ".ds-tracker-numbers .so-metrics strong"},
-    {"path": "/preview/production.html", "h1": "Tesla production and deliveries", "kind": "tracker", "key": "#pd-stats strong"},
+    {"path": "/", "h1": "Tesla, SpaceX and xAI news", "kind": "home"},  # switched 23 Nov 2026
+    {"path": "/dispatch.html", "h1": "Dispatch", "kind": "list", "card": "[data-disp-grid] > .story-card:not([hidden])"},
+    {"path": "/news.html", "h1": "Tesla, SpaceX and Grok news", "kind": "list", "card": "#latest .ns-feature"},
+] + [{"path": f"/dispatch/{s}.html", "h1": live_h1(f"dispatch/{s}.html"), "kind": "article"} for s in ARTICLES] + [
+    {"path": "/tesla.html", "h1": "Tesla news, trackers and guides", "kind": "hub"},
+    {"path": "/spacex.html", "h1": "SpaceX launches, Starship and Starlink", "kind": "hub"},
+    {"path": "/grok.html", "h1": "Grok and xAI: models, plans and news", "kind": "hub"},
+    {"path": "/fsd-tracker.html", "h1": "FSD tracker", "kind": "tracker", "key": ".ds-tracker-numbers .ft-kpi-value"},
+    {"path": "/starship.html", "h1": "Starship flights", "kind": "tracker", "key": "#ss-hero-next"},
+    {"path": "/cybercab.html", "h1": "Cybercab fleet", "kind": "tracker", "key": ".mw-metric strong"},
+    {"path": "/calendar.html", "h1": "Launch calendar", "kind": "tracker", "key": ".cs-week-strip"},
+    {"path": "/starlink.html", "h1": "Starlink tracker", "kind": "tracker", "key": ".ds-tracker-numbers .so-metrics strong"},
+    {"path": "/production.html", "h1": "Tesla production and deliveries", "kind": "tracker", "key": "#pd-stats strong"},
 ]
 
 

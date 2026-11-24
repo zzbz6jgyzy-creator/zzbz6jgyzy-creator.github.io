@@ -58,6 +58,7 @@ async def main():
     if f.is_file()and ROOT in f.resolve().parents:return await r.fulfill(body=f.read_bytes(),content_type=mimetypes.guess_type(str(f))[0]or'application/octet-stream')
     return await r.abort()
    await c.route('**/*',route);await page.clock.set_fixed_time(1792857600);await page.goto(SITE+'/calendar.html',wait_until='domcontentloaded')
+   if mode in ['no-js','blocked-js']:await page.wait_for_load_state('load')  # a failed calendar script hands back the static listing at load
    if mode not in ['no-js','blocked-js']:await page.wait_for_selector('.cs-enhanced');await page.wait_for_function("document.getElementById('cs-result-count').textContent.length>0")
    return c,page,errors,requests
   checks=[]

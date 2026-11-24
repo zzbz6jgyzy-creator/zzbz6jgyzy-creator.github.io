@@ -31,7 +31,7 @@ async def main():
     assert await page.locator('[data-pd-factory-panel]').count()==5
     assert await page.locator('[data-pd-factory-panel]').last.is_visible()
     assert await page.locator('.pd-compare-controls').is_hidden()
-    assert await page.locator('#pd-spotlight').is_visible()
+    assert await page.locator('#pd-stats').is_visible()  # the masthead's key numbers; the spotlight is script-only since the switch
     await page.locator('.pd-annual summary').click();assert '1,789,226'in await page.locator('.pd-annual').inner_text()
    else:
     await page.wait_for_function("document.querySelector('.pd-studio').dataset.enhanced==='true'")

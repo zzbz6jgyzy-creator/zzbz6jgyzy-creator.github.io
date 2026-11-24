@@ -80,7 +80,7 @@
   const c=car(),has=!!c;$('mg-workspace').hidden=!has;$('mg-welcome').hidden=has;$('mg-car-select').hidden=doc.cars.length<2;$('mg-demo-banner').hidden=!state.demo;
   $('mg-car-select').innerHTML=doc.cars.map(c=>'<option value="'+e(c.id)+'"'+(c.id===doc.activeId?' selected':'')+'>'+e(title(c))+'</option>').join('');
   $('mg-hero-kicker').textContent=has?(state.demo?'DEMO / YOUR GARAGE, REIMAGINED':'YOUR TESLA. YOUR DAILY ADVANTAGE.'):'LESS GUESSWORK. MORE OWNERSHIP.';
-  $('mg-title').innerHTML=has?e(c.name||model(c).name)+(c.name?'':'<br><span>'+e(c.trim||'Your owner studio')+'</span>'):'Your car.<br>Your advantage.';
+  $('mg-title').innerHTML=has?e(c.name||model(c).name)+(c.name?'':'<br><span>'+e(c.trim||'Your owner studio')+'</span>'):'My Tesla';
   $('mg-title').tabIndex=-1;
   $('mg-hero-desc').textContent=has?`${c.year} ${model(c).name}${c.name&&c.trim?' · '+c.trim:''}. Your energy, your care plan and your software context. Pick up where you left off.`:'One beautiful home for your Tesla. Know your exact car, understand what it costs and make every charge count.';
   $('mg-hero-actions').innerHTML=has?'<button class="mg-btn mg-primary" data-log="charge">Log a charge <span aria-hidden="true"><svg class="mg-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></span></button><button class="mg-btn mg-quiet" data-edit="active">Edit car passport</button>':'<button class="mg-btn mg-primary" data-edit="new">Build your garage <span aria-hidden="true"><svg class="mg-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></span></button><button class="mg-btn mg-quiet" id="mg-demo">Explore the demo</button>';

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
+import { grokHub } from './ds-pages.mjs'; // news-first hub layout (redesign switch, 23 Nov 2026)
 import { preserveResponsiveImages } from './preserve-responsive-images.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -20,7 +21,7 @@ export function buildGrokStudio(root = ROOT) {
   html = html.replace(/<title>[\s\S]*?<\/title>/, () => '<title>' + M.esc(title) + '</title>');
   html = html.replace(/(<meta\s+(?:name|property)="(?:description|og:description|twitter:description)"\s+content=")[^"]*/g, (_, start) => start + M.esc(description));
   html = html.replace(/(<meta\s+(?:name|property)="(?:og:title|twitter:title)"\s+content=")[^"]*/g, (_, start) => start + M.esc(title));
-  html = html.replace(/<link[^>]+href="\/tesla-page\.css"[^>]*>/g, '<link rel="stylesheet" href="/grok-studio.css?v=20261026" />');
+  html = html.replace(/<link[^>]+href="\/tesla-page\.css"[^>]*>/g, '<link rel="stylesheet" href="/grok-studio.css?v=20261123-switch" />');
   if (!html.includes('href="/grok-studio.css')) throw Error('Missing Grok stylesheet link');
   const schema = {
     '@context': 'https://schema.org', '@type': 'CollectionPage',
@@ -35,7 +36,7 @@ export function buildGrokStudio(root = ROOT) {
     }))
   };
   html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, () => '<script type="application/ld+json">'+JSON.stringify(schema).replace(/</g,'\\u003c')+'</script>');
-  fs.writeFileSync(path.join(root, 'grok.html'), html);
+  fs.writeFileSync(path.join(root, 'grok.html'), grokHub(html));
 
   const pages = JSON.parse(read('data/pages.json'));
   const own = p => /^\/grok\.html(?:#(?:capabilities|tutorial|prompt-studio|models|plans|latest|sources))?$/.test(p.url);

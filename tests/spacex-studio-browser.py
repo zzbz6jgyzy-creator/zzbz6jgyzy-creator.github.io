@@ -28,7 +28,8 @@ async def main():
    await context.route('**/*',route);await page.goto(SITE+'/spacex.html',wait_until='domcontentloaded');await page.wait_for_timeout(400)
    assert await page.locator('h1').count()==1
    assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),(width,theme,mode,'overflow')
-   assert await page.locator('.sx-hero-photo img').evaluate('(i)=>i.complete&&i.naturalWidth>0')
+   assert await page.locator('.ds-masthead .ds-band img').evaluate('(i)=>i.complete&&i.naturalWidth>0')  # the hero photo is the masthead band since the switch
+   assert (await page.locator('h1').inner_text()).strip()=='SpaceX launches, Starship and Starlink'
    assert not any(x.endswith('.mp4')for x in requests),'video fetched before play'
    if width in [390,1440]and mode=='normal':await page.screenshot(path=str(OUT/f'hero-{width}-{theme}.png'))
    if mode=='nojs':

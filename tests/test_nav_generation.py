@@ -26,20 +26,20 @@ class NavigationGeneration(unittest.TestCase):
  def test_native_navigation_and_unique_ids(self):
   built=self.build();p=Elements();p.feed(built)
   self.assertEqual(len(p.ids),len(set(p.ids)))
-  self.assertEqual(len(p.details),10)
+  self.assertEqual(len(p.details),12)  # six menus, desktop and phone
   for href in ['/members.html','/updates.html','/fsd-tracker.html','/fsd-europe.html','/cybercab.html','/roadster.html','/daily.html','/see-the-launch.html','/search.html','/guides/tesla-buying-guide.html','/starship-flight-15.html','/ship-42.html']:
    self.assertIn(href,p.links)
   spacex=built[built.index('id="pn-spacex"'):built.index('id="pn-trackers"')]
-  self.assertLess(spacex.index('/starship.html'),spacex.index('/starship-flight-15.html'))
+  self.assertIn('/starship.html',spacex)  # the menu's feature card; the tracker list is under Trackers
   self.assertLess(spacex.index('/starship-flight-15.html'),spacex.index('/ship-42.html'))
   self.assertNotIn('role="menu"',built)
   self.assertNotIn(' inert',built)
   self.assertIn('action="/search.html" method="get"',built)
   self.assertEqual(built.count('data-ns-account'),2)
   self.assertLess(built.index('class="ns-mobile-members"'),built.index('class="ns-mobile-categories"'))
- def test_five_clear_sections_and_one_mobile_disclosure_level(self):
+ def test_six_clear_sections_and_one_mobile_disclosure_level(self):
   cfg=json.loads((ROOT/'scripts/nav.json').read_text())
-  self.assertEqual([d['label'] for d in cfg['dropdowns']],['News','Tesla','SpaceX','Trackers','Explore'])
+  self.assertEqual([d['label'] for d in cfg['dropdowns']],['News','Tesla','SpaceX','Grok','Trackers','Explore'])
   for d in cfg['dropdowns']:
    for g in d['groups']:
     self.assertTrue(g['items']);self.assertTrue(all(isinstance(i,list) and len(i)==4 for i in g['items']))

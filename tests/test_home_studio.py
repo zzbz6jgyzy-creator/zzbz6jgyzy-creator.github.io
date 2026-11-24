@@ -31,35 +31,38 @@ class Home(unittest.TestCase):
   for a in inputs:self.assertIn('required',a);self.assertEqual(a['autocomplete'],'email');self.assertEqual(a['inputmode'],'email');self.assertIn(a['id']+'-status',a['aria-describedby'])
   self.assertIn('Free, every Sunday. Unsubscribe anytime.',self.source);self.assertIn('Read a real issue',self.source)
   self.assertNotRegex(self.source,r'Join [\d,]+ (?:readers|subscribers)')
- def test_intro_showcase_signup_follow_native_reading_order(self):
-  hero=self.source.split('<header class="hs-hero">',1)[1].split('</header>',1)[0]
-  tags=Document(hero).tags
-  blocks=[i for i,(t,a) in enumerate(tags) if a.get('class') in ['hs-hero-copy','hs-hero-visual','hs-hero-signup']]
-  self.assertEqual([tags[i][1]['class']for i in blocks],['hs-hero-copy','hs-hero-visual','hs-hero-signup'])
-  signup=next(a for t,a in tags if a.get('class')=='hs-hero-signup')
-  self.assertEqual(signup['id'],'newsletter')
- def test_first_visit_routes_are_native_links(self):
-  section=re.search(r'<(section|nav)\b[^>]*class="[^"]*\bhs-wayfinder\b[^"]*"[^>]*>(.*?)</\1>',self.source,re.S)
-  self.assertIsNotNone(section,'First-time readers need a labelled route into the site')
-  doc=Document(section.group(2));links=[a.get('href')for t,a in doc.tags if t=='a']
-  self.assertCountEqual(links,['#latest-stories','#hv-trk-h','/daily.html'])
+ def test_news_first_reading_order(self):
+  # Redesign switch (23 Nov 2026): the plain masthead, the lead story, the latest list and the tracker numbers come
+  # before the signup, the trackers and tools, and the launch calendar.
+  main=self.source.split('<main id="main"',1)[1].split('</main>',1)[0]
+  marks=['class="ds-masthead','data-hv-lead','<!--hv:latest-->','class="ds-home-numbers"','id="newsletter"','id="hv-trk-h"','class="hs-calendar"']
+  at=[main.find(m) for m in marks]
+  self.assertTrue(all(i>=0 for i in at),dict(zip(marks,at)));self.assertEqual(at,sorted(at),dict(zip(marks,at)))
+  self.assertEqual(re.findall(r'<h1[^>]*>(.*?)</h1>',self.source,re.S),['Tesla, SpaceX and xAI news'])
+  self.assertNotIn('Go beyond',main,'The tagline lives once, in the footer')
+ def test_first_screen_routes_are_native_links(self):
+  main=self.source.split('<main id="main"',1)[1].split('</main>',1)[0];links=[a.get('href')for t,a in Document(main).tags if t=='a']
+  for href in ['/dispatch.html','/calendar.html','/starlink.html','/starship.html','/fsd-tracker.html','/cybercab.html','/grok.html']:self.assertIn(href,links)
+  latest=main.split('<!--hv:latest-->',1)[1].split('<!--/hv:latest-->',1)[0]
+  self.assertEqual(latest.count('<li'),7,'Seven latest stories after the lead')
+  lead=re.search(r'<a class="hv-lead" href="([^"]+)"',main).group(1);self.assertNotIn('href="'+lead+'"',latest,'No story repeats the lead')
  def test_images_are_described_and_layout_dimensions_reserved(self):
   main=self.source.split('<main id="main"',1)[1].split('</main>',1)[0];doc=Document(main)
   for t,a in doc.tags:
    if t=='img':
     self.assertIn('alt',a);self.assertGreater(int(a.get('width',0)),0,a.get('src'));self.assertGreater(int(a.get('height',0)),0,a.get('src'))
   self.assertNotIn('<video',main);self.assertNotIn('<iframe',main)
-  self.assertIn('CC BY 2.0',main);self.assertIn('Constellation illustration',main)
+  self.assertRegex(main,r'<img[^>]*loading="eager"[^>]*fetchpriority="high"[^>]*data-hv-img','The lead image is the first-screen image')
  def test_refresh_keeps_design_and_all_dynamic_build_markers(self):
   # The "Last updated" line is meant to change with the data, so it is compared for shape, not value.
   stamp=re.compile(r'<p class="hv-updated">Last updated <time datetime="[^"]+">[^<]+</time> · <a href="/[^"]+">[^<]+</a></p>')
-  hero_of=lambda h:h.split('<header class="hs-hero">',1)[1].split('</header>',1)[0]
-  hero=hero_of(self.source);self.assertEqual(len(stamp.findall(hero)),1)
+  mast_of=lambda h:h.split('<!--hv:mast-->',1)[1].split('<!--/hv:mast-->',1)[0]
+  mast=mast_of(self.source);self.assertEqual(len(stamp.findall(mast)),1)
   subprocess.run(['node','scripts/build-home.js'],cwd=ROOT,check=True,capture_output=True)
-  after=(ROOT/'index.html').read_text();self.assertEqual(len(stamp.findall(hero_of(after))),1)
-  self.assertEqual(stamp.sub('',hero),stamp.sub('',hero_of(after)))
+  after=(ROOT/'index.html').read_text();self.assertEqual(len(stamp.findall(mast_of(after))),1)
+  self.assertEqual(stamp.sub('',mast),stamp.sub('',mast_of(after)))
   self.assertEqual(after.count('data-newsletter-form'),1);self.assertNotIn('class="hs-newsletter"',after)
   self.assertIn('<!--hv:band--><!--/hv:band-->',after);self.assertRegex(after,r'core\.bundle\.[0-9a-f]+\.js" data-band data-pop data-bar>')
-  for marker in ['lead','supp','event','preload','band','trk','feed','changed','slasof']:self.assertIn('<!--hv:'+marker+'-->',after);self.assertIn('<!--/hv:'+marker+'-->',after)
+  for marker in ['mast','lead','latest','supp','event','preload','band','trk','feed','changed','slasof']:self.assertIn('<!--hv:'+marker+'-->',after);self.assertIn('<!--/hv:'+marker+'-->',after)
   self.assertIn('home-studio.css',after)
 if __name__=='__main__':unittest.main()
