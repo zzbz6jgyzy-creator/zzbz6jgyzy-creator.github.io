@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-24T06:22:04.781Z",
+  "updated": "2026-11-24T06:30:47.838Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:most-common",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "most-common",
+      "previous": "2026.38.5.11@31.3",
+      "next": "2026.38.5.11@31.1",
+      "at": "2026-11-24T06:30:43.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Most common sample build changed from 2026.38.5.11@31.3 to 2026.38.5.11@31.1.",
+      "title": "Most common sample build",
+      "id": "changed|tesla-software:most-common|2026-11-24T06:30:43.000Z|2026.38.5.11@31.1"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/spacex-pad-4e-32-hours.html",
