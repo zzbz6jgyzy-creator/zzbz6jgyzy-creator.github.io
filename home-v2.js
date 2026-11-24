@@ -36,7 +36,7 @@ const sdJSON = (() => {
     // The page is pre-rendered from the same data every ~30 minutes; only touch the DOM when the stories actually changed, so the swap never causes layout shift.
     const sameLead = el.getAttribute("href") === L.href && ($("[data-hv-h]").textContent || "").trim() === leadH && ($("[data-hv-p]").textContent || "").trim() === leadP;
     // Work out every value before touching the DOM, so a malformed card cannot leave a half-updated lead.
-    if (!sameLead) { const leadTag = String(L.tag || "Dispatch").trim(); el.href = L.href; $("[data-hv-tag]").textContent = leadTag; $("[data-hv-h]").textContent = leadH; $("[data-hv-p]").textContent = leadP; }
+    if (!sameLead) { const leadTag = String(L.tag || "Dispatch").trim(); document.querySelectorAll('[aria-label="Latest stories"] li').forEach((li) => { li.hidden = !!li.querySelector(`a[href="${CSS.escape(L.href)}"]`); }); el.href = L.href; $("[data-hv-tag]").textContent = leadTag; $("[data-hv-h]").textContent = leadH; $("[data-hv-p]").textContent = leadP; }
     // Lead image: card image, else the article's og:image / first image, else a licensed site image from another card
     const img = $("[data-hv-img]");
     const fallback = (cards.find((c) => c.img) || {}).img || "/assets/dispatch/cybercab-austin-poster.jpg";

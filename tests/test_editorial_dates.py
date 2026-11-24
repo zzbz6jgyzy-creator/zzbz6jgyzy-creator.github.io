@@ -85,6 +85,12 @@ class Dates(unittest.TestCase):
         self.assertTrue(API['BOT_SUBJECT'].search('Pre-render homepage headlines, Dispatch and tracker numbers.'))
         self.assertIsNone(API['BOT_SUBJECT'].search('Latvia approves Tesla FSD'))
 
+    def test_redesign_switch_commits_are_presentation(self):
+        self.assertTrue(API['BOT_SUBJECT'].search('Switch: plain page titles across the site'))
+        self.commit(ARTICLE, PUBLISHED)
+        self.commit(ARTICLE.replace('<h1>A story</h1>','<h1>A plain story</h1>'), '2026-11-23T14:02:36Z', 'Switch: plain page titles')
+        self.assertEqual(self.date().replace('+00:00', 'Z'), PUBLISHED)
+
     def test_audit_fix_commit_does_not_steal_the_revision_date(self):
         self.commit(ARTICLE, PUBLISHED)
         self.commit(ARTICLE.replace('Verified reporting','Corrected reporting'), '2026-10-10T10:00:00Z')

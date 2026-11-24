@@ -133,7 +133,6 @@ export function ensureBodyClass(html, cls) {
 // ---- Hubs: compact masthead with the hub's own key numbers and a slim photo band, then its latest stories ----
 /** Tesla hub: the masthead takes the hub's own numbers (#to-brief-grid and its note); #to-stories moves up under it. */
 export function teslaHub(live) {
-  const liveUrl = "/tesla.html";
   const hero = one(live, /<section class="to-hero"/, "Tesla hero");
   const pic = one(hero, /<picture>/, "Tesla hero picture");
   const grid = one(live, /<div id="to-brief-grid"/, "#to-brief-grid");
@@ -162,7 +161,6 @@ export function teslaHub(live) {
 
 /** SpaceX hub: the next-launch card (#sx-next, kept live by spacex-studio.js) joins the masthead; the stories move up. */
 export function spacexHub(live) {
-  const liveUrl = "/spacex.html";
   const hero = one(live, /<header class="sx-hero"/, "SpaceX hero");
   const pic = one(hero, /<picture>/, "SpaceX hero picture");
   const credit = hero.match(/<div class="sx-hero-bottom">[\s\S]*?<a href="(#[^"]+)">([^<]+)<\/a>/);
@@ -190,7 +188,6 @@ export function spacexHub(live) {
 
 /** Grok hub: the newest official release per product line as key numbers; the reporting grid moves up from #latest. */
 export function grokHub(live) {
-  const liveUrl = "/grok.html";
   const hero = one(live, /<header class="gx-hero"/, "Grok hero");
   const latest = one(live, /<section class="gx-section" id="latest"/, "Grok #latest");
   const sub = one(latest, /<div class="gx-subhead" id="stories"/, "Grok reporting heading");
@@ -249,7 +246,7 @@ export function cybercabTracker(live) {
   const mast = DS.masthead({
     kicker: "Tesla Robotaxi",
     title: "Cybercab fleet",
-    dek: "Where Tesla's Cybercabs and Robotaxis run, how many there are, and the evidence behind each claim.",
+    dek: "Where Tesla's Cybercabs and Robotaxis run, how many are registered, and the evidence behind each claim.",
     metaHtml: small,
     extraHtml: bandFrom(pic, cap),
   });

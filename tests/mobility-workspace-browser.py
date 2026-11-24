@@ -35,6 +35,10 @@ async def main():
     await r.fulfill(body=json.dumps(newer),content_type='application/json')
    await page.route('**/*',cached);await page.goto(SITE+'/cybercab.html');await page.locator('#mw-app[data-enhanced="true"]').wait_for(timeout=8000)
    if mode=='newer':await page.wait_for_function("window.SDMobilityWorkspace.getSnapshot().registry.checked==='"+newer['registry']['checked']+"'");assert newer['registry']['checked'] in await page.locator('#mobility-snapshot').text_content()
+   if mode=='newer':
+    # The re-render must keep the switched layout: one h1, the old hero hidden, the masthead's as-of line from the new data.
+    assert await page.locator('h1').count()==1 and not await page.locator('.mw-hero').is_visible()
+    assert (await page.locator('main.mw .ds-masthead .ds-meta').inner_text()).strip()==(await page.locator('.mw-hero .mw-small').evaluate('e=>e.textContent')).strip()
    else:await page.locator('.mw-refresh-note').wait_for();assert 'Refresh unavailable' in await page.locator('.mw-refresh-note').inner_text()
    assert any(SNAPSHOT in u for u in reqs),(mode,'cached page did not re-check');assert not errors,errors;await ctx.close()
   ctx=await browser.new_context(viewport={'width':390,'height':980},reduced_motion='reduce',accept_downloads=True);page=await ctx.new_page();await ctx.add_init_script("Object.defineProperty(navigator,'clipboard',{value:{writeText:async value=>{window._copied=value}}})")

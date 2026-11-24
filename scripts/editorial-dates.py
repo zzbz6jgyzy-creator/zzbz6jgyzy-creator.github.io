@@ -19,7 +19,7 @@ BLOCKS = [('seo:nav','/seo:nav'), ('seo:about','/seo:about'),
 # Furniture-only commits must not move sitemap lastmod or dateModified.
 BOT_SUBJECT = re.compile(
     r'^(Refresh today|Pre-render homepage|Refresh Tesla software|Refresh upcoming launches|'
-    r'Sync current Starlink|Keep saved pages|SEO\b|Audit fixes:)',
+    r'Sync current Starlink|Keep saved pages|SEO\b|Audit fixes:|Switch:)',  # Switch: the redesign's presentation-only commits
     re.I,
 )
 # Data files whose git date is the honest lastmod for a tracker HTML shell.
