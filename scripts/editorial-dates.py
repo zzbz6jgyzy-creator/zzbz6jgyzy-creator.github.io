@@ -102,6 +102,22 @@ def timestamp(value):
         return None
 
 
+def _furniture(git, path, commit, parents, subject, author):
+    """A furniture commit moves no date. A pull request's merge commit on main is furniture when every commit it brings
+    in that touches the path is (so a branch of Switch: commits merged with "Merge pull request ..." stays presentation)."""
+    if 'github-actions' in author.lower() or BOT_SUBJECT.search(subject or ''):
+        return True
+    parents = parents.split()
+    if len(parents) < 2:
+        return False
+    out = git('log', '--no-merges', '--format=%s%x09%an', parents[0] + '..' + parents[1], '--', path)
+    if out.returncode:
+        return False
+    rows = [line.split('\t', 1) for line in out.stdout.decode().splitlines() if line]
+    return bool(rows) and all(len(r) == 2 and ('github-actions' in r[1].lower() or BOT_SUBJECT.search(r[0]))
+                              for r in rows)
+
+
 @functools.lru_cache(maxsize=None)
 def revision_date(root, path, published, current_source):
     """Return a supported ISO date, or None when complete history is unavailable.
@@ -119,16 +135,16 @@ def revision_date(root, path, published, current_source):
     shallow = git('rev-parse','--is-shallow-repository')
     if shallow.returncode or shallow.stdout.strip() != b'false':
         return None
-    log = git('log','--first-parent','--reverse','--format=%H%x09%aI%x09%s%x09%an','--',path)
+    log = git('log','--first-parent','--reverse','--format=%H%x09%P%x09%aI%x09%s%x09%an','--',path)
     if log.returncode:
         return None
     revisions = []
     for line in log.stdout.decode().splitlines():
-        parts = line.split('\t', 3)
-        if len(parts) < 4:
+        parts = line.split('\t', 4)
+        if len(parts) < 5:
             continue
-        commit, date, subject, author = parts
-        furniture = 'github-actions' in author.lower() or bool(BOT_SUBJECT.search(subject or ''))
+        commit, parents, date, subject, author = parts
+        furniture = _furniture(git, path, commit, parents, subject, author)
         revisions.append((commit, date, furniture))
     if not revisions:
         return None
@@ -229,16 +245,16 @@ def page_revision_date(root, path, current_source):
     shallow = git('rev-parse', '--is-shallow-repository')
     if shallow.returncode or shallow.stdout.strip() != b'false':
         return data_date
-    log = git('log', '--first-parent', '--reverse', '--format=%H%x09%aI%x09%s%x09%an', '--', path)
+    log = git('log', '--first-parent', '--reverse', '--format=%H%x09%P%x09%aI%x09%s%x09%an', '--', path)
     if log.returncode:
         return data_date
     revisions = []
     for line in log.stdout.decode().splitlines():
-        parts = line.split('\t', 3)
-        if len(parts) < 4:
+        parts = line.split('\t', 4)
+        if len(parts) < 5:
             continue
-        commit, date, subject, author = parts
-        furniture = 'github-actions' in author.lower() or bool(BOT_SUBJECT.search(subject or ''))
+        commit, parents, date, subject, author = parts
+        furniture = _furniture(git, path, commit, parents, subject, author)
         revisions.append((commit, date, furniture))
     if not revisions:
         return data_date
