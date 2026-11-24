@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "reviewed": "2026-11-22",
+  "reviewed": "2026-11-24",
   "sources": [
     {
       "id": "q1-update",
@@ -102,13 +102,22 @@
       "kind": "reporting"
     },
     {
-      "id": "electrek-v15",
-      "outlet": "Electrek",
-      "kind": "reporting",
-      "title": "Tesla launches FSD v15, targets its biggest weaknesses, from signs to potholes",
-      "url": "https://electrek.co/2026/11/21/tesla-fsd-v15-rollout-25x-safety-reality-view/",
+      "id": "tesla-v15-x",
+      "outlet": "Tesla",
+      "kind": "primary",
+      "title": "FSD v15 now starting to roll out",
+      "url": "https://x.com/Tesla/status/2124222447855743019",
       "date": "2026-11-21",
-      "checked": "2026-11-22"
+      "checked": "2026-11-24"
+    },
+    {
+      "id": "scd-fsd-v15-first-wave",
+      "outlet": "Supercharged Daily",
+      "kind": "reporting",
+      "title": "FSD v15 is in owners' cars. The release notes, who has it, and what \"25x\" actually measures",
+      "url": "https://superchargeddaily.com/dispatch/tesla-fsd-v15-first-wave.html",
+      "date": "2026-11-24",
+      "checked": "2026-11-24"
     }
   ],
   "kpis": [
@@ -239,9 +248,14 @@
   },
   "changes": [
     {
+      "date": "2026-11-24",
+      "kind": "update",
+      "text": "Dispatch: Tesla's official FSD v15 first-wave post, the release notes and the three different 25x wordings, with a link to the official Tesla post."
+    },
+    {
       "date": "2026-11-22",
       "kind": "update",
-      "text": "FSD v15 has started rolling out. Electrek reports Tesla announced it on X on 21 Nov and did not say which vehicles get it first. Tesla's listed changes include a shared vision encoder, a driving visualisation called Reality View, learned navigation, parking suggestions and detection of signs, animals, debris and potholes. Tesla says the encoder improves the critical intervention rate by 25x, with no baseline or data published. The Teslascope build counts on this page stop at 11 Nov and do not include v15; they are re-pinned by hand."
+      "text": "FSD v15 has started rolling out. Tesla said on X on 21 Nov that FSD v15 is now starting to roll out; the official post did not say which vehicles get it first. Tesla's listed changes include a shared vision encoder, a driving visualisation called Reality View, learned navigation, parking suggestions and detection of signs, animals, debris and potholes. Tesla says the encoder improves the critical intervention rate by 25x, with no baseline or data published. See our 24 Nov Dispatch piece for the official posts, the release notes and what independent trackers have reported. The Teslascope build counts on this page stop at 11 Nov and do not include v15; they are re-pinned by hand."
     },
     {
       "date": "2026-11-20",
