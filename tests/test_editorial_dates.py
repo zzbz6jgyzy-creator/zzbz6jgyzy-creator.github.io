@@ -110,6 +110,12 @@ class Dates(unittest.TestCase):
                           'Correct the story', '2026-11-24T09:00:00Z')
         self.assertEqual(self.date().replace('+00:00', 'Z'), '2026-11-24T09:00:00Z')
 
+    def test_merged_audit_branch_keeps_its_merge_date(self):
+        self.commit(ARTICLE, PUBLISHED)
+        self.merge_branch(ARTICLE.replace('Verified reporting','Corrected reporting'), '2026-11-03T14:02:36Z',
+                          'Audit fixes: accessibility and source links', '2026-11-04T13:40:57Z')
+        self.assertEqual(self.date().replace('+00:00', 'Z'), '2026-11-04T13:40:57Z')
+
     def test_audit_fix_commit_does_not_steal_the_revision_date(self):
         self.commit(ARTICLE, PUBLISHED)
         self.commit(ARTICLE.replace('Verified reporting','Corrected reporting'), '2026-10-10T10:00:00Z')

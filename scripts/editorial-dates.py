@@ -22,6 +22,7 @@ BOT_SUBJECT = re.compile(
     r'Sync current Starlink|Keep saved pages|SEO\b|Audit fixes:|Switch:)',  # Switch: the redesign's presentation-only commits
     re.I,
 )
+SWITCH_SUBJECT = re.compile(r'Switch:', re.I)
 # Data files whose git date is the honest lastmod for a tracker HTML shell.
 TRACKER_SOURCES = {
     'starlink.html': ['data/starlink.json', 'starlink-live.js', 'data/starlink-history.json', 'data/starlink-missions.json'],
@@ -103,8 +104,10 @@ def timestamp(value):
 
 
 def _furniture(git, path, commit, parents, subject, author):
-    """A furniture commit moves no date. A pull request's merge commit on main is furniture when every commit it brings
-    in that touches the path is (so a branch of Switch: commits merged with "Merge pull request ..." stays presentation)."""
+    """A furniture commit moves no date. A pull request's merge commit on main is furniture only when every commit it
+    brings in that touches the path is a bot commit or one of the redesign's Switch: commits, so the redesign merged with
+    "Merge pull request ..." stays presentation. Older merges keep their dates: an "Audit fixes:" branch has changed copy
+    (PR #289 moved text on the trust pages), so merged branches are not reclassified by subject in general."""
     if 'github-actions' in author.lower() or BOT_SUBJECT.search(subject or ''):
         return True
     parents = parents.split()
@@ -114,7 +117,7 @@ def _furniture(git, path, commit, parents, subject, author):
     if out.returncode:
         return False
     rows = [line.split('\t', 1) for line in out.stdout.decode().splitlines() if line]
-    return bool(rows) and all(len(r) == 2 and ('github-actions' in r[1].lower() or BOT_SUBJECT.search(r[0]))
+    return bool(rows) and all(len(r) == 2 and ('github-actions' in r[1].lower() or SWITCH_SUBJECT.match(r[0]))
                               for r in rows)
 
 
