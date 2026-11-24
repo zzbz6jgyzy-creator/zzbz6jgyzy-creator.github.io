@@ -1,3 +1,11 @@
+## 24 Nov 2026 — Redesign step 6: cleanup
+
+- Every page downloads 10.7 KB less CSS (gzipped, about a quarter of its stylesheets) and parses about 70 KB less: 586 rules in `styles.css` and 89 in `theme.css` matched nothing on any page and are gone (`styles.css` 96 → 34 KB, `theme.css` 27 → 17 KB). Pages look the same: every removed selector was tested in Chromium on all pages in both themes, and computed styles on 30 pages are identical before and after.
+- Nine stylesheets no page loaded are deleted (78 KB), including the old `roadster.css` (the live Roadster page doesn't use it).
+- The design preview pipeline is gone (`/preview/` went live on 23 Nov): its builder, daily refresh, stub stylesheet and the skip lines in nine tools. Its checks stay, renamed and pointed at the live pages: `tests/design-system.test.mjs` and `tests/design-acceptance-browser.py`.
+- Production no longer renders a hidden copy of the old hero's quarter spotlight; the masthead's stats row shows the picked quarter.
+- Hub photo captions are decoded once before escaping (a latent "&amp;amp;"; no caption had one).
+
 ## 23 Nov 2026 — Redesign step 5: the switch
 
 - Every page type now leads with its news or its numbers, as in the approved previews: the homepage (top story, latest list, tracker numbers), articles (headline, standfirst, byline and lead photo together; the reading tools follow the photo), the Dispatch list and newsroom, the Tesla, SpaceX and Grok hubs, and the FSD, Starship, Cybercab, calendar, Starlink and production trackers.
