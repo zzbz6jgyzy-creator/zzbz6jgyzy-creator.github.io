@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-24T15:49:01Z",
- "checked": "2026-11-24T15:49:01Z",
+ "updated": "2026-11-25T00:39:00Z",
+ "checked": "2026-11-25T00:39:00Z",
  "results": [
   {
    "id": "97c6f5e1-299e-4652-b72d-9618ac047076",
@@ -289,29 +289,20 @@
    "window_end": "2026-11-24T19:55:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/460d9db7-eaf6-4cd9-b095-cff433534c09/",
    "status": {
-    "name": "Go for Launch",
-    "abbrev": "Go"
+    "name": "Launch Successful",
+    "abbrev": "Success"
    },
    "net_precision": {
     "name": "Second",
     "abbrev": "SEC"
    },
    "pad": {
-    "name": "Space Launch Complex 4E",
+    "name": null,
     "location": {
-     "name": "Vandenberg SFB, CA, USA"
+     "name": null
     }
    },
-   "last_updated": "2026-11-24T15:39:37Z",
-   "mission": {
-    "name": "USSF-266",
-    "type": "Government/Top Secret",
-    "orbit": {
-     "name": "Polar Orbit",
-     "abbrev": "PO"
-    }
-   },
-   "vehicle": "Falcon 9 Block 5"
+   "last_updated": "2026-11-24T18:12:23Z"
   },
   {
    "id": "b0d27def-0a88-44c3-a947-1fd5b8503e2c",
@@ -348,9 +339,9 @@
   {
    "id": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
    "name": "Falcon 9 Block 5 | Cygnus CRS-2 NG-25",
-   "net": "2026-11-29T15:50:00Z",
-   "window_start": "2026-11-29T15:50:00Z",
-   "window_end": "2026-11-29T15:50:00Z",
+   "net": "2026-11-29T15:47:00Z",
+   "window_start": "2026-11-29T15:47:00Z",
+   "window_end": "2026-11-29T15:47:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/d74afbc7-0de5-491c-be05-4e9c31f736ac/",
    "status": {
     "name": "Go for Launch",
@@ -366,7 +357,7 @@
      "name": "Cape Canaveral SFS, FL, USA"
     }
    },
-   "last_updated": "2026-11-20T17:43:33Z",
+   "last_updated": "2026-11-24T19:47:23Z",
    "mission": {
     "name": "Cygnus CRS-2 NG-25",
     "type": "Resupply",
@@ -654,7 +645,7 @@
      "name": "Cape Canaveral SFS, FL, USA"
     }
    },
-   "last_updated": "2026-11-05T18:00:50Z",
+   "last_updated": "2026-11-24T16:23:22Z",
    "mission": {
     "name": "CHORUS",
     "type": "Earth Science",
@@ -1464,6 +1455,38 @@
     }
    },
    "vehicle": "Falcon Heavy"
+  },
+  {
+   "id": "9b9db235-8ffb-4569-b09b-0e852ad231a0",
+   "name": "Falcon 9 Block 5 | Amazon Leo (LF-04)",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/9b9db235-8ffb-4569-b09b-0e852ad231a0/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Month",
+    "abbrev": "M"
+   },
+   "pad": {
+    "name": "Unknown Pad",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   },
+   "last_updated": "2026-11-24T19:21:29Z",
+   "mission": {
+    "name": "Amazon Leo (LF-04)",
+    "type": "Communications",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
