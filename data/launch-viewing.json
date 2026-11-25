@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-25T09:48:36Z",
+ "checked": "2026-11-25T19:55:20Z",
  "editorialUpdated": "2026-11-17T08:45:00+00:00",
  "presets": [
   {
@@ -881,6 +881,36 @@
     "lon": -120.611,
     "az": 186,
     "coast": "west"
+   }
+  },
+  {
+   "id": "ll2-8bf5f61e-a7e1-41e6-aede-7b87e4beebab",
+   "title": "Falcon 9 Block 5 | CHORUS",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-12-04T12:55:00Z",
+   "end": "",
+   "date": "2026-12-04",
+   "precision": "datetime",
+   "status": "Go",
+   "note": "Earth Science · Low Earth Orbit",
+   "where": "Space Launch Complex 40 · Cape Canaveral SFS, FL, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "8bf5f61e-a7e1-41e6-aede-7b87e4beebab",
+   "windowStart": "2026-12-04T12:55:00Z",
+   "windowEnd": "2026-12-04T13:24:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "Go for Launch",
+   "pad": {
+    "id": "slc40",
+    "name": "Cape Canaveral · SLC-40",
+    "short": "Cape",
+    "lat": 28.5619,
+    "lon": -80.5774,
+    "az": 48,
+    "coast": "east"
    }
   },
   {
