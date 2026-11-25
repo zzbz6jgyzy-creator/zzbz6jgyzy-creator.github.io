@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-25T12:51:43.175Z",
+  "updated": "2026-11-25T15:55:44.578Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "robotaxi:tx-cybercab",
+      "topic": "robotaxi",
+      "tracker": "robotaxi",
+      "field": "tx-cybercab",
+      "previous": "773",
+      "next": "822",
+      "at": "2026-11-25T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Texas DMV list via fsddb.com",
+      "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
+      "href": "/cybercab.html",
+      "summary": "Texas Cybercab registrations changed from 773 to 822.",
+      "title": "Texas Cybercab registrations",
+      "id": "changed|robotaxi:tx-cybercab|2026-11-25T00:00:00.000Z|822"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/grok-virginia-oregon-lawsuits.html",
