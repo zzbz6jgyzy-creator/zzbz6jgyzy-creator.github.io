@@ -1,6 +1,48 @@
 {
  "cards": [
   {
+   "href": "/dispatch/grok-voice-innovaccer-5-million.html",
+   "img": "/assets/dispatch/grok-voice-3-spacexsi-poster.jpg",
+   "tag": "Grok",
+   "h": "SpaceXSI credits Grok Voice with 5 million patient calls at Innovaccer. Innovaccer's own release says those came first",
+   "p": "Healthcare software company Innovaccer is adding Grok Voice to its patient-calling AI agents. SpaceXSI's post pairs the deal with \"over 5M patient interactions,\" but Innovaccer's release describes that figure as its own voice AI's growth before Grok. What the deal covers and what's only a roadmap."
+  },
+  {
+   "href": "/dispatch/tesla-spacex-merger-52-percent.html",
+   "img": "/assets/dispatch/nasdaq-marketsite-times-square.jpg",
+   "tag": "Business",
+   "h": "\"52% dilution\" in a SpaceX-Tesla deal doesn't mean 52% more shares. I ran the math from both companies' filings",
+   "p": "Tesla and SpaceX shares fell again on Wednesday as investors weighed a possible all-stock merger. Gary Black's widely quoted \"52% dilution\" figure checks out, but several outlets described it as SpaceX issuing 52% more shares. Using the share counts in both 10-Qs, the issuance would be more than double that."
+  },
+  {
+   "href": "/dispatch/starlink-bead-zero-outlay.html",
+   "img": "/assets/dispatch/starlink-rooftop-install-capiovi.jpg",
+   "tag": "Starlink",
+   "h": "SpaceX turns down its BEAD money and offers to serve those homes for $0. What the government's new contract actually requires",
+   "p": "NTIA published a model \"zero outlay\" agreement on 23 Nov for a low-orbit provider that serves its BEAD locations without taking the subsidy, and NTIA's head says SpaceX has agreed to it. I read the 15-page contract: free equipment, 100/20 Mbps, ten years, and a lot less paperwork."
+  },
+  {
+   "href": "/dispatch/fcc-starmind-1-million.html",
+   "img": "/assets/dispatch/fcc-hq-former-12th-street.jpg",
+   "tag": "Starmind",
+   "h": "The FCC has authorized SpaceX to deploy up to 1 million Starmind satellites as orbital data centers, the first such authorization in U.S. history",
+   "p": "The FCC on 25 Nov 2026 granted SpaceX authorization to deploy up to 1 million Starmind orbital compute modules, the first U.S. authorization for a constellation of data centers in space, according to an official Commission release posted by Chairman Brendan Carr. The grant authorizes deployment. It does not set a launch timetable."
+  },
+  {
+   "href": "/dispatch/space-jellyfish-explained.html",
+   "img": "/assets/dispatch/kevin-gill-iridium4-plume.jpg",
+   "tag": "Explainer",
+   "h": "A space jellyfish is a rocket plume lit by sunlight while the ground is still dark. The best window is 30 to 60 minutes before sunrise or after sunset",
+   "p": "A space jellyfish forms when a rocket's high-altitude exhaust is still in sunlight and the observer is already in darkness. Vandenberg officials, who also call it twilight phenomenon, say it usually appears two to three minutes after a launch 30 to 60 minutes before sunrise or after sunset. USSF-380 this Saturday is a night launch, not a twilight one."
+  },
+  {
+   "href": "/dispatch/eu-tad-postponed-december-15.html",
+   "img": "/assets/dispatch/tesla-nav-screen-hero.jpg",
+   "tag": "FSD in Europe",
+   "h": "The EU has postponed its Tesla Assisted Driving meeting to December 15. A rejection would invalidate national approvals already granted",
+   "p": "A European Commission spokesperson told Reuters on 25 Nov 2026 that the EU meeting expected to consider bloc-wide approval of Tesla Assisted Driving has been postponed until December 15. A rejection at EU level would invalidate the national approvals already granted. No reason was given."
+  },
+  {
    "href": "/dispatch/grok-virginia-oregon-lawsuits.html",
    "img": "/assets/dispatch/multnomah-courthouse-2025.jpg",
    "tag": "Grok",
@@ -13,48 +55,6 @@
    "tag": "Robotaxi",
    "h": "Tesla's official Robotaxi page now shows more than 6 million autonomous miles. The last dated safety results still stop at 3.1 million on 18 Oct",
    "p": "On 24 Nov, Tesla's live Robotaxi counter stood at more than 6.01 million autonomous miles. The official safety results still cover 22 Jan to 18 Oct, when the fleet had driven 3.1 million miles."
-  },
-  {
-   "href": "/dispatch/tesla-fsd-v15-first-wave.html",
-   "img": "/assets/dispatch/tesla-nav-screen-hero.jpg",
-   "tag": "FSD",
-   "h": "FSD v15 is in owners' cars. The release notes, who has it, and what \"25x\" actually measures",
-   "p": "Tesla started rolling out FSD (Supervised) v15.0.1 on Saturday, hours after Musk said wide release was next month. So far it's reaching HW4 Model Ys in the US. I went through the release notes and Tesla's three different ways of describing its 25x claim."
-  },
-  {
-   "href": "/dispatch/tesla-ai5-optimus-cars-stay-ai4.html",
-   "img": "/assets/dispatch/optimus-stockholm-ulkl.jpg",
-   "tag": "AI hardware",
-   "h": "Musk: AI5 goes to Optimus and cars stay on AI4. AI4.5 loses 8GB of planned RAM because memory got expensive",
-   "p": "Over one Sunday of replies on X, Elon Musk said Tesla's AI5 chip is going to Optimus, cars will remain on AI4, AI4 now costs twice as much because of memory prices, and the planned AI4.5 board was cut from 32GB to 24GB of RAM. Here's how that fits what Tesla said on its last two earnings calls."
-  },
-  {
-   "href": "/dispatch/tesla-polysilicon-robstown-3-1b.html",
-   "img": "/assets/dispatch/polysilicon-rod-roonguthai.jpg",
-   "tag": "Tesla / Energy",
-   "h": "Tesla wants a Texas tax break for a $3.1 billion polysilicon plant near Corpus Christi. Here's what its application says",
-   "p": "Tesla has applied under Texas's JETI program for a school-tax limit on a proposed $3.1 billion polysilicon refinery near Robstown in Nueces County. The filing promises 515 jobs by 2032 and says Tesla may build elsewhere without the incentive. I went through the numbers."
-  },
-  {
-   "href": "/dispatch/spacex-pad-4e-32-hours.html",
-   "img": "/assets/dispatch/vandenberg-ussf317-slc4e-ussf.jpg",
-   "tag": "Falcon 9",
-   "h": "SpaceX turned pad 4E around in 32 hours. USSF-266 made three national security missions from the pad in about 83 hours 48 minutes",
-   "p": "NROL-136 lifted off from Vandenberg's SLC-4E on Sunday, 32 hours after USSF-317, which SpaceX says is its fastest turnaround between launches from the same pad. USSF-266 launched from the same pad at 11:08am ET on Tuesday, and the booster landed on Of Course I Still Love You on its 29th flight."
-  },
-  {
-   "href": "/dispatch/tesla-starlink-every-model.html",
-   "img": "/assets/dispatch/cybercab-zurich-migl.jpg",
-   "tag": "Starlink",
-   "h": "Musk says built-in Starlink could reach every Tesla by late 2027. New Cybercabs already have it in the trunk lid",
-   "p": "Elon Musk said on Sunday that embedded Starlink across Tesla's lineup is \"hopefully\" coming toward the end of next year, except in China. Tesla's own Cybercab first-responder guide, dated 20 Nov, says Cybercabs built from November 2026 already carry it."
-  },
-  {
-   "href": "/dispatch/spacex-cochise-ag-delay.html",
-   "img": "/assets/dispatch/willcox-playa-blm.jpg",
-   "tag": "Arizona",
-   "h": "Arizona's attorney general wants Cochise County to hold off on SpaceX's 6 GW campus vote",
-   "p": "In a 19 Nov letter, Attorney General Kris Mayes asked the Cochise County Planning and Zoning Commission to delay its 9 Dec vote on SpaceX's special use permit SU26-22 until state and federal regulators have reviewed it. A town hall is set for 3 Dec."
   }
  ],
  "pins": [
@@ -68,6 +68,42 @@
   }
  ],
  "stories": [
+  {
+   "url": "/dispatch/grok-voice-innovaccer-5-million.html",
+   "title": "SpaceXSI credits Grok Voice with 5 million patient calls at Innovaccer. Innovaccer's own release says those came first",
+   "tag": "Grok",
+   "date": "2026-11-25T17:16:00Z"
+  },
+  {
+   "url": "/dispatch/tesla-spacex-merger-52-percent.html",
+   "title": "\"52% dilution\" in a SpaceX-Tesla deal doesn't mean 52% more shares. I ran the math from both companies' filings",
+   "tag": "Business",
+   "date": "2026-11-25T17:14:00Z"
+  },
+  {
+   "url": "/dispatch/starlink-bead-zero-outlay.html",
+   "title": "SpaceX turns down its BEAD money and offers to serve those homes for $0. What the government's new contract actually requires",
+   "tag": "Starlink",
+   "date": "2026-11-25T17:12:00Z"
+  },
+  {
+   "url": "/dispatch/fcc-starmind-1-million.html",
+   "title": "The FCC has authorized SpaceX to deploy up to 1 million Starmind satellites as orbital data centers, the first such authorization in U.S. history",
+   "tag": "Starmind",
+   "date": "2026-11-25T17:10:00Z"
+  },
+  {
+   "url": "/dispatch/space-jellyfish-explained.html",
+   "title": "A space jellyfish is a rocket plume lit by sunlight while the ground is still dark. The best window is 30 to 60 minutes before sunrise or after sunset",
+   "tag": "Explainer",
+   "date": "2026-11-25T17:08:00Z"
+  },
+  {
+   "url": "/dispatch/eu-tad-postponed-december-15.html",
+   "title": "The EU has postponed its Tesla Assisted Driving meeting to December 15. A rejection would invalidate national approvals already granted",
+   "tag": "FSD in Europe",
+   "date": "2026-11-25T17:06:00Z"
+  },
   {
    "url": "/dispatch/grok-virginia-oregon-lawsuits.html",
    "title": "Virginia and Oregon sue SpaceX over Grok's sexualized images. Here's what the two complaints actually claim",

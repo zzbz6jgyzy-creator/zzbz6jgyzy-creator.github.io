@@ -167,11 +167,29 @@
     "count": 24
   },
   "europe": {
-    "updated": "2026-11-20",
+    "updated": "2026-11-25",
     "listed": 9,
     "recognised": 12
   },
   "stories": [
+    {
+      "url": "/dispatch/tesla-spacex-merger-52-percent.html",
+      "image": "/assets/dispatch/nasdaq-marketsite-times-square.jpg",
+      "title": "\"52% dilution\" in a SpaceX-Tesla deal doesn't mean 52% more shares. I ran the math from both companies' filings",
+      "summary": "Tesla and SpaceX shares fell again on Wednesday as investors weighed a possible all-stock merger. Gary Black's widely quoted \"52% dilution\" figure checks out, but several outlets described it as SpaceX issuing 52% more shares. Using the share counts in both 10-Qs, the issuance would be more than double that.",
+      "tag": "Business",
+      "date": "2026-11-25T17:14:00Z",
+      "thumb": "/assets/dispatch/nasdaq-marketsite-times-square-480w.webp"
+    },
+    {
+      "url": "/dispatch/eu-tad-postponed-december-15.html",
+      "image": "/assets/dispatch/tesla-nav-screen-hero.jpg",
+      "title": "The EU has postponed its Tesla Assisted Driving meeting to December 15. A rejection would invalidate national approvals already granted",
+      "summary": "A European Commission spokesperson told Reuters on 25 Nov 2026 that the EU meeting expected to consider bloc-wide approval of Tesla Assisted Driving has been postponed until December 15. A rejection at EU level would invalidate the national approvals already granted. No reason was given.",
+      "tag": "FSD in Europe",
+      "date": "2026-11-25T17:06:00Z",
+      "thumb": "/assets/dispatch/tesla-nav-screen-hero-480w.webp"
+    },
     {
       "url": "/dispatch/tesla-robotaxi-6-million-miles.html",
       "image": "/assets/dispatch/tesla-cybercab-zurich-blume-2026.jpg",
@@ -207,25 +225,7 @@
       "tag": "Tesla / Energy",
       "date": "2026-11-24T17:10:00Z",
       "thumb": "/assets/dispatch/polysilicon-rod-roonguthai-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-starlink-every-model.html",
-      "image": "/assets/dispatch/cybercab-zurich-migl.jpg",
-      "title": "Musk says built-in Starlink could reach every Tesla by late 2027. New Cybercabs already have it in the trunk lid",
-      "summary": "Elon Musk said on Sunday that embedded Starlink across Tesla's lineup is \"hopefully\" coming toward the end of next year, except in China. Tesla's own Cybercab first-responder guide, dated 20 Nov, says Cybercabs built from November 2026 already carry it.",
-      "tag": "Starlink",
-      "date": "2026-11-23T17:10:00Z",
-      "thumb": "/assets/dispatch/cybercab-zurich-migl-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-italy-assisted-driving-approval.html",
-      "image": "/assets/dispatch/tesla-model-3-salcedo-vicenza.jpg",
-      "title": "Italy approves Tesla Assisted Driving, the 12th EU country and the first big one. The EU math still doesn't add up",
-      "summary": "Italy's transport ministry gave Tesla's supervised Assisted Driving a provisional approval ahead of the EU process. It's the 12th EU country and the first of the big four, taking the group from 15.5% to 28.6% of the EU population.",
-      "tag": "FSD in Europe",
-      "date": "2026-11-20T17:32:00Z",
-      "thumb": "/assets/dispatch/tesla-model-3-salcedo-vicenza-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-24T17:18:00Z"
+  "articlesUpdated": "2026-11-25T17:16:00Z"
 }
