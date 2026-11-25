@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-24T07:58:11.462Z",
+  "generatedAt": "2026-11-25T02:49:52.931Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -164,9 +164,9 @@
       "field": "newest-reporting",
       "value": "2026.38.6.11",
       "label": "Newest reporting build",
-      "at": "2026-11-24T06:30:43.000Z",
+      "at": "2026-11-25T02:49:46.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample (3313 cars)",
+      "source": "Teslascope sample (3327 cars)",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html",
       "summary": "A version appearing in a public sample is not the same as Tesla offering it to a given car."
@@ -190,9 +190,9 @@
       "topic": "tesla-software",
       "tracker": "software",
       "field": "most-common",
-      "value": "2026.38.5.11@31.1",
+      "value": "2026.38.5.11@31",
       "label": "Most common sample build",
-      "at": "2026-11-24T06:30:43.000Z",
+      "at": "2026-11-25T02:49:46.000Z",
       "evidence": "reported_unconfirmed",
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
@@ -234,7 +234,7 @@
       "field": "tx-cybercab",
       "value": "773",
       "label": "Texas Cybercab registrations",
-      "at": "2026-11-24T00:00:00.000Z",
+      "at": "2026-11-25T00:00:00.000Z",
       "evidence": "independently_corroborated",
       "source": "Texas DMV list via fsddb.com",
       "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
@@ -287,20 +287,105 @@
   "changes": [
     {
       "type": "logged",
+      "factId": "dispatch:/dispatch/grok-virginia-oregon-lawsuits.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Virginia and Oregon sue SpaceX over Grok's sexualized images. Here's what the two complaints actually claim",
+      "at": "2026-11-24T17:18:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-virginia-oregon-lawsuits.html",
+      "href": "/dispatch/grok-virginia-oregon-lawsuits.html",
+      "summary": "Two state attorneys general filed consumer-protection suits against SpaceX, SpaceXSI and X over Grok-generated sexual images, including of children. I read both complaints: the claims, the penalties allowed, and what X says in response.",
+      "title": "Virginia and Oregon sue SpaceX over Grok's sexualized images. Here's what the two complaints actually claim",
+      "id": "logged|dispatch:/dispatch/grok-virginia-oregon-lawsuits.html|2026-11-24T17:18:00.000Z|Virginia and Oregon sue SpaceX over Grok's sexualized images. Here's what the two complaints actually claim"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-robotaxi-6-million-miles.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla's official Robotaxi page now shows more than 6 million autonomous miles. The last dated safety results still stop at 3.1 million on 18 Oct",
+      "at": "2026-11-24T17:16:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-robotaxi-6-million-miles.html",
+      "href": "/dispatch/tesla-robotaxi-6-million-miles.html",
+      "summary": "On 24 Nov, Tesla's live Robotaxi counter stood at more than 6.01 million autonomous miles. The official safety results still cover 22 Jan to 18 Oct, when the fleet had driven 3.1 million miles.",
+      "title": "Tesla's official Robotaxi page now shows more than 6 million autonomous miles. The last dated safety results still stop at 3.1 million on 18 Oct",
+      "id": "logged|dispatch:/dispatch/tesla-robotaxi-6-million-miles.html|2026-11-24T17:16:00.000Z|Tesla's official Robotaxi page now shows more than 6 million autonomous miles. The last dated safety results still stop at 3.1 million on 18 Oct"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-fsd-v15-first-wave.html",
+      "topic": "fsd",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "FSD v15 is in owners' cars. The release notes, who has it, and what \"25x\" actually measures",
+      "at": "2026-11-24T17:14:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-fsd-v15-first-wave.html",
+      "href": "/dispatch/tesla-fsd-v15-first-wave.html",
+      "summary": "Tesla started rolling out FSD (Supervised) v15.0.1 on Saturday, hours after Musk said wide release was next month. So far it's reaching HW4 Model Ys in the US. I went through the release notes and Tesla's three different ways of describing its 25x claim.",
+      "title": "FSD v15 is in owners' cars. The release notes, who has it, and what \"25x\" actually measures",
+      "id": "logged|dispatch:/dispatch/tesla-fsd-v15-first-wave.html|2026-11-24T17:14:00.000Z|FSD v15 is in owners' cars. The release notes, who has it, and what \"25x\" actually measures"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-ai5-optimus-cars-stay-ai4.html",
+      "topic": "optimus",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Musk: AI5 goes to Optimus and cars stay on AI4. AI4.5 loses 8GB of planned RAM because memory got expensive",
+      "at": "2026-11-24T17:12:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-ai5-optimus-cars-stay-ai4.html",
+      "href": "/dispatch/tesla-ai5-optimus-cars-stay-ai4.html",
+      "summary": "Over one Sunday of replies on X, Elon Musk said Tesla's AI5 chip is going to Optimus, cars will remain on AI4, AI4 now costs twice as much because of memory prices, and the planned AI4.5 board was cut from 32GB to 24GB of RAM. Here's how that fits what Tesla said on its last two earnings calls.",
+      "title": "Musk: AI5 goes to Optimus and cars stay on AI4. AI4.5 loses 8GB of planned RAM because memory got expensive",
+      "id": "logged|dispatch:/dispatch/tesla-ai5-optimus-cars-stay-ai4.html|2026-11-24T17:12:00.000Z|Musk: AI5 goes to Optimus and cars stay on AI4. AI4.5 loses 8GB of planned RAM because memory got expensive"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-polysilicon-robstown-3-1b.html",
+      "topic": "tesla",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla wants a Texas tax break for a $3.1 billion polysilicon plant near Corpus Christi. Here's what its application says",
+      "at": "2026-11-24T17:10:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-polysilicon-robstown-3-1b.html",
+      "href": "/dispatch/tesla-polysilicon-robstown-3-1b.html",
+      "summary": "Tesla has applied under Texas's JETI program for a school-tax limit on a proposed $3.1 billion polysilicon refinery near Robstown in Nueces County. The filing promises 515 jobs by 2032 and says Tesla may build elsewhere without the incentive. I went through the numbers.",
+      "title": "Tesla wants a Texas tax break for a $3.1 billion polysilicon plant near Corpus Christi. Here's what its application says",
+      "id": "logged|dispatch:/dispatch/tesla-polysilicon-robstown-3-1b.html|2026-11-24T17:10:00.000Z|Tesla wants a Texas tax break for a $3.1 billion polysilicon plant near Corpus Christi. Here's what its application says"
+    },
+    {
+      "type": "logged",
       "factId": "dispatch:/dispatch/spacex-pad-4e-32-hours.html",
       "topic": "spacex-launches",
       "tracker": "dispatch",
       "field": "dispatch",
       "previous": "",
-      "next": "SpaceX turned pad 4E around in 32 hours. If Tuesday's launch goes on time, that's three national security missions in 3.5 days",
+      "next": "SpaceX turned pad 4E around in 32 hours. USSF-266 made three national security missions from the pad in about 83 hours 48 minutes",
       "at": "2026-11-23T17:12:00.000Z",
       "evidence": "independently_corroborated",
       "source": "Supercharged Daily Dispatch",
       "sourceUrl": "/dispatch/spacex-pad-4e-32-hours.html",
       "href": "/dispatch/spacex-pad-4e-32-hours.html",
-      "summary": "NROL-136 lifted off from Vandenberg's SLC-4E on Sunday, 32 hours after USSF-317, which SpaceX says is its fastest turnaround between launches from the same pad. USSF-266 is next from the same pad on Tuesday, on a booster making its 29th flight.",
-      "title": "SpaceX turned pad 4E around in 32 hours. If Tuesday's launch goes on time, that's three national security missions in 3.5 days",
-      "id": "logged|dispatch:/dispatch/spacex-pad-4e-32-hours.html|2026-11-23T17:12:00.000Z|SpaceX turned pad 4E around in 32 hours. If Tuesday's launch goes on time, that's three national security missions in 3.5 days"
+      "summary": "NROL-136 lifted off from Vandenberg's SLC-4E on Sunday, 32 hours after USSF-317, which SpaceX says is its fastest turnaround between launches from the same pad. USSF-266 launched from the same pad at 11:08am ET on Tuesday, and the booster landed on Of Course I Still Love You on its 29th flight.",
+      "title": "SpaceX turned pad 4E around in 32 hours. USSF-266 made three national security missions from the pad in about 83 hours 48 minutes",
+      "id": "logged|dispatch:/dispatch/spacex-pad-4e-32-hours.html|2026-11-23T17:12:00.000Z|SpaceX turned pad 4E around in 32 hours. USSF-266 made three national security missions from the pad in about 83 hours 48 minutes"
     },
     {
       "type": "logged",
@@ -473,23 +558,6 @@
       "id": "logged|dispatch:/dispatch/tesla-korea-fsd-five-pages.html|2026-11-20T17:28:00.000Z|South Korea won't review Tesla's FSD request for Shanghai-built cars yet. Tesla sent five pages by email"
     },
     {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/anthropic-ipo-close-record.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Anthropic closes its IPO at $93.5 billion and takes SpaceX's record outright. Its new cash nearly matches its SpaceX compute deal",
-      "at": "2026-11-20T17:26:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/anthropic-ipo-close-record.html",
-      "href": "/dispatch/anthropic-ipo-close-record.html",
-      "summary": "Anthropic's IPO closed at about $93.5 billion after underwriters bought all 147 million optional shares, passing SpaceX's record, and a $26 billion placement takes its new cash close to its SpaceX compute deal.",
-      "title": "Anthropic closes its IPO at $93.5 billion and takes SpaceX's record outright. Its new cash nearly matches its SpaceX compute deal",
-      "id": "logged|dispatch:/dispatch/anthropic-ipo-close-record.html|2026-11-20T17:26:00.000Z|Anthropic closes its IPO at $93.5 billion and takes SpaceX's record outright. Its new cash nearly matches its SpaceX compute deal"
-    },
-    {
       "type": "changed",
       "factId": "tesla-software:wave:2026.44.1",
       "topic": "tesla-software",
@@ -505,74 +573,6 @@
       "summary": "2026.44.1 moved from 92 to 139 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.44.1",
       "id": "changed|tesla-software:wave:2026.44.1|2026-11-19T17:27:21.000Z|139"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-cybercab-dallas-launch.html",
-      "topic": "robotaxi",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Cybercab rides start in Dallas, the second city after Austin, and Tesla kept its \"next month\" promise",
-      "at": "2026-11-19T17:16:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-cybercab-dallas-launch.html",
-      "href": "/dispatch/tesla-cybercab-dallas-launch.html",
-      "summary": "Tesla's Robotaxi account says the Cybercab has arrived in Dallas, keeping a mid-October 'next month' promise. Tesla has not given a Dallas fleet size, service area, hours or rider rules.",
-      "title": "Cybercab rides start in Dallas, the second city after Austin, and Tesla kept its \"next month\" promise",
-      "id": "logged|dispatch:/dispatch/tesla-cybercab-dallas-launch.html|2026-11-19T17:16:00.000Z|Cybercab rides start in Dallas, the second city after Austin, and Tesla kept its \"next month\" promise"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/anthropic-ipo-spacex-record.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Anthropic's $81.3 billion IPO beats SpaceX's base deal, and its prospectus still owes SpaceX $3.1 billion a month",
-      "at": "2026-11-19T17:14:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/anthropic-ipo-spacex-record.html",
-      "href": "/dispatch/anthropic-ipo-spacex-record.html",
-      "summary": "Anthropic priced 980 million shares at $83 and opened at $111.50 as of 11:53 a.m. ET on 19 Nov. That beats SpaceX's $75 billion base deal; the all-time record still depends on Anthropic's option.",
-      "title": "Anthropic's $81.3 billion IPO beats SpaceX's base deal, and its prospectus still owes SpaceX $3.1 billion a month",
-      "id": "logged|dispatch:/dispatch/anthropic-ipo-spacex-record.html|2026-11-19T17:14:00.000Z|Anthropic's $81.3 billion IPO beats SpaceX's base deal, and its prospectus still owes SpaceX $3.1 billion a month"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/grok-bot-books-travel.html",
-      "topic": "grok",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Grok Bot now books flights, hotels and rental cars. What it checks before you pay, and where it hands back to you",
-      "at": "2026-11-19T17:12:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/grok-bot-books-travel.html",
-      "href": "/dispatch/grok-bot-books-travel.html",
-      "summary": "SpaceXSI's Grok Bot can now book flights, hotels and rental cars. The changelog adds a bags, changes and refunds panel, and sends you the airline link if a purchase can't be confirmed.",
-      "title": "Grok Bot now books flights, hotels and rental cars. What it checks before you pay, and where it hands back to you",
-      "id": "logged|dispatch:/dispatch/grok-bot-books-travel.html|2026-11-19T17:12:00.000Z|Grok Bot now books flights, hotels and rental cars. What it checks before you pay, and where it hands back to you"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/spacex-cameron-county-tax-abatement.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Cameron County says no to SpaceX's 10-year tax break for its $24 billion Starbase compute plant. SpaceX warns of a \"revenue cliff\"",
-      "at": "2026-11-19T17:10:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/spacex-cameron-county-tax-abatement.html",
-      "href": "/dispatch/spacex-cameron-county-tax-abatement.html",
-      "summary": "Cameron County commissioners voted 3–2 not to hold a hearing on a 10-year, 100% tax abatement for SpaceX's $24 billion Starbase compute plant. SpaceX warned of a revenue cliff. The 39% comparison is the author's estimate.",
-      "title": "Cameron County says no to SpaceX's 10-year tax break for its $24 billion Starbase compute plant. SpaceX warns of a \"revenue cliff\"",
-      "id": "logged|dispatch:/dispatch/spacex-cameron-county-tax-abatement.html|2026-11-19T17:10:00.000Z|Cameron County says no to SpaceX's 10-year tax break for its $24 billion Starbase compute plant. SpaceX warns of a \"revenue cliff\""
     },
     {
       "type": "changed",
@@ -2164,36 +2164,36 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-24T07:58:11.462Z",
+      "lastChecked": "2026-11-25T02:49:52.931Z",
       "lastVerified": "2026-11-17T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-24T07:58:11.462Z",
+      "lastChecked": "2026-11-25T02:49:52.931Z",
       "lastVerified": "2026-11-17T08:45:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
     {
       "tracker": "software",
       "href": "/updates.html",
-      "lastChecked": "2026-11-24T06:30:43.000Z",
-      "lastVerified": "2026-11-24T06:30:43.000Z",
+      "lastChecked": "2026-11-25T02:49:46.000Z",
+      "lastVerified": "2026-11-25T02:49:46.000Z",
       "note": "Source: Teslascope."
     },
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-24T07:58:11.462Z",
+      "lastChecked": "2026-11-25T02:49:52.931Z",
       "lastVerified": "2026-11-20T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-24T07:58:11.462Z",
-      "lastVerified": "2026-11-24T03:26:06.000Z",
+      "lastChecked": "2026-11-25T02:49:52.931Z",
+      "lastVerified": "2026-11-25T01:30:07.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
     {
@@ -2206,36 +2206,36 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-24T07:58:11.462Z",
+      "lastChecked": "2026-11-25T02:49:52.931Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-24T07:58:11.462Z",
+      "lastChecked": "2026-11-25T02:49:52.931Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-24T07:58:11.462Z",
+      "lastChecked": "2026-11-25T02:49:52.931Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-24T07:58:11.462Z",
+      "lastChecked": "2026-11-25T02:49:52.931Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-24T07:58:11.462Z",
-      "lastVerified": "2026-11-24T06:30:43.000Z",
+      "lastChecked": "2026-11-25T02:49:52.931Z",
+      "lastVerified": "2026-11-25T02:49:46.000Z",
       "note": "Your car details stay in this browser."
     }
   ],
@@ -2243,85 +2243,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.446Z",
-      "finished": "2026-11-24T07:58:11.446Z"
+      "started": "2026-11-25T02:49:52.907Z",
+      "finished": "2026-11-25T02:49:52.913Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.446Z",
-      "finished": "2026-11-24T07:58:11.446Z"
+      "started": "2026-11-25T02:49:52.913Z",
+      "finished": "2026-11-25T02:49:52.914Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.446Z",
-      "finished": "2026-11-24T07:58:11.446Z"
+      "started": "2026-11-25T02:49:52.914Z",
+      "finished": "2026-11-25T02:49:52.914Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.446Z",
-      "finished": "2026-11-24T07:58:11.454Z"
+      "started": "2026-11-25T02:49:52.914Z",
+      "finished": "2026-11-25T02:49:52.923Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.454Z",
-      "finished": "2026-11-24T07:58:11.457Z"
+      "started": "2026-11-25T02:49:52.923Z",
+      "finished": "2026-11-25T02:49:52.927Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.457Z",
-      "finished": "2026-11-24T07:58:11.459Z"
+      "started": "2026-11-25T02:49:52.927Z",
+      "finished": "2026-11-25T02:49:52.927Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.459Z",
-      "finished": "2026-11-24T07:58:11.459Z"
+      "started": "2026-11-25T02:49:52.927Z",
+      "finished": "2026-11-25T02:49:52.928Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.459Z",
-      "finished": "2026-11-24T07:58:11.460Z"
+      "started": "2026-11-25T02:49:52.928Z",
+      "finished": "2026-11-25T02:49:52.928Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.460Z",
-      "finished": "2026-11-24T07:58:11.460Z"
+      "started": "2026-11-25T02:49:52.928Z",
+      "finished": "2026-11-25T02:49:52.928Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.460Z",
-      "finished": "2026-11-24T07:58:11.461Z"
+      "started": "2026-11-25T02:49:52.928Z",
+      "finished": "2026-11-25T02:49:52.930Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.461Z",
-      "finished": "2026-11-24T07:58:11.462Z"
+      "started": "2026-11-25T02:49:52.930Z",
+      "finished": "2026-11-25T02:49:52.931Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.462Z",
-      "finished": "2026-11-24T07:58:11.462Z"
+      "started": "2026-11-25T02:49:52.931Z",
+      "finished": "2026-11-25T02:49:52.931Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-24T07:58:11.462Z",
-      "finished": "2026-11-24T07:58:11.462Z"
+      "started": "2026-11-25T02:49:52.931Z",
+      "finished": "2026-11-25T02:49:52.931Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-24T07:58:11.462Z",
+    "generatedAt": "2026-11-25T02:49:52.931Z",
     "factCount": 20,
     "changeCount": 108,
     "conflictCount": 2,

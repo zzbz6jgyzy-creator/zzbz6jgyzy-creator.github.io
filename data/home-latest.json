@@ -1,11 +1,46 @@
 {
  "cards": [
   {
+   "href": "/dispatch/grok-virginia-oregon-lawsuits.html",
+   "img": "/assets/dispatch/multnomah-courthouse-2025.jpg",
+   "tag": "Grok",
+   "h": "Virginia and Oregon sue SpaceX over Grok's sexualized images. Here's what the two complaints actually claim",
+   "p": "Two state attorneys general filed consumer-protection suits against SpaceX, SpaceXSI and X over Grok-generated sexual images, including of children. I read both complaints: the claims, the penalties allowed, and what X says in response."
+  },
+  {
+   "href": "/dispatch/tesla-robotaxi-6-million-miles.html",
+   "img": "/assets/dispatch/tesla-cybercab-zurich-blume-2026.jpg",
+   "tag": "Robotaxi",
+   "h": "Tesla's official Robotaxi page now shows more than 6 million autonomous miles. The last dated safety results still stop at 3.1 million on 18 Oct",
+   "p": "On 24 Nov, Tesla's live Robotaxi counter stood at more than 6.01 million autonomous miles. The official safety results still cover 22 Jan to 18 Oct, when the fleet had driven 3.1 million miles."
+  },
+  {
+   "href": "/dispatch/tesla-fsd-v15-first-wave.html",
+   "img": "/assets/dispatch/tesla-nav-screen-hero.jpg",
+   "tag": "FSD",
+   "h": "FSD v15 is in owners' cars. The release notes, who has it, and what \"25x\" actually measures",
+   "p": "Tesla started rolling out FSD (Supervised) v15.0.1 on Saturday, hours after Musk said wide release was next month. So far it's reaching HW4 Model Ys in the US. I went through the release notes and Tesla's three different ways of describing its 25x claim."
+  },
+  {
+   "href": "/dispatch/tesla-ai5-optimus-cars-stay-ai4.html",
+   "img": "/assets/dispatch/optimus-stockholm-ulkl.jpg",
+   "tag": "AI hardware",
+   "h": "Musk: AI5 goes to Optimus and cars stay on AI4. AI4.5 loses 8GB of planned RAM because memory got expensive",
+   "p": "Over one Sunday of replies on X, Elon Musk said Tesla's AI5 chip is going to Optimus, cars will remain on AI4, AI4 now costs twice as much because of memory prices, and the planned AI4.5 board was cut from 32GB to 24GB of RAM. Here's how that fits what Tesla said on its last two earnings calls."
+  },
+  {
+   "href": "/dispatch/tesla-polysilicon-robstown-3-1b.html",
+   "img": "/assets/dispatch/polysilicon-rod-roonguthai.jpg",
+   "tag": "Tesla / Energy",
+   "h": "Tesla wants a Texas tax break for a $3.1 billion polysilicon plant near Corpus Christi. Here's what its application says",
+   "p": "Tesla has applied under Texas's JETI program for a school-tax limit on a proposed $3.1 billion polysilicon refinery near Robstown in Nueces County. The filing promises 515 jobs by 2032 and says Tesla may build elsewhere without the incentive. I went through the numbers."
+  },
+  {
    "href": "/dispatch/spacex-pad-4e-32-hours.html",
    "img": "/assets/dispatch/vandenberg-ussf317-slc4e-ussf.jpg",
    "tag": "Falcon 9",
-   "h": "SpaceX turned pad 4E around in 32 hours. If Tuesday's launch goes on time, that's three national security missions in 3.5 days",
-   "p": "NROL-136 lifted off from Vandenberg's SLC-4E on Sunday, 32 hours after USSF-317, which SpaceX says is its fastest turnaround between launches from the same pad. USSF-266 is next from the same pad on Tuesday, on a booster making its 29th flight."
+   "h": "SpaceX turned pad 4E around in 32 hours. USSF-266 made three national security missions from the pad in about 83 hours 48 minutes",
+   "p": "NROL-136 lifted off from Vandenberg's SLC-4E on Sunday, 32 hours after USSF-317, which SpaceX says is its fastest turnaround between launches from the same pad. USSF-266 launched from the same pad at 11:08am ET on Tuesday, and the booster landed on Of Course I Still Love You on its 29th flight."
   },
   {
    "href": "/dispatch/tesla-starlink-every-model.html",
@@ -20,41 +55,6 @@
    "tag": "Arizona",
    "h": "Arizona's attorney general wants Cochise County to hold off on SpaceX's 6 GW campus vote",
    "p": "In a 19 Nov letter, Attorney General Kris Mayes asked the Cochise County Planning and Zoning Commission to delay its 9 Dec vote on SpaceX's special use permit SU26-22 until state and federal regulators have reviewed it. A town hall is set for 3 Dec."
-  },
-  {
-   "href": "/dispatch/spacex-louisiana-coastal-permit.html",
-   "img": "/assets/dispatch/pecan-island-marsh-map-commons.jpg",
-   "tag": "Louisiana",
-   "h": "SpaceX has applied to excavate 5.2 million cubic yards at Pecan Island. Louisiana has opened public comment through 16 Dec",
-   "p": "The state's official public notice for coastal use permit P20260831 describes a Gulf wharf, barge docks, dredging and an access road at the end of Highway 3147. The application is under review, not approved. How to comment by 16 Dec."
-  },
-  {
-   "href": "/dispatch/tesla-italy-assisted-driving-approval.html",
-   "img": "/assets/dispatch/tesla-model-3-salcedo-vicenza.jpg",
-   "tag": "FSD in Europe",
-   "h": "Italy approves Tesla Assisted Driving, the 12th EU country and the first big one. The EU math still doesn't add up",
-   "p": "Italy's transport ministry gave Tesla's supervised Assisted Driving a provisional approval ahead of the EU process. It's the 12th EU country and the first of the big four, taking the group from 15.5% to 28.6% of the EU population."
-  },
-  {
-   "href": "/dispatch/spacex-mexico-starship-debris.html",
-   "img": "/assets/dispatch/playa-bagdad-matamoros.jpg",
-   "tag": "Starship",
-   "h": "Mexico has collected 5.9 kg of debris after Flight 15. SpaceX says most of the viral posts are fabrications",
-   "p": "Mexico's Profepa says 5.9 kg of debris has been collected after Flight 15, while SpaceX says most viral posts are fabrications."
-  },
-  {
-   "href": "/dispatch/tesla-korea-fsd-five-pages.html",
-   "img": "/assets/dispatch/tesla-model-y-seoul-commons.jpg",
-   "tag": "FSD",
-   "h": "South Korea won't review Tesla's FSD request for Shanghai-built cars yet. Tesla sent five pages by email",
-   "p": "South Korea's transport ministry says Tesla's FSD exemption application for Shanghai-built cars isn't ready for review, after Tesla emailed five pages."
-  },
-  {
-   "href": "/dispatch/anthropic-ipo-close-record.html",
-   "img": "/assets/dispatch/nasdaq-marketsite-tower-2021.jpg",
-   "tag": "AI",
-   "h": "Anthropic closes its IPO at $93.5 billion and takes SpaceX's record outright. Its new cash nearly matches its SpaceX compute deal",
-   "p": "Anthropic's IPO closed at about $93.5 billion after underwriters bought all 147 million optional shares, passing SpaceX's record, and a $26 billion placement takes its new cash close to its SpaceX compute deal."
   }
  ],
  "pins": [
@@ -69,8 +69,38 @@
  ],
  "stories": [
   {
+   "url": "/dispatch/grok-virginia-oregon-lawsuits.html",
+   "title": "Virginia and Oregon sue SpaceX over Grok's sexualized images. Here's what the two complaints actually claim",
+   "tag": "Grok",
+   "date": "2026-11-24T17:18:00Z"
+  },
+  {
+   "url": "/dispatch/tesla-robotaxi-6-million-miles.html",
+   "title": "Tesla's official Robotaxi page now shows more than 6 million autonomous miles. The last dated safety results still stop at 3.1 million on 18 Oct",
+   "tag": "Robotaxi",
+   "date": "2026-11-24T17:16:00Z"
+  },
+  {
+   "url": "/dispatch/tesla-fsd-v15-first-wave.html",
+   "title": "FSD v15 is in owners' cars. The release notes, who has it, and what \"25x\" actually measures",
+   "tag": "FSD",
+   "date": "2026-11-24T17:14:00Z"
+  },
+  {
+   "url": "/dispatch/tesla-ai5-optimus-cars-stay-ai4.html",
+   "title": "Musk: AI5 goes to Optimus and cars stay on AI4. AI4.5 loses 8GB of planned RAM because memory got expensive",
+   "tag": "AI hardware",
+   "date": "2026-11-24T17:12:00Z"
+  },
+  {
+   "url": "/dispatch/tesla-polysilicon-robstown-3-1b.html",
+   "title": "Tesla wants a Texas tax break for a $3.1 billion polysilicon plant near Corpus Christi. Here's what its application says",
+   "tag": "Tesla / Energy",
+   "date": "2026-11-24T17:10:00Z"
+  },
+  {
    "url": "/dispatch/spacex-pad-4e-32-hours.html",
-   "title": "SpaceX turned pad 4E around in 32 hours. If Tuesday's launch goes on time, that's three national security missions in 3.5 days",
+   "title": "SpaceX turned pad 4E around in 32 hours. USSF-266 made three national security missions from the pad in about 83 hours 48 minutes",
    "tag": "Falcon 9",
    "date": "2026-11-23T17:12:00Z"
   },

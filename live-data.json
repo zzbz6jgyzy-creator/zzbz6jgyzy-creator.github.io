@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T17:12:00+00:00",
+  "updated": "2026-11-24T17:20:00+00:00",
   "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. RULE: once the official stream is known, fallbackUrl MUST be the direct stream URL (YouTube watch URL, or x.com/i/broadcasts/... for X-only) and postUrl the official broadcast post; never a profile page.",
   "events": [
     {
@@ -208,18 +208,18 @@
       "id": "f9-ussf266",
       "title": "Falcon 9 · USSF-266",
       "page": "starship",
-      "start": "2026-11-24T07:55:00-08:00",
-      "end": "2026-11-24T11:55:00-08:00",
-      "status": "scheduled",
+      "start": "2026-11-24T08:08:59-08:00",
+      "end": "2026-11-24T08:25:00-08:00",
+      "status": "ended",
       "provider": "link",
       "embedId": "",
-      "postUrl": "https://www.spacex.com/launches/ussf266",
+      "postUrl": "https://x.com/SpaceX/status/2125260653560562086",
       "fallbackUrl": "https://www.spacex.com/launches/ussf266",
-      "fallbackLabel": "Webcast on spacex.com and X (@SpaceX)",
+      "fallbackLabel": "SpaceX mission page and @SpaceX posts",
       "source": "https://ll.thespacedevs.com/2.3.0/launches/460d9db7-eaf6-4cd9-b095-cff433534c09/",
       "image": "/assets/live/falcon9.jpg",
       "imageCredit": "Photo: U.S. Space Force/Senior Airman Samuel Becker, public domain",
-      "description": "SpaceX is targeting Tuesday 24 Nov for Falcon 9 USSF-266 from SLC-4E at Vandenberg. The four-hour window opens at 7:55 a.m. PT (15:55 UTC / 10:55 a.m. ET); backup is Wednesday 25 Nov at 7:46 a.m. PT (10:46 a.m. ET). The booster is on its 29th flight and will land on Of Course I Still Love You. Webcast starts about 10 minutes before liftoff. Direct X broadcast URL not posted yet.",
+      "description": "USSF-266 launched from SLC-4E at Vandenberg at 11:08:59 a.m. ET (8:08:59 a.m. PT / 16:08:59 UTC) on Tuesday, 24 Nov 2026, after SpaceX moved the window open from 10:55 a.m. ET. Falcon 9 first stage B1081 landed on Of Course I Still Love You on its 29th flight. Liftoff time and booster landing are from Launch Library 2 and official @SpaceX posts. SpaceX's mission page still used future tense when checked after liftoff. This entry is the livestream window, now ended; it does not claim the upper stage mission has been confirmed complete.",
       "descSource": "https://www.spacex.com/launches/ussf266"
     },
     {

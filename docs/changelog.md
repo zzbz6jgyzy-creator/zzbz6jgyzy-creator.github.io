@@ -5,6 +5,15 @@
 - The design preview pipeline is gone (`/preview/` went live on 23 Nov): its builder, daily refresh, stub stylesheet and the skip lines in nine tools. Its checks stay, renamed and pointed at the live pages: `tests/design-system.test.mjs` and `tests/design-acceptance-browser.py`.
 - Production no longer renders a hidden copy of the old hero's quarter spotlight; the masthead's stats row shows the picked quarter.
 - Hub photo captions are decoded once before escaping (a latent "&amp;amp;"; no caption had one).
+## 24 Nov 2026
+
+- Dispatch: Tesla's official Robotaxi pages showed more than 6.01 million miles driven autonomously as of late morning ET on 24 Nov. The official safety results still cover 22 Jan–18 Oct 2026 (3.1 million miles). The hero is Matti Blume's Auto Zürich Cybercab photo, CC BY-SA 4.0; the caption notes it is a show car, not a Robotaxi in the eight U.S. service cities.
+- Dispatch: Virginia and Oregon filed consumer-protection lawsuits over Grok-generated sexual images, including of children. These are allegations; no court has ruled and the companies had not filed a response when the piece was checked. The hero is a licensed Commons photo of the Multnomah County Central Courthouse (PortlandAppraisalBlog, CC BY-SA 4.0).
+- Dispatch: Tesla started rolling out FSD (Supervised) v15.0.1 to a first wave of HW4 Model Ys in the US on 21 Nov. The piece is embed-led from Tesla's official post and covers the release notes and three different 25x wordings. No new hero; the Dispatch card uses the existing licensed nav-screen photo (SirAsdof, CC BY-SA 4.0).
+- Dispatch: Elon Musk said AI5 is going to Optimus, cars will remain on AI4, and the planned AI4.5 board was cut from 32GB to 24GB of RAM. These are CEO posts, not a Tesla hardware roadmap. The hero is Ulf Klingström's May 2024 Stockholm Optimus display photo, public domain; the caption notes earlier-generation units.
+- Dispatch: Tesla applied under Texas's JETI program for a school-tax limit on a proposed $3.1 billion polysilicon plant near Robstown. This is an application, not an approval. The hero is Warut Roonguthai's Siemens-process polysilicon rod photo, CC BY-SA 3.0; the caption notes it is a generic sample, not Tesla material.
+- Update: USSF-266 launched from pad 4E at 11:08am ET / 8:08am PT on 24 Nov, after SpaceX moved the window open from 10:55am ET, and booster B1081 landed on Of Course I Still Love You on its 29th flight. The pad-4E article, homepage livestream card and SpaceX hub next-opening card have been refreshed; USSF-380 (29 Nov, 04:39 UTC) is now the next timed opening.
+- FSD guide and tracker: the 21 Nov FSD v15 rollout lines now cite Tesla's official post and the first-wave Dispatch piece, not a secondary write-up.
 
 ## 23 Nov 2026 — Redesign step 5: the switch
 

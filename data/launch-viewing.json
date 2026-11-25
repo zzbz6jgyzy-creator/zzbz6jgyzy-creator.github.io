@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-24T04:44:47Z",
+ "checked": "2026-11-25T09:48:36Z",
  "editorialUpdated": "2026-11-17T08:45:00+00:00",
  "presets": [
   {
@@ -295,6 +295,31 @@
     "lon": -80.6043,
     "az": 48,
     "coast": "east"
+   }
+  },
+  {
+   "id": "ll-sda-t1a",
+   "title": "Falcon 9 · SDA Tranche 1 Transport Layer A",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-10-10T07:39:44Z",
+   "end": "",
+   "date": "2026-10-10",
+   "precision": "day",
+   "status": "done",
+   "note": "Launched 10 Oct at 07:39 UTC — SpaceX confirmed the fourth SDA Tranche 1 transport launch on X.",
+   "where": "Vandenberg · SLC-4E",
+   "href": "",
+   "sources": [],
+   "origin": "Editorial calendar",
+   "pad": {
+    "id": "slc4e",
+    "name": "Vandenberg · SLC-4E",
+    "short": "Vandenberg",
+    "lat": 34.632,
+    "lon": -120.611,
+    "az": 186,
+    "coast": "west"
    }
   },
   {
@@ -750,31 +775,23 @@
    "end": "",
    "date": "2026-11-24",
    "precision": "datetime",
-   "status": "Go",
-   "note": "Government/Top Secret · Polar Orbit",
-   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "status": "done",
+   "note": "Launch Library 2 schedule. Launch targets can change.",
+   "where": "",
    "href": "",
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "460d9db7-eaf6-4cd9-b095-cff433534c09",
    "windowStart": "2026-11-24T15:55:00Z",
    "windowEnd": "2026-11-24T19:55:00Z",
-   "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "Go for Launch",
+   "vehicle": "",
+   "providerStatus": "Launch Successful",
    "coverage": {
     "url": "https://www.spacex.com/launches/ussf266",
     "article": "",
-    "status": "scheduled"
+    "status": "ended"
    },
-   "pad": {
-    "id": "slc4e",
-    "name": "Vandenberg · SLC-4E",
-    "short": "Vandenberg",
-    "lat": 34.632,
-    "lon": -120.611,
-    "az": 186,
-    "coast": "west"
-   }
+   "pad": null
   },
   {
    "id": "ussf-380",
@@ -811,7 +828,7 @@
    "title": "Falcon 9 Block 5 | Cygnus CRS-2 NG-25",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-29T15:50:00Z",
+   "start": "2026-11-29T15:47:00Z",
    "end": "",
    "date": "2026-11-29",
    "precision": "datetime",
@@ -822,8 +839,8 @@
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
-   "windowStart": "2026-11-29T15:50:00Z",
-   "windowEnd": "2026-11-29T15:50:00Z",
+   "windowStart": "2026-11-29T15:47:00Z",
+   "windowEnd": "2026-11-29T15:47:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch",
    "pad": {
