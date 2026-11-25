@@ -728,12 +728,12 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/cell-tower-jefferson-wi.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>Tracker: Texas Cybercab registrations</title>
+      <title>Tracker: Texas Cybercab count</title>
       <link>https://superchargeddaily.com/cybercab.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/cybercab.html#changed-robotaxi:tx-cybercab-2026-11-25T00:00:00.000Z-822</guid>
       <pubDate>Wed, 25 Nov 2026 00:00:00 +0000</pubDate>
       <category>robotaxi</category>
-      <description>Texas Cybercab registrations changed from 773 to 822.</description>
+      <description>Texas Cybercab registrations moved from 773 to 822. A registered car isn’t necessarily in service yet.</description>
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
@@ -766,14 +766,6 @@
       <pubDate>Tue, 17 Nov 2026 09:18:46 +0000</pubDate>
       <category>software</category>
       <description>2026.38.5.13 moved from 422 to 523 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
-    </item>
-    <item>
-      <title>Tracker: Texas Cybercab count</title>
-      <link>https://superchargeddaily.com/cybercab.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/cybercab.html#changed-robotaxi:tx-cybercab-2026-11-17T00:00:00.000Z-773</guid>
-      <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
-      <category>robotaxi</category>
-      <description>Texas Cybercab registrations moved from 573 to 773. A registered car isn’t necessarily in service yet.</description>
     </item>
     <item>
       <title>Tracker: Flight 15 change</title>
@@ -822,6 +814,14 @@
       <pubDate>Fri, 30 Oct 2026 01:08:18 +0000</pubDate>
       <category>software</category>
       <description>2026.38.6.1 first appeared in the Teslascope sample with 16 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
+    </item>
+    <item>
+      <title>Tracker: LV · statement</title>
+      <link>https://superchargeddaily.com/fsd-europe.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/fsd-europe.html#logged-fsd:country:LV-2026-10-26T00:00:00.000Z-Tesla-Europe:-Now-approved-in-Lat</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>fsd</category>
+      <description>Tesla Europe: &quot;Now approved in Latvia. Rollout begins soon.&quot; No date given.</description>
     </item>
   </channel>
 </rss>

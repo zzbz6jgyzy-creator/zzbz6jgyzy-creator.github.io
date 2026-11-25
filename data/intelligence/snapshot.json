@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T15:55:44.578Z",
+  "generatedAt": "2026-11-25T17:51:59.692Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -204,7 +204,7 @@
       "field": "eu-approved",
       "value": "9",
       "label": "EU markets listed by Tesla",
-      "at": "2026-11-20T00:00:00.000Z",
+      "at": "2026-11-25T00:00:00.000Z",
       "evidence": "company_claim",
       "source": "Tesla market availability, curated in the FSD Europe tracker",
       "sourceUrl": "",
