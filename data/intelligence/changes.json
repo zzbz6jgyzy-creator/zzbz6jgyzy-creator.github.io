@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-25T17:51:59.692Z",
+  "updated": "2026-11-25T20:43:43.004Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:most-common",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "most-common",
+      "previous": "2026.38.5.11@30.9",
+      "next": "2026.38.5.11@30.8",
+      "at": "2026-11-25T20:43:37.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Most common sample build changed from 2026.38.5.11@30.9 to 2026.38.5.11@30.8.",
+      "title": "Most common sample build",
+      "id": "changed|tesla-software:most-common|2026-11-25T20:43:37.000Z|2026.38.5.11@30.8"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/grok-voice-innovaccer-5-million.html",
@@ -102,6 +119,23 @@
       "summary": "A European Commission spokesperson told Reuters on 25 Nov 2026 that the EU meeting expected to consider bloc-wide approval of Tesla Assisted Driving has been postponed until December 15. A rejection at EU level would invalidate the national approvals already granted. No reason was given.",
       "title": "The EU has postponed its Tesla Assisted Driving meeting to December 15. A rejection would invalidate national approvals already granted",
       "id": "logged|dispatch:/dispatch/eu-tad-postponed-december-15.html|2026-11-25T17:06:00.000Z|The EU has postponed its Tesla Assisted Driving meeting to December 15. A rejection would invalidate national approvals already granted"
+    },
+    {
+      "type": "changed",
+      "factId": "starlink:in-orbit",
+      "topic": "starlink",
+      "tracker": "starlink",
+      "field": "in-orbit",
+      "previous": "11203",
+      "next": "11198",
+      "at": "2026-11-25T02:06:53.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Jonathan McDowell Starlink statistics",
+      "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
+      "href": "/starlink.html",
+      "summary": "Starlink in orbit changed from 11203 to 11198.",
+      "title": "Starlink in orbit",
+      "id": "changed|starlink:in-orbit|2026-11-25T02:06:53.000Z|11198"
     },
     {
       "type": "changed",
