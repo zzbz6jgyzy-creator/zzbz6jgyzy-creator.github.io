@@ -15,7 +15,7 @@ const require = createRequire(import.meta.url);
 let sharp; try { sharp = require("sharp"); } catch { sharp = require(path.join(process.env.SHARP_DIR || "/workspace/audit", "node_modules/sharp")); }
 const ROOT = path.dirname(path.dirname(new URL(import.meta.url).pathname));
 const DRY = process.argv.includes("--dry");
-const SKIP = [/^index\.html$/, /^wallpapers\.html$/, /^404\.html$/, /^goldcab\.html$/, /roadster/, /^preview\//];
+const SKIP = [/^index\.html$/, /^wallpapers\.html$/, /^404\.html$/, /^goldcab\.html$/, /roadster/];
 const WIDTHS = [480, 960, 1600];
 const SIZES = "(max-width: 760px) 100vw, 1040px";
 

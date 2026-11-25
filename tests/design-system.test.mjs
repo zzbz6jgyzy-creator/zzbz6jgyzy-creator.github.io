@@ -1,12 +1,12 @@
-// Redesign foundation: shared renderers, token contrast, the preview builder's HTML helpers, the homepage preview's
-// structure and the exclusions that keep /preview/ out of search, the sitemap and live tooling. See docs/design-system.md.
+// Design system: shared renderers, token contrast, the page-transform helpers in scripts/ds-pages.mjs, and the
+// news-first structure of the live homepage, lists, articles, hubs and trackers. See docs/design-system.md.
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
-import { findElement, one, between, replaceOnce, children, htmlText, newestDate, articles, PAGES } from "../scripts/build-design-preview.mjs";
+import { findElement, one, between, replaceOnce, children, htmlText, newestDate } from "../scripts/ds-pages.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
@@ -103,7 +103,7 @@ test("ds.css declares the tested tokens and never ships text below 12px", () => 
   assert.equal(scale.length, 8, "the type scale has 8 steps");
   for (const [, name, rem] of scale) assert.equal(Number(rem) * 16, Number(name), `--ds-fs-${name} is ${rem}rem`);
   assert.match(css, /--ds-fs-display: clamp\(2rem,/, "display type never starts below 32px");
-  for (const file of ["ds.css", "ds-preview.css"]) {
+  for (const file of ["ds.css"]) {
     const src = read(file);
     for (const m of src.matchAll(/font-size:\s*([\d.]+)(px|rem)/g)) assert.ok(Number(m[1]) * (m[2] === "rem" ? 16 : 1) >= 12, `${file}: ${m[0]}`);
     for (const m of src.matchAll(/font:\s*(\d{3})\s/g)) assert.ok(Number(m[1]) <= 700, `${file} asks for weight ${m[1]}, which Inter does not ship`);
@@ -112,7 +112,7 @@ test("ds.css declares the tested tokens and never ships text below 12px", () => 
   }
 });
 
-// ---- Builder helpers ----------------------------------------------------------------------------
+// ---- Page-transform helpers ----------------------------------------------------------------------------
 test("element extraction balances nested tags and skips scripts and comments", () => {
   const html = '<main><div class="a"><div>1</div><!-- <div> --><script>const s="<div>";</script><div>2</div></div><div class="b"></div></main>';
   const r = findElement(html, /<div class="a"/);
@@ -124,15 +124,7 @@ test("element extraction balances nested tags and skips scripts and comments", (
   assert.throws(() => replaceOnce("aa", "a", "b"), /not unique/);
 });
 
-test("articles keep a picture set only when its 480w files exist", () => {
-  const list = articles();
-  assert.ok(list.length > 10);
-  for (const a of list.filter((x) => x.picture)) {
-    for (const ext of ["avif", "webp"]) assert.ok(fs.existsSync(path.join(ROOT, `${a.picture.base}-480w.${ext}`.replace(/^\//, ""))), a.url);
-  }
-});
-
-// ---- Homepage (switched to the news-first layout on 23 Nov 2026; its preview retired) ------------------------
+// ---- Homepage ------------------------
 const home = read("index.html");
 const main = home.match(/<main\b[\s\S]*?<\/main>/)[0];
 
@@ -175,7 +167,7 @@ test("the homepage keeps every hook home-v2.js, home-studio.js and the bots use"
   assert.ok(preload.includes(`imagesrcset="${leadSrcset}"`) && /fetchpriority="high"/.test(preload), "the preload is the lead image");
 });
 
-// ---- Committed previews and exclusions --------------------------------------------------------------
+// ---- Lists, articles, hubs and trackers --------------------------------------------------------------
 test("child scan skips text and comments and handles void and script elements", () => {
   const html = '<article> x <!-- <p> --><p class="a">1<p2></p><img src="/a.png"><script>let t="<p>";</script><figure><figure></figure></figure></article>';
   const kids = children(html, "<article>".length, html.length - "</article>".length);
@@ -206,12 +198,6 @@ for (const slug of ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-
 
 const ids = (html) => new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
 const hooks = (html, prefix) => new Set([...html.matchAll(new RegExp(`\\s(${prefix}[\\w-]*)`, "g"))].map((m) => m[1]));
-const hidden = (html) => {
-  assert.match(html, /<meta name="robots" content="noindex, nofollow" \/>/);
-  assert.equal((html.match(/<meta name="robots"/g) || []).length, 1);
-  assert.match(html, /<title>Preview · /);
-  assert.match(html, /class="ds-preview-flag"/);
-};
 
 test("htmlText drops tags and decodes entities", () => {
   assert.equal(htmlText("Tesla&#x27;s <b>FSD</b> &amp; Grok&nbsp;news"), "Tesla's FSD & Grok news");
@@ -303,7 +289,7 @@ const TRACKERS = [
   { file: "cybercab", title: "Cybercab fleet", inMast: ['class="ds-band"', "Texas registry as of"] },
   { file: "calendar", title: "Launch calendar", inMast: ["Launch times as of"] },
   { file: "starlink", title: "Starlink tracker", inMast: ['class="so-source-strip"', 'class="so-metrics"'] },
-  { file: "production", title: "Tesla production and deliveries", inMast: ['id="pd-quarter"', 'id="pd-stats"', 'id="pd-spotlight"', 'id="pd-view-note"'] },
+  { file: "production", title: "Tesla production and deliveries", inMast: ['id="pd-quarter"', 'id="pd-stats"', 'id="pd-view-note"'] },
 ];
 for (const t of TRACKERS) {
   test(`${t.file} tracker: plain title and its own key numbers in the masthead`, () => {
@@ -328,7 +314,7 @@ test("trackers keep the script contracts the plan names", () => {
   const ws = sl.indexOf('<div class="so-workspace"');
   assert.ok(ws > -1 && sl.indexOf('<header class="ds-masthead') > ws, "the Starlink masthead is inside .so-workspace");
   assert.match(sl, /<section class="so-hero" id="overview"[^>]*>[\s\S]*?<h2 id="so-title"/, "#overview stays, with its old h1 as an h2");
-  assert.match(read("production.html"), /<div hidden><div class="pd-spotlight" id="pd-spotlight">/, "#pd-spotlight stays for production-studio.js, hidden");
+  assert.doesNotMatch(read("production.html"), /id="pd-spotlight"/, "the old hero's spotlight is gone; the stats row shows the quarter");
 });
 
 test("no nav menu list repeats a link, Grok has a menu, and every link resolves", () => {
@@ -346,22 +332,5 @@ test("no nav menu list repeats a link, Grok has a menu, and every link resolves"
       assert.ok(fs.existsSync(path.join(ROOT, rel)), h + " points to a missing page");
       if (hash) assert.ok(read(rel).includes(`id="${hash}"`), h + " points to a missing anchor");
     }
-  }
-});
-
-
-
-test("previews stay out of robots, the sitemaps, search and live tooling", () => {
-  assert.match(read("robots.txt"), /^Disallow: \/preview\/$/m);
-  for (const f of ["sitemap.xml", "sitemap-news.xml", "data/pages.json", "feed.xml"]) {
-    if (fs.existsSync(path.join(ROOT, f))) assert.ok(!read(f).includes("/preview/"), f + " lists a preview page");
-  }
-  assert.match(read("scripts/check-site-integrity.py"), /"preview\/"\)/);
-  assert.match(read("scripts/sync-nav.py"), /parts\[:1\]==\('preview',\): continue/);
-  assert.match(read("scripts/inject-js-bundles.py"), /if rel\.startswith\("preview\/"\):\n\s+# Design preview[^\n]*\n\s+rel = rel\[len\("preview\/"\):\]/);
-  assert.match(read("scripts/indexnow-ping.py"), /"scripts\/", "preview\/"/);
-  assert.match(read("scripts/sync-footer.py"), /^SKIP = \([^)]*"preview\/"/m, "the footer sync (run by build-articles.py on main) leaves previews alone");
-  for (const wf of ["home-build.yml", "news-snapshot.yml", "starlink-refresh.yml"]) {
-    assert.match(read(".github/workflows/" + wf), /\[ -d preview \] && git add -A -- preview \|\| true/, wf + " stages preview bundle updates");
   }
 });

@@ -25,14 +25,11 @@ html[data-theme="light"] .pn-sheet-head > img {
 }
 
 html[data-theme="light"] body { background: var(--bg); color: var(--ink); }
-html[data-theme="light"] .topbar { background: rgba(243, 241, 236, 0.9); }
-html[data-theme="light"] .latest-card { background: rgba(255, 255, 255, 0.86); }
 html[data-theme="light"] .latest-strip-head a:hover,
 html[data-theme="light"] .world-board h3 a:hover,
 html[data-theme="light"] .review-video-caption a:hover,
 html[data-theme="light"] .art-more:hover { color: var(--hover-ink); }
 html[data-theme="light"] .button-ghost:hover { color: var(--hover-ink); }
-html[data-theme="light"] .nav-cta:hover { background: var(--ink); color: var(--bg) !important; }
 
 /* Nav pill + sheet */
 html[data-theme="light"] .pn {
@@ -58,7 +55,6 @@ html[data-theme="light"] .pn-panel a { color: #2a2c31; }
 html[data-theme="light"] .pn-panel a:hover,
 html[data-theme="light"] .pn-panel a:focus-visible { color: var(--ink); }
 html[data-theme="light"] .pn-panel a small { color: #5c6067; }
-html[data-theme="light"] .pn-icon { color: var(--ink); }
 html[data-theme="light"] .pn-menu { background: rgba(22, 23, 27, 0.06); color: var(--ink); }
 html[data-theme="light"] .pn-overlay { background: var(--overlay); }
 html[data-theme="light"] .pn-sheet {
@@ -76,7 +72,6 @@ html[data-theme="light"] .pn a.pn-sub {
   background: #fff;
   box-shadow: inset 0 0 0 1px rgba(227, 25, 55, 0.7);
 }
-html[data-theme="light"] .pn-credit { color: #7a7d84; }
 
 html[data-theme="light"] .pn-sheet .pn-theme-sheet { border-color: var(--glass-line); color: #2a2c31; }
 html[data-theme="light"] .pn-sheet .pn-theme-sheet:hover { background: rgba(227, 25, 55, 0.12); }
@@ -115,9 +110,6 @@ html[data-theme="light"] .sd-search-page .sd-find-hit {
 /* Homepage */
 html[data-theme="light"] body.home-x { background: var(--bg); color: var(--ink); }
 html[data-theme="light"] .hv { color: var(--ink); }
-html[data-theme="light"] .hv-mast { border-bottom-color: var(--line); }
-html[data-theme="light"] .hv-date { color: var(--mute); }
-html[data-theme="light"] .hv-title { color: var(--ink); }
 html[data-theme="light"] .hv-pitch { color: var(--ink-soft); }
 html[data-theme="light"] .hv-lead,
 html[data-theme="light"] .hv-feat-card,
@@ -148,8 +140,6 @@ html[data-theme="light"] .hv-t-k,
 html[data-theme="light"] .hv-ex-k,
 html[data-theme="light"] .hv-c-w { color: var(--mute); }
 html[data-theme="light"] .hv-head a:hover { color: var(--ink); }
-html[data-theme="light"] .hv-feat-promise { background: linear-gradient(135deg, rgba(227, 25, 55, 0.1), transparent 58%), #fff; }
-html[data-theme="light"] .hv-feat-sky { background: linear-gradient(160deg, rgba(22, 23, 27, 0.03), transparent 55%), #fff; }
 html[data-theme="light"] .hv-list li { border-bottom-color: var(--line); }
 html[data-theme="light"] .hv-f-h { color: #2a2c31; }
 html[data-theme="light"] .hv-list .hv-f-off:hover .hv-f-h { color: var(--ink); }
@@ -175,7 +165,6 @@ html[data-theme="light"] .sd-crumbs a { color: var(--ink-soft); }
 html[data-theme="light"] .sd-crumbs a:hover,
 html[data-theme="light"] .sd-crumbs [aria-current="page"] { color: var(--ink); }
 html[data-theme="light"] .sd-about p { color: var(--ink-soft); }
-html[data-theme="light"] .art-x .art-tag { background: rgba(22, 23, 27, 0.06); border-color: rgba(22, 23, 27, 0.16); }
 
 /* Newsletter / growth — keep Tesla red, lift the paper */
 html[data-theme="light"] .newsletter {
@@ -187,25 +176,7 @@ html[data-theme="light"] .newsletter h2 { color: var(--ink); }
 html[data-theme="light"] .newsletter .newsletter-tagline,
 html[data-theme="light"] .newsletter .newsletter-fine,
 html[data-theme="light"] .newsletter-status { color: var(--ink-soft); }
-html[data-theme="light"] .newsletter-form {
-  background: var(--surface-2);
-  border-color: var(--line);
-}
-html[data-theme="light"] .newsletter-form input[type="email"] { color: var(--ink); }
-html[data-theme="light"] .newsletter-form input[type="email"]::placeholder { color: var(--mute); }
-html[data-theme="light"] .nl-end-in {
-  background: linear-gradient(135deg, rgba(227, 25, 55, 0.08), rgba(255, 255, 255, 0.6) 55%), #fff;
-  border-color: var(--line);
-  box-shadow: var(--shadow);
-}
 html[data-theme="light"] .nl-end h2 { color: var(--ink); }
-html[data-theme="light"] .nl-end-sub,
-html[data-theme="light"] .nl-end-status { color: var(--ink-soft); }
-html[data-theme="light"] .nl-end-form input[type="email"] {
-  background: #fff;
-  color: var(--ink);
-  border-color: var(--line);
-}
 html[data-theme="light"] .sd-ref {
   background: linear-gradient(135deg, rgba(227, 25, 55, 0.1), #fff 60%);
   color: var(--ink);
@@ -229,19 +200,6 @@ html[data-theme="light"] .sd-fine,
 html[data-theme="light"] .ref-note { color: var(--mute) !important; }
 
 /* Tesla hub — photo heroes stay cinematic */
-html[data-theme="light"] .tz-hero,
-html[data-theme="light"] .tz-hero-copy,
-html[data-theme="light"] .gk-hero,
-html[data-theme="light"] .gs-hero { color: #f4f4f2; }
-html[data-theme="light"] .tz-lede { color: #d9d9d6; }
-html[data-theme="light"] .tz-credit { color: rgba(255, 255, 255, 0.55); }
-html[data-theme="light"] .tz-hero .button-ghost,
-html[data-theme="light"] .tz-hero .button { color: #f4f4f2; }
-html[data-theme="light"] .tz-jump { background: rgba(243, 241, 236, 0.94); }
-html[data-theme="light"] .tz-photo figcaption { color: var(--mute); }
-html[data-theme="light"] .tz-band {
-  background: linear-gradient(120deg, rgba(227, 25, 55, 0.1), #fff 55%);
-}
 
 /* Roadster — hero/flight stay black; page chrome lifts */
 html[data-theme="light"] .rd-page {
@@ -250,16 +208,6 @@ html[data-theme="light"] .rd-page {
   --line: rgba(22, 23, 27, 0.1);
   background: var(--bg);
 }
-html[data-theme="light"] .rd-embed,
-html[data-theme="light"] .rd-tabs,
-html[data-theme="light"] .rd-money li,
-html[data-theme="light"] .rd-card {
-  background: var(--card);
-}
-html[data-theme="light"] .rd-panels {
-  background: radial-gradient(90% 120% at 100% 0%, rgba(232, 33, 39, 0.1), transparent 55%), #fff;
-}
-html[data-theme="light"] .rd-tabs { border-color: var(--line); }
 
 /* Shared inputs / chips */
 html[data-theme="light"] .mt-field select,
@@ -293,52 +241,8 @@ html[data-theme="light"] .vx-controls button {
 html[data-theme="light"] .sl-id-suggest,
 html[data-theme="light"] .see-suggest,
 html[data-theme="light"] .tc-suggest { background: #fff; }
-html[data-theme="light"] .see-empty,
-html[data-theme="light"] .tc-idle { color: var(--ink-soft); }
-html[data-theme="light"] .vx-tabs button[aria-selected="true"],
-html[data-theme="light"] .vx-jump a:hover,
-html[data-theme="light"] .vx-jump a.is-on { color: var(--ink); }
-html[data-theme="light"] .vx-tabs button[aria-selected="true"] small { color: var(--ink-soft); }
-html[data-theme="light"] .vx-jump {
-  background: linear-gradient(var(--bg) 70%, rgba(243, 241, 236, 0));
-}
-html[data-theme="light"] .vx-caption,
-html[data-theme="light"] .vx-controls {
-  background: var(--card);
-  color: var(--ink);
-}
-html[data-theme="light"] .vx-share a:hover,
-html[data-theme="light"] .vx-share button:hover,
-html[data-theme="light"] .vx-more a:hover { border-color: var(--ink); color: var(--ink); }
-html[data-theme="light"] .vx-pill.off { background: rgba(22, 23, 27, 0.06); color: var(--mute); }
 
 /* Buying advisor */
-html[data-theme="light"] .sd-calc {
-  background: var(--card);
-  border-color: var(--line);
-}
-html[data-theme="light"] .sd-calc-car,
-html[data-theme="light"] .sd-calc input,
-html[data-theme="light"] .sd-calc select,
-html[data-theme="light"] .sd-calc-cmp-card {
-  background: var(--surface-2);
-  border-color: var(--line);
-  color: var(--ink);
-}
-html[data-theme="light"] .sd-calc-car small,
-html[data-theme="light"] .sd-calc label,
-html[data-theme="light"] .sd-calc-hint,
-html[data-theme="light"] .sd-calc-out dt,
-html[data-theme="light"] .sd-calc-cmp-card span,
-html[data-theme="light"] .sd-calc-cmp-card small { color: var(--mute); }
-html[data-theme="light"] .sd-calc-out dd,
-html[data-theme="light"] .sd-calc-out .sd-calc-total dd,
-html[data-theme="light"] .sd-calc-rows b { color: var(--ink); }
-html[data-theme="light"] .sd-calc-rows li { border-bottom-color: var(--line); color: var(--ink-soft); }
-html[data-theme="light"] .sd-calc-reset {
-  color: var(--ink);
-  border-color: var(--line-strong);
-}
 
 /* Live “next” strip lifts; LIVE / Watch-live cards stay dark-red */
 html[data-theme="light"] .lv-next {
@@ -361,22 +265,6 @@ html[data-theme="light"] .sl-id-status { background: var(--card); }
 html[data-theme="light"] .support-button { background: #fff; color: var(--ink); }
 
 /* Tracker leftover wells — page CSS still hardcodes ink chips / cards / clocks */
-html[data-theme="light"] .slab-chip,
-html[data-theme="light"] .slab-moment {
-  background: var(--surface-2);
-  color: var(--ink);
-}
-html[data-theme="light"] .slab-moment[aria-pressed="true"],
-html[data-theme="light"] .slab-moment:hover,
-html[data-theme="light"] .slab-moment:focus-visible {
-  color: var(--ink);
-  border-color: var(--slab-red, #e31937);
-}
-html[data-theme="light"] .slab-pick select {
-  background: var(--input-bg);
-  color: var(--ink);
-  border-color: var(--line);
-}
 html[data-theme="light"] .slab-modes button[aria-pressed="true"],
 html[data-theme="light"] .fsd-filter[aria-pressed="true"],
 html[data-theme="light"] .cal-filters button.is-on,
@@ -385,13 +273,6 @@ html[data-theme="light"] .cal-filters button:hover {
   color: var(--bg);
   border-color: var(--ink);
 }
-html[data-theme="light"] .cal-search input {
-  background: var(--input-bg, #fff);
-  color: var(--ink);
-  border-color: var(--line-strong, var(--line));
-}
-html[data-theme="light"] .slab-cmp-h { background: var(--surface-2); }
-html[data-theme="light"] a.cal-title:hover { color: var(--ink); }
 
 html[data-theme="light"] .sw {
   --line: rgba(22, 23, 27, 0.1);
@@ -412,92 +293,6 @@ html[data-theme="light"] .sw-feed b,
 html[data-theme="light"] .sw-reach b { color: var(--ink); }
 html[data-theme="light"] .sw-card-head a,
 html[data-theme="light"] .sw-sources a { color: var(--ink); }
-html[data-theme="light"] .sw-seg button,
-html[data-theme="light"] .sw-replay button,
-html[data-theme="light"] .sw-replay select,
-html[data-theme="light"] .sw-diff-pick select {
-  background: var(--surface-2);
-  color: var(--ink);
-  border-color: var(--line);
-}
-html[data-theme="light"] .sw-seg button[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
-}
-html[data-theme="light"] .sw-step,
-html[data-theme="light"] .sw-diff li,
-html[data-theme="light"] .sw-reach { background: var(--surface-2); }
-html[data-theme="light"] .sw-diff .gone li { color: var(--ink-soft); }
-html[data-theme="light"] .sw-diff .same li { color: var(--mute); }
-html[data-theme="light"] .sw-pill.steady {
-  background: rgba(22, 23, 27, 0.06);
-  color: var(--ink-soft);
-}
-html[data-theme="light"] .sw-pill.slow {
-  background: rgba(22, 23, 27, 0.04);
-  color: var(--mute);
-}
-
-html[data-theme="light"] .f2-bar { background: var(--surface-2); }
-html[data-theme="light"] .f2-scen button,
-html[data-theme="light"] .f2-chips button,
-html[data-theme="light"] .f2-log-filters button,
-html[data-theme="light"] .f2-pipe button,
-html[data-theme="light"] .f2-more {
-  background: var(--surface-2);
-  color: var(--ink);
-}
-html[data-theme="light"] .f2-scen button[aria-pressed="true"],
-html[data-theme="light"] .f2-log-filters button[aria-pressed="true"] {
-  background: var(--tesla);
-  border-color: var(--tesla);
-  color: #fff;
-}
-html[data-theme="light"] .f2-chips button[aria-pressed="true"] {
-  border-color: var(--f2-live, #ff2a44);
-  background: rgba(200, 16, 46, 0.14);
-}
-html[data-theme="light"] .f2-pipe button.s-live,
-html[data-theme="light"] .f2-pipe button.s-rec {
-  border-color: rgba(200, 16, 46, 0.6);
-  background: rgba(200, 16, 46, 0.12);
-}
-html[data-theme="light"] .f2-flag { background: var(--surface-2); }
-html[data-theme="light"] .f2-steps li::before { background: var(--surface-2); }
-html[data-theme="light"] .f2-steps li.done::before { background: #7a1020; }
-html[data-theme="light"] .f2-steps li.now::before { background: var(--f2-live, #ff2a44); }
-html[data-theme="light"] .f2-log { border-left-color: var(--line-strong); }
-html[data-theme="light"] .f2-log li::before { background: var(--ink-soft); }
-html[data-theme="light"] .f2-log li.t-approval::before { background: var(--tesla); }
-html[data-theme="light"] .f2-log li.t-tcmv::before { background: #e0b04a; }
-html[data-theme="light"] .f2-table thead th { background: var(--surface-2); }
-html[data-theme="light"] .fsd-kpi,
-html[data-theme="light"] .fsd-panel,
-html[data-theme="light"] .fsd-board .fsd-meter,
-html[data-theme="light"] .updates-search { background: var(--card); }
-
-html[data-theme="light"] .cal-next-card {
-  background: var(--card);
-  border-color: var(--line);
-  color: var(--ink);
-}
-html[data-theme="light"] .cal-next-card.is-featured {
-  background: radial-gradient(120% 140% at 100% 0%, rgba(227, 25, 55, 0.08), transparent 55%), #fff;
-  border-color: rgba(227, 25, 55, 0.32);
-  box-shadow: var(--shadow);
-}
-html[data-theme="light"] .cal-next-when,
-html[data-theme="light"] .cal-today { color: var(--ink); }
-html[data-theme="light"] .cal-next-clock { color: var(--mute); }
-html[data-theme="light"] .cal-next-clock b { color: var(--ink); }
-html[data-theme="light"] .cal-tile {
-  background: var(--surface-2);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
-}
-html[data-theme="light"] .cal-tile b { color: var(--ink); }
-html[data-theme="light"] .cal-feat-note { color: var(--ink-soft); }
-html[data-theme="light"] .cal-feat-cr { color: var(--mute); }
 
 /* Keep instruments dark: maps, globes, games, photo heroes, explainer boards, 3D explorers */
 html[data-theme="light"] .vx-board,
@@ -523,8 +318,6 @@ html[data-theme="light"] .gs-feature-media,
 html[data-theme="light"] .gs-tile,
 html[data-theme="light"] .gs-product-media,
 html[data-theme="light"] .cal-feat-img { color-scheme: dark; }
-html[data-theme="light"] .catch-intro .eyebrow a:hover,
-html[data-theme="light"] .staging-intro .eyebrow a:hover { color: var(--hover-ink); }
 html[data-theme="light"] .sd-disp-chip {
   background: var(--surface);
   border-color: var(--line);
@@ -541,13 +334,6 @@ html[data-theme="light"] .sd-disp-more {
   color: var(--ink);
   border-color: var(--line);
 }
-html[data-theme="light"] .mt-notify label { color: var(--ink); }
-html[data-theme="light"] .mt-list b,
-html[data-theme="light"] .mt-tile b,
-html[data-theme="light"] .mt-hint b { color: var(--ink); }
-html[data-theme="light"] .mt-list p,
-html[data-theme="light"] .mt-lede,
-html[data-theme="light"] .mt-hint { color: var(--ink-soft); }
 html[data-theme="light"] .starship-change-src,
 html[data-theme="light"] .sourced-change-src { color: var(--mute); }
 
@@ -567,31 +353,6 @@ html[data-theme="light"] .mj-b {
 }
 html[data-theme="light"] .mj-b strong { color: var(--ink); }
 html[data-theme="light"] .mj-b small { color: var(--red-text); }
-
-html[data-theme="light"] .gear-band {
-  background: radial-gradient(120% 140% at 100% 0, rgba(227, 25, 55, 0.1), transparent 55%), #fff;
-  color: var(--ink);
-  border-color: var(--line);
-}
-html[data-theme="light"] .gear-band h2 { color: var(--ink); }
-html[data-theme="light"] .gear-band .gear-lede { color: var(--ink-soft); }
-html[data-theme="light"] .gear-cats a {
-  background: var(--surface-2);
-  border-color: var(--line);
-  color: var(--ink);
-}
-html[data-theme="light"] .gear-cats a:hover,
-html[data-theme="light"] .gear-cats a:focus-visible {
-  background: rgba(227, 25, 55, 0.08);
-  border-color: rgba(227, 25, 55, 0.45);
-}
-html[data-theme="light"] .gear-cats span.gear-sub,
-html[data-theme="light"] .gear-disclosure { color: var(--mute); }
-html[data-theme="light"] .gear-see-all { color: var(--ink); }
-html[data-theme="light"] .gear-models a {
-  color: var(--ink);
-  border-color: var(--line);
-}
 
 html[data-theme="light"] .sd-box {
   background: var(--card);

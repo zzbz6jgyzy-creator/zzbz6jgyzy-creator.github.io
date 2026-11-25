@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-11-24 · CSS cleanup: delete dead rules, don't split styles.css
+
+- **Decision:** remove the rules in `styles.css` and `theme.css` that no page can use, instead of moving single-page rules out of `styles.css` as the plan proposed. A rule counts as dead only if no page that loads the file can match it: its HTML, every script it loads, data files, templates and markup builders, and class names scripts build from a prefix; every removed selector was then confirmed unmatched in Chromium on all pages in both themes.
+- **Why:** the audit's "about 54 KB serves single pages" turned out to be 60 KB that serves no page at all (old hero, updates, FSD, gear and calendar layouts that moved to page stylesheets). Only about 3.7 KB serves exactly one page, so moving it would save little and touch many files.
+- **Deferred:** replacing `theme.css` patches with token swaps and dropping the `theme.js` reorder (a visual refactor of light mode that needs its own before/after review), the `.sd-table` rules inlined in 103 articles (about 0.4 KB gzipped each), the two identical viewer stylesheets (one rarely visited page each), sharing the live-data requests across homepage scripts.
+
 ## 2026-11-23 · Navigation: six menus, no repeats, Menu button below 1280px
 
 - **Decision:** the proposed nav (`scripts/nav.next.json`, shown on every preview) keeps each link in one menu list (feature cards aside), renames "Robotaxi tracker" to "Cybercab fleet", adds a Grok menu and drops the phone "Quick access" list. To fit six menus the bar loses its "Ctrl K" hint, tightens the menu buttons and switches to the Menu button below 1280px.

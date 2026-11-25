@@ -15,7 +15,7 @@ def changed_urls(ref):
                          capture_output=True, text=True).stdout.split()
     urls = []
     for f in out:
-        if not f.endswith(".html") or f == "404.html" or f.startswith((".", "scripts/", "preview/")):
+        if not f.endswith(".html") or f == "404.html" or f.startswith((".", "scripts/")):
             continue
         urls.append(BASE + "/" if f == "index.html" else BASE + "/" + f)
     return urls

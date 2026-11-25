@@ -1,6 +1,6 @@
-"""Redesign preview acceptance checks in a real browser (docs/design-system.md, plan step 1).
+"""News-first acceptance checks in a real browser (docs/design-system.md).
 
-For each preview page, at 320/390/768/1440 in light and dark: no sideways scroll, one h1 with the plain title, no page
+For each page, at 320/390/768/1440 in light and dark: no sideways scroll, one h1 with the plain title, no page
 errors, and layout shift under 0.1. At 390x844 the news-first targets from the approved plan:
   homepage: the lead headline sits fully in the first screen, at least 5 headlines start within 1.5 screens, and no
   story repeats between the lead and the latest list; the scripts still fill the live numbers and the launch list.
@@ -9,17 +9,17 @@ errors, and layout shift under 0.1. At 390x844 the news-first targets from the a
   Dispatch list and news: the first story card starts above 450px.
   hubs: the first story headline starts in the first screen (above 800px, so at least its first line shows).
   trackers: the tracker's first key number (or the calendar's week strip) is fully inside the first screen.
-Run: python3 tests/design-preview-browser.py   (CHROMIUM_PATH may point at Chrome or Chromium)
+Run: python3 tests/design-acceptance-browser.py   (CHROMIUM_PATH may point at Chrome or Chromium)
 """
 import asyncio, html, os, pathlib, re, shutil, socket, subprocess, sys, time
 from playwright.async_api import async_playwright
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SHOTS = pathlib.Path(os.environ.get("PREVIEW_SHOTS", "/tmp/design-preview"))
+SHOTS = pathlib.Path(os.environ.get("DESIGN_SHOTS", "/tmp/design-acceptance"))
 CLS_JS = "() => window.__cls || 0"
 INIT = """window.__cls=0;try{new PerformanceObserver(l=>{for(const e of l.getEntries()){if(!e.hadRecentInput)window.__cls+=e.value}}).observe({type:'layout-shift',buffered:true})}catch(e){}"""
 
-# The builder's own list, so the two cannot drift
+# Three articles: one with a lead photo, one long contents list, one with the disclosure note
 ARTICLES = ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-15", "spacex-q3-2026-results"]  # live since the switch
 
 

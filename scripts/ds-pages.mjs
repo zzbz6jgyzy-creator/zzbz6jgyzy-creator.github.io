@@ -151,7 +151,7 @@ export function teslaHub(live) {
     metaHtml: `Latest story ${newestDate([...stories.matchAll(/<p class="to-eyebrow">[^<]*<span>\s*\/\s*([^<]+)<\/span>/g)].map((m) => m[1]).join(" "))} · <a href="#sources">Sources</a>`,
     statsHtml: `<div class="ds-hub-numbers">${grid}<details class="ds-hub-note"><summary>About these numbers</summary>${fine.trim()}</details></div>`,
     band: null,
-    extraHtml: bandFrom(pic, `<a href="${DS.esc(caption[1])}">${DS.esc(subject)}</a> · ${DS.esc(caption[3].trim())}`),
+    extraHtml: bandFrom(pic, `<a href="${DS.esc(htmlText(caption[1]))}">${DS.esc(htmlText(subject))}</a> · ${DS.esc(htmlText(caption[3]))}`), // text read from HTML is decoded once, then escaped
   });
   let page = replaceOnce(live, grid + fine, "");
   page = replaceOnce(page, stories, "");
@@ -175,7 +175,7 @@ export function spacexHub(live) {
     dek: "The launch schedule, the fleet and our reporting, with dated sources.",
     metaHtml: (asOf ? `Schedule as of ${DS.fmtDate(asOf)} · ` : "") + '<a href="#sources">Sources</a>',
     statsHtml: `<div class="ds-hub-numbers">${next}</div>`,
-    extraHtml: bandFrom(pic, DS.esc(credit[2].trim())),
+    extraHtml: bandFrom(pic, DS.esc(htmlText(credit[2]))),
   });
   const stories = section
     .replace(head, DS.sectionHead({ id: "ds-hub-stories-h", title: "Latest stories", href: "/dispatch.html?topic=spacex", linkText: "All SpaceX stories" }))
@@ -301,7 +301,8 @@ export function starlinkTracker(live) {
   return settle(ensureBodyClass(page, "ds-page ds-tracker ds-tracker-starlink"));
 }
 
-/** Production: the quarter picker (#pd-quarter) and the stats (#pd-stats) move into the masthead; #pd-spotlight stays, hidden. */
+/** Production: the quarter picker (#pd-quarter) and the stats (#pd-stats) move into the masthead. The old hero's spotlight
+ * only supplies the report's publication date for the masthead line; the stats row shows the same quarter's figures. */
 export function productionTracker(live) {
   const hero = one(live, /<header class="pd-hero">/, "production hero");
   const picker = one(hero, /<div class="pd-quarter-select/, "quarter picker");
@@ -316,7 +317,7 @@ export function productionTracker(live) {
     title: "Tesla production and deliveries",
     dek: "Tesla's quarterly production, deliveries and energy storage, from its official reports.",
     metaHtml: `Latest report published ${DS.esc(published.trim())} · <a href="#sources">Sources</a>`,
-    statsHtml: `<div class="ds-tracker-numbers">${picker}${note}${status}${stats}<div hidden>${spot}</div></div>`,
+    statsHtml: `<div class="ds-tracker-numbers">${picker}${note}${status}${stats}</div>`,
   });
   let page = replaceOnce(live, note, "");
   page = replaceOnce(page, status, "");

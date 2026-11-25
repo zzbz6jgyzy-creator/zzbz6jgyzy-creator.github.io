@@ -37,7 +37,7 @@ async def main():
     await page.wait_for_function("document.querySelector('.pd-studio').dataset.enhanced==='true'")
     if mode=='stale':assert 'Check Tesla IR for newer releases'in await page.locator('#pd-status').inner_text();assert 'ended'in await page.locator('#pd-next-state').inner_text()
     if mode=='shared':assert await page.locator('#pd-from').input_value()=='Q1 2024';assert await page.locator('#pd-to').input_value()=='Q3 2026'
-    await page.locator('#pd-quarter').select_option('Q1 2024');assert '386,810'in await page.locator('#pd-spotlight').inner_text();assert 'historical'in await page.locator('#pd-view-note').inner_text()
+    await page.locator('#pd-quarter').select_option('Q1 2024');assert '386,810'in await page.locator('#pd-stats').inner_text();assert 'historical'in await page.locator('#pd-view-note').inner_text()
     await page.locator('[data-pd-pick="Q3 2026"]').click();assert '486,532'in await page.locator('#pd-stats').inner_text()
     await page.locator('[data-pd-pick="Q3 2026"]').press('Home');assert await page.locator('#pd-quarter').input_value()=='Q1 2024'
     await page.locator('[data-pd-metric=energy]').click();assert 'Energy storage deployed'in await page.locator('#pd-chart-title').text_content()

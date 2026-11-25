@@ -39,7 +39,6 @@ jobs:
           git checkout -- templates/starlink-sky.html 2>/dev/null || true
           git add data/pages.json data/tesla-overview.json news-data.json data/news-resolve-cache.json data/articles.json data/intelligence data/newsletter-latest.json index.html data/home-latest.json tesla.html news.html feed.xml sitemap-news.xml
           git add -A -- assets/js  # -A: stage the new hashed bundles, not only the deleted old ones
-          [ -d preview ] && git add -A -- preview || true  # design preview pages follow the live bundles
           if git diff --cached --quiet; then
             echo "No headline change"
           else

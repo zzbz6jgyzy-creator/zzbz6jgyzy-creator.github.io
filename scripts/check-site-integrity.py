@@ -31,7 +31,7 @@ import subprocess
 import sys
 
 ROOT = os.environ.get("SITE_INTEGRITY_ROOT") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SKIP_DIRS = ("astro/", "social/", "templates/", "scripts/", "node_modules/", "dist/", "tests/", "preview/")  # preview/: checked by tests/design-preview.test.mjs
+SKIP_DIRS = ("astro/", "social/", "templates/", "scripts/", "node_modules/", "dist/", "tests/")
 REF_RE = re.compile(r'''(?:src|href)=["'](/[^"'?#\s]+?\.(?:js|css|mjs|ics))(?:[?#][^"']*)?["']''', re.I)
 ASSET_RE = re.compile(r'''(?:src|href|poster)=["'](/assets/[^"'?#\s]+)(?:[?#][^"']*)?["']''', re.I)
 MIN_STORIES, MIN_SHARE = 10, 0.8

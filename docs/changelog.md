@@ -1,3 +1,10 @@
+## 24 Nov 2026 — Redesign step 6: cleanup
+
+- Every page downloads 10.7 KB less CSS (gzipped, about a quarter of its stylesheets) and parses about 70 KB less: 586 rules in `styles.css` and 89 in `theme.css` matched nothing on any page and are gone (`styles.css` 96 → 34 KB, `theme.css` 27 → 17 KB). Pages look the same: every removed selector was tested in Chromium on all pages in both themes, and computed styles on 30 pages are identical before and after.
+- Nine stylesheets no page loaded are deleted (78 KB), including the old `roadster.css` (the live Roadster page doesn't use it).
+- The design preview pipeline is gone (`/preview/` went live on 23 Nov): its builder, daily refresh, stub stylesheet and the skip lines in nine tools. Its checks stay, renamed and pointed at the live pages: `tests/design-system.test.mjs` and `tests/design-acceptance-browser.py`.
+- Production no longer renders a hidden copy of the old hero's quarter spotlight; the masthead's stats row shows the picked quarter.
+- Hub photo captions are decoded once before escaping (a latent "&amp;amp;"; no caption had one).
 ## 24 Nov 2026
 
 - Dispatch: Tesla's official Robotaxi pages showed more than 6.01 million miles driven autonomously as of late morning ET on 24 Nov. The official safety results still cover 22 Jan–18 Oct 2026 (3.1 million miles). The hero is Matti Blume's Auto Zürich Cybercab photo, CC BY-SA 4.0; the caption notes it is a show car, not a Robotaxi in the eight U.S. service cities.

@@ -9,7 +9,7 @@ import html, json, pathlib, re, sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CFG = json.loads((ROOT / 'scripts/nav.json').read_text())
 CSS_VERSION = '20261123-six-menus'
-DS_VERSION = '20261123f'  # ds.css; matches DS_CSS_V in build-design-preview.mjs
+DS_VERSION = '20261124a'  # ds.css; bump when it changes
 CHEVRON = '<svg class="ns-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#ns-icon-chevron"/></svg>'
 ARROW = '<svg class="ns-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#ns-icon-arrow"/></svg>'
 PATHS = {
@@ -119,15 +119,9 @@ def transform(s):
  return n
 
 if __name__=='__main__':
- if '--block' in sys.argv:
-  # Render the navigation block for the <nav class="pn"> tag on stdin from another config (the design preview uses
-  # scripts/nav.json this way, so it never writes preview pages itself).
-  cfg=json.loads((ROOT/sys.argv[sys.argv.index('--block')+1]).read_text())
-  sys.stdout.write(block(sys.stdin.read().strip(),cfg)); sys.exit(0)
  check='--check' in sys.argv; changed=[]
  for p in sorted(ROOT.rglob('*.html')):
   if any(x in p.parts for x in ['.git','node_modules','astro','.homepage-before']): continue
-  if p.relative_to(ROOT).parts[:1]==('preview',): continue  # design preview: built from live pages by scripts/build-design-preview.mjs
   s=p.read_text(); n=transform(s)
   if n!=s:
    changed.append(str(p.relative_to(ROOT)))
