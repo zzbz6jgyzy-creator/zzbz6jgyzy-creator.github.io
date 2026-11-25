@@ -20,7 +20,7 @@ export function buildSpaceXStudio(root=ROOT){
   };
   const data=M.validate({...editorial,scheduleAsOf:calendar.launchChecked||calendar.updated,articlesAsOf:index.updated,
     events:calendar.events.filter(e=>e.group==='spacex'&&e.category==='Launch'),
-    articles:index.articles.filter(a=>a.topic==='spacex').sort((a,b)=>b.date.localeCompare(a.date)).slice(0,12).map(imageMeta)});
+    articles:index.articles.filter(a=>a.topic==='spacex'||a.url==='/dispatch/tesla-spacex-merger-52-percent.html').sort((a,b)=>b.date.localeCompare(a.date)).slice(0,12).map(imageMeta)});
   const e=M.esc, arrow=V.arrow, now=Date.parse(data.scheduleAsOf);
   const head=(k,title,text)=>`<header class="sx-section-head"><div><p class="sx-kicker">${k}</p><h2>${title}</h2></div><p>${text}</p></header>`;
   const picture=V.picture;

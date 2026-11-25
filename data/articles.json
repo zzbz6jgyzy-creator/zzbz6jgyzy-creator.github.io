@@ -1,6 +1,156 @@
 {
-  "updated": "2026-11-24T17:18:00Z",
+  "updated": "2026-11-25T17:16:00Z",
   "articles": [
+    {
+      "url": "/dispatch/grok-voice-innovaccer-5-million.html",
+      "title": "SpaceXSI credits Grok Voice with 5 million patient calls at Innovaccer. Innovaccer's own release says those came first",
+      "date": "2026-11-25T17:16:00Z",
+      "topic": "xai",
+      "tag": "Grok",
+      "image": "/assets/dispatch/grok-voice-3-spacexsi-poster.jpg",
+      "summary": "Healthcare software company Innovaccer is adding Grok Voice to its patient-calling AI agents. SpaceXSI's post pairs the deal with \"over 5M patient interactions,\" but Innovaccer's release describes that figure as its own voice AI's growth before Grok. What the deal covers and what's only a roadmap.",
+      "pinned": false,
+      "imageAlt": "Card image reused from Supercharged Daily’s earlier Grok Voice 3.0 story.",
+      "author": "Alex R",
+      "picture": {
+        "base": "/assets/dispatch/grok-voice-3-spacexsi-poster",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1280,
+          720
+        ]
+      },
+      "seoTitle": "SpaceXSI credits Grok Voice with 5 million patient calls at Innovaccer. Innovaccer's own release says those came first",
+      "minutes": 4
+    },
+    {
+      "url": "/dispatch/tesla-spacex-merger-52-percent.html",
+      "title": "\"52% dilution\" in a SpaceX-Tesla deal doesn't mean 52% more shares. I ran the math from both companies' filings",
+      "date": "2026-11-25T17:14:00Z",
+      "topic": "tesla",
+      "tag": "Business",
+      "image": "/assets/dispatch/nasdaq-marketsite-times-square.jpg",
+      "summary": "Tesla and SpaceX shares fell again on Wednesday as investors weighed a possible all-stock merger. Gary Black's widely quoted \"52% dilution\" figure checks out, but several outlets described it as SpaceX issuing 52% more shares. Using the share counts in both 10-Qs, the issuance would be more than double that.",
+      "pinned": false,
+      "imageAlt": "The Nasdaq MarketSite in Times Square, New York",
+      "author": "Alex R",
+      "picture": {
+        "base": "/assets/dispatch/nasdaq-marketsite-times-square",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1600,
+          900
+        ]
+      },
+      "seoTitle": "\"52% dilution\" in a SpaceX-Tesla deal doesn't mean 52% more shares. I ran the math from both companies' filings",
+      "minutes": 5
+    },
+    {
+      "url": "/dispatch/starlink-bead-zero-outlay.html",
+      "title": "SpaceX turns down its BEAD money and offers to serve those homes for $0. What the government's new contract actually requires",
+      "date": "2026-11-25T17:12:00Z",
+      "topic": "spacex",
+      "tag": "Starlink",
+      "image": "/assets/dispatch/starlink-rooftop-install-capiovi.jpg",
+      "summary": "NTIA published a model \"zero outlay\" agreement on 23 Nov for a low-orbit provider that serves its BEAD locations without taking the subsidy, and NTIA's head says SpaceX has agreed to it. I read the 15-page contract: free equipment, 100/20 Mbps, ten years, and a lot less paperwork.",
+      "pinned": false,
+      "imageAlt": "A Starlink user terminal on a rooftop in Capioví, Misiones, Argentina. This is not a BEAD location.",
+      "author": "Alex R",
+      "picture": {
+        "base": "/assets/dispatch/starlink-rooftop-install-capiovi",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          2400,
+          1350
+        ]
+      },
+      "seoTitle": "SpaceX turns down its BEAD money and offers to serve those homes for $0. What the government's new contract actually requires",
+      "minutes": 5
+    },
+    {
+      "url": "/dispatch/fcc-starmind-1-million.html",
+      "title": "The FCC has authorized SpaceX to deploy up to 1 million Starmind satellites as orbital data centers, the first such authorization in U.S. history",
+      "date": "2026-11-25T17:10:00Z",
+      "topic": "spacex",
+      "tag": "Starmind",
+      "image": "/assets/dispatch/fcc-hq-former-12th-street.jpg",
+      "summary": "The FCC on 25 Nov 2026 granted SpaceX authorization to deploy up to 1 million Starmind orbital compute modules, the first U.S. authorization for a constellation of data centers in space, according to an official Commission release posted by Chairman Brendan Carr. The grant authorizes deployment. It does not set a launch timetable.",
+      "pinned": false,
+      "imageAlt": "The Federal Communications Commission's former headquarters at 445 12th Street SW in Washington, D.C.",
+      "author": "Alex R",
+      "picture": {
+        "base": "/assets/dispatch/fcc-hq-former-12th-street",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          2400,
+          1350
+        ]
+      },
+      "seoTitle": "The FCC has authorized SpaceX to deploy up to 1 million Starmind satellites as orbital data centers, the first such authorization in U.S. history",
+      "minutes": 6
+    },
+    {
+      "url": "/dispatch/space-jellyfish-explained.html",
+      "title": "A space jellyfish is a rocket plume lit by sunlight while the ground is still dark. The best window is 30 to 60 minutes before sunrise or after sunset",
+      "date": "2026-11-25T17:08:00Z",
+      "topic": "spacex",
+      "tag": "Explainer",
+      "image": "/assets/dispatch/kevin-gill-iridium4-plume.jpg",
+      "summary": "A space jellyfish forms when a rocket's high-altitude exhaust is still in sunlight and the observer is already in darkness. Vandenberg officials, who also call it twilight phenomenon, say it usually appears two to three minutes after a launch 30 to 60 minutes before sunrise or after sunset. USSF-380 this Saturday is a night launch, not a twilight one.",
+      "pinned": false,
+      "imageAlt": "The sunlit exhaust plume of SpaceX's Iridium-4 Falcon 9 launch from Vandenberg, 22 December 2017",
+      "author": "Alex R",
+      "picture": {
+        "base": "/assets/dispatch/kevin-gill-iridium4-plume",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          2400,
+          1693
+        ]
+      },
+      "seoTitle": "A space jellyfish is a rocket plume lit by sunlight while the ground is still dark. The best window is 30 to 60 minutes before sunrise or after sunset",
+      "minutes": 7
+    },
+    {
+      "url": "/dispatch/eu-tad-postponed-december-15.html",
+      "title": "The EU has postponed its Tesla Assisted Driving meeting to December 15. A rejection would invalidate national approvals already granted",
+      "date": "2026-11-25T17:06:00Z",
+      "topic": "tesla",
+      "tag": "FSD in Europe",
+      "image": "/assets/dispatch/tesla-nav-screen-hero.jpg",
+      "summary": "A European Commission spokesperson told Reuters on 25 Nov 2026 that the EU meeting expected to consider bloc-wide approval of Tesla Assisted Driving has been postponed until December 15. A rejection at EU level would invalidate the national approvals already granted. No reason was given.",
+      "pinned": false,
+      "imageAlt": "A Tesla Model 3 touchscreen showing a navigation map (file photograph, not of Wednesday's EU announcement)",
+      "author": "Alex R",
+      "picture": {
+        "base": "/assets/dispatch/tesla-nav-screen-hero",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1600,
+          900
+        ]
+      },
+      "seoTitle": "The EU has postponed its Tesla Assisted Driving meeting to December 15. A rejection would invalidate national approvals already granted",
+      "minutes": 5
+    },
     {
       "url": "/dispatch/grok-virginia-oregon-lawsuits.html",
       "title": "Virginia and Oregon sue SpaceX over Grok's sexualized images. Here's what the two complaints actually claim",
@@ -924,8 +1074,7 @@
       "imageAlt": "Aerial view of a tall lattice communications tower at the edge of green farm fields in rural Georgia. This is a generic broadband tower, not SpaceX or Grain equipment.",
       "summary": "The FCC has accepted SpaceX’s applications to take control of Grain Management’s 546 paired 800 MHz licenses for filing. That starts the review; it is not approval. Comments are due 1 Dec 2026, and the build-out rules Grain agreed to would pass to SpaceX if the transfer is approved.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/spacex-singulus-100gw-solar.html",
@@ -938,8 +1087,7 @@
       "imageAlt": "Close-up of the International Space Station’s golden photovoltaic solar array wings against black space, photographed during shuttle mission STS-134. These are ISS arrays, not Starmind or Starlink hardware.",
       "summary": "SINGULUS says it has signed a contract with SpaceX for a turnkey heterojunction solar-cell line as SpaceX expands satellite manufacturing in Bastrop, Texas, with the first line worth more than €60 million and due in the first half of 2027. SpaceX and SINGULUS say production will scale to support more than 100 GW of equipment. Musk says 100 GW a year is already ordered.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/tesla-matrix-headlights-nhtsa.html",
@@ -952,8 +1100,7 @@
       "imageAlt": "A dark blue Tesla Model 3 Highland with its slim LED headlights lit, on indoor display at a Tesla pop-up store in Osaka Prefecture, Japan. The front plate reads only MODEL 3.",
       "summary": "Tesla’s 9 Nov 2026 comment on NHTSA’s notice of intent to form a committee to modernize FMVSS 108 asks that the overhaul cover camera-guided matrix LED headlights and over-the-air changes, and that more automaker seats be added. This is a public comment, not a petition for rulemaking. No rule has changed.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/grok-4-8-rl-c-stack.html",
@@ -966,8 +1113,7 @@
       "imageAlt": "An Nvidia GB200 NVL72 rack in an ASUS display at COMPUTEX 2024, shown to illustrate the kind of AI training hardware used for models like Grok. This is not a photograph of xAI’s Colossus facility or of Grok 4.8 training.",
       "summary": "Elon Musk says SpaceXSI dropped JAX and SGLang for its own C/C++ code, Grok 4.8 pre-training is done and the model is now in RL (as of 10 Nov 2026). He pledged a soft rollout to Grok Bot users later this week, with no date, benchmarks or pricing yet.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/spacex-starbase-24b-gas-compute.html",
@@ -980,8 +1126,7 @@
       "imageAlt": "Aerial view of the SpaceX Starbase launch site at Boca Chica, Texas, in January 2026",
       "summary": "A City of Starbase notice says SpaceX plans a gas-fired power plant and super-compute facility on about 444 acres by the Port of Brownsville, with about $24 billion for the first phases (as of 6 Nov 2026). Two of the city's three commissioners work for SpaceX. Nothing is approved yet; a hearing is set for 9 Dec 2026.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/cybertruck-cyberbeast-only.html",
@@ -994,8 +1139,7 @@
       "imageAlt": "Silver Tesla Cybertruck with its tailgate lowered, photographed from behind at Skøyen, Oslo",
       "summary": "Tesla stopped Premium AWD Cybertruck orders on Monday night and raised the Cyberbeast US starting price to $109,990, before destination and order fees. The cheapest orderable Cybertruck has gone up $40,000 since early August (as of 10 Nov 2026).",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/terafab-japan-rush-orders.html",
@@ -1008,8 +1152,7 @@
       "imageAlt": "Technicians in cleanroom suits at semiconductor manufacturing equipment inside a fab clean room",
       "summary": "Nikkei reports Terafab’s procurement team visited Japanese equipment makers, placed orders due within months, and shared a 2032 target of 1 million wafers a month — about 40 times Rapidus’s planned ~25,000 wafers a month. Reported plan, not a company announcement.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/spacex-qualcomm-own-base-stations.html",
@@ -1022,8 +1165,7 @@
       "imageAlt": "Cellular 5G antennas and radio equipment mounted on a cell tower",
       "summary": "Qualcomm CEO Cristiano Amon says SpaceX will build the base stations for one of the largest US 5G deployments, with Qualcomm supplying the radio silicon. Musk confirmed the partnership on X. Rollout planned from 2027; no tower deals announced.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/tesla-robotaxi-austin-bigger-service-area.html",
@@ -1036,8 +1178,7 @@
       "imageAlt": "Downtown Austin, Texas skyline across the Colorado River on a clear day",
       "summary": "Tesla’s official @robotaxi account posted “Bigger Austin service area now live” with an old/new geofence map at 11:00 UTC on 9 Nov 2026. Tesla gave no square-mileage. Robotaxi Tracker measures about 442 sq mi, up from 272; RoboTracker lists 435.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/tesla-robotaxi-san-antonio.html",
@@ -1050,8 +1191,7 @@
       "summary": "Tesla's @robotaxi account says San Antonio rides start at 5am CT. Merritt measures the launch zone at about 275 sq mi. A 9 Nov Texas DMV pull puts Tesla at 1,282 registered driverless vehicles against Waymo's 1,285.",
       "pinned": false,
       "imageAlt": "Downtown San Antonio at night, with the Tower of the Americas on the skyline",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/grok-api-watermark.html",
@@ -1063,8 +1203,7 @@
       "summary": "Official docs set 7 Nov 2026 as the default invisible watermark start date for seven Grok API models. Team admins can opt out; consumer app scope is not established by the API docs.",
       "pinned": false,
       "imageAlt": "The hemicycle of the European Parliament in Strasbourg",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/starlink-v4-lasers.html",
@@ -1076,8 +1215,7 @@
       "summary": "Musk sketched Starlink V4 with about 10 times V3 capability and 10 Tb/s laser links. His interview said ten lasers; his posts discussed roughly 100 as an engineering ambition, not a settled design.",
       "pinned": false,
       "imageAlt": "A train of Starlink satellites crossing the night sky near Carson National Forest, New Mexico",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/tesla-optimus-rental.html",
@@ -1089,8 +1227,7 @@
       "summary": "At the Baron Investment Conference on 6 Nov 2026, Elon Musk said Tesla will probably rent Optimus humanoid robots. Talk of about $30,000 falling toward $20,000 is build cost, not a rental price. Outside deliveries still point to around end of 2027.",
       "pinned": false,
       "imageAlt": "Two Tesla Optimus humanoid robots standing on pedestals in a showroom display",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/tesla-argentina.html",
@@ -1102,8 +1239,7 @@
       "summary": "Tesla confirmed an Argentina arrival date of 20 November 2026 via @Tesla_LatAm, with @Tesla and Elon Musk quoting the post. Argentine press reports an Unicenter exhibition first, with sales and test drives planned for 2027. Official posts name no models or prices.",
       "pinned": false,
       "imageAlt": "Front view of a white Tesla Model Y Standard parked outdoors",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/tesla-spacex-government-contracts.html",
@@ -1115,8 +1251,7 @@
       "summary": "Elon Musk said Tesla has no government contracts and that government revenue will be under 10% of SpaceX revenue this quarter and under 5% a year from now, quoting a Warren Redlich draft letter. Those figures are his claims on X, not filings.",
       "pinned": false,
       "imageAlt": "A SpaceX Falcon 9 rocket carrying a Dragon spacecraft lifts off on NASA's Crew-10 mission",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/baron-orbital-data-centers.html",
@@ -1128,8 +1263,7 @@
       "summary": "Investor Ron Baron told CNBC Squawk Box that Elon Musk is targeting 2027 and 2028 launches of solar-powered data centers into orbit. Elon replied: \"Ron Baron understands.\" Investor commentary, not a SpaceX announcement.",
       "pinned": false,
       "imageAlt": "A stack of flat Starlink satellites in orbit with Earth's clouds and ocean behind them",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/model-y-australia-passenger-car.html",
@@ -1141,8 +1275,7 @@
       "summary": "CarsGuide reports the Tesla Model Y sold 39,035 units in Australia from January to October 2026, ahead of the Toyota RAV4's 35,927. Elon called it the best-selling car of any kind on Earth; the figures cover Australian passenger cars only.",
       "pinned": false,
       "imageAlt": "A dark grey current-generation Tesla Model Y with a full-width front light bar driving across a road",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/tesla-si-roadmap.html",
@@ -1154,8 +1287,7 @@
       "summary": "Tom's Hardware published a photographed Tesla slide renaming HW4 to SI4, listing SI5 at 40x and SI6 at 80x, with Dojo 3 aimed at space. Tesla and Musk have not posted the slide (as of 6 Nov 2026).",
       "pinned": false,
       "imageAlt": "Tesla Dojo supercomputer tile with a grid of D1 chips under a clear cover",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/cybertruck-texas-wind-down.html",
@@ -1167,8 +1299,7 @@
       "summary": "Musk said Cybertruck production at Giga Texas winds down around mid-2027 for more Cybercab. Tesla still calls Austin the truck's home; Wes Morrill says parts and service continue (as of 6 Nov 2026).",
       "pinned": false,
       "imageAlt": "Tesla Cybertruck with its rear bed open, parked outdoors at Skøyen, Norway",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/evgo-first-tesla-supercharger-chicago.html",
@@ -1180,8 +1311,7 @@
       "summary": "EVgo opened 12 Supercharger stalls in Chicago. EVgo owns and brands them; Tesla operates and maintains them under Supercharger for Business (as of 5 Nov 2026).",
       "pinned": false,
       "imageAlt": "Four Tesla Supercharger stalls against a white wall, with no cars at the posts",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/musk-midterms-tesla-spacex-selloff.html",
@@ -1193,8 +1323,7 @@
       "summary": "SpaceX closed -3.8% and Tesla -3.3% on 4 Nov after Democrats won Congress. No merger terms yet; the new Congress seats on 3 Jan 2027 (as of 5 Nov 2026).",
       "pinned": false,
       "imageAlt": "The long grey concrete and glass front of Tesla Gigafactory Texas Building 1 behind a road and tall grass",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/rdw-tesla-assisted-driving-10-percent.html",
@@ -1206,8 +1335,7 @@
       "summary": "RDW approved Tesla's requested changes to FSD Supervised: a new name, Tesla Assisted Driving, and a driver-set speed margin capped at +10% (down from +50%). No OTA date yet; EU-wide approval still pending (as of 5 Nov 2026).",
       "pinned": false,
       "imageAlt": "Tesla app screen listing Tesla Assisted Driving Basic at €99 a month",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/texas-spacex-data-centers-risk.html",
@@ -1220,8 +1348,7 @@
       "summary": "AP called Texas for Gina Hinojosa, who backs a data center moratorium. SpaceX aims for 3 GW by year-end and 13 GW next year, some of it in Texas (as of 4 Nov 2026).",
       "pinned": false,
       "imageAlt": "Gold-coloured server trays stacked in an Nvidia GB200 liquid-cooled rack",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/starlink-airlines-scorecard.html",
@@ -1233,8 +1360,7 @@
       "summary": "JAL says Starlink and pricing helped lift ZIPAIR's passenger revenue 12.3%. What United, Alaska, Qatar, Virgin and airBaltic report about in-flight Starlink (as of 3 Nov 2026).",
       "pinned": false,
       "imageAlt": "An orange and white easyJet Airbus A320neo, registration G-UZHM, taxiing past a hangar",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/musk-pay-spacex-tesla-merger-control.html",
@@ -1247,8 +1373,7 @@
       "summary": "No deal exists yet, but a Reuters analysis and Tesla's filings show a SpaceX takeover could give Musk Tesla voting control while skipping his pay plan's robotaxi and robot goals.",
       "pinned": false,
       "imageAlt": "Elon Musk smiling in a dark suit and white open-collar shirt against a grey background",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/tesla-robotaxi-fort-worth.html",
@@ -1261,8 +1386,7 @@
       "summary": "Tesla Robotaxi opened in Fort Worth from 6am CT on 2 Nov in a zone estimated at 143 sq mi. Texas DMV lists 1,244 Teslas, 15 short of Waymo's 1,259 (as of 2 Nov 2026).",
       "pinned": false,
       "imageAlt": "The Fort Worth, Texas skyline on a clear day, with glass towers and a brick office building in the foreground",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/spacex-boost-mobile-talks.html",
@@ -1274,8 +1398,7 @@
       "summary": "SpaceX is in talks with EchoStar to buy Boost Mobile or use its network, the Washington Post reports. Boost had 7.38M wireless subscribers but leases its network from AT&T and T-Mobile.",
       "pinned": false,
       "imageAlt": "A tall steel lattice cell tower with antennas at the top stands over a harvested field and a line of trees under a cloudy sky",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/colossus-2-epoch-largest-ai-data-center.html",
@@ -1288,8 +1411,7 @@
       "summary": "Epoch AI puts SpaceXAI's Colossus 2 in Memphis at about 1.11 million H100-equivalents, ahead of OpenAI's Stargate Abilene at 1.02 million (as of 1 Nov 2026).",
       "pinned": false,
       "imageAlt": "Gold-coloured server trays stacked in an Nvidia GB200 liquid-cooled rack",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/grok-bot-weekly-limits-cost.html",
@@ -1302,8 +1424,7 @@
       "summary": "Grok Bot subscribers ran out of their weekly allowance days early. Musk says the cost of serving Grok Bot was “unsustainably high relative to revenue.”",
       "pinned": false,
       "imageAlt": "An iPhone showing Grok Bot in a live call on the Dynamic Island, with Calendar, Messages and other app icons below",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/shotwell-2m-spacex-shares-trump-accounts.html",
@@ -1316,8 +1437,7 @@
       "summary": "SpaceX President Gwynne Shotwell says over 2 million SpaceX shares are going to Trump Accounts of 11 to 17-year-olds, starting in lower-income ZIP codes, in December.",
       "pinned": false,
       "imageAlt": "SpaceX President and COO Gwynne Shotwell smiling on stage in front of an American flag",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/robotaxi-2am-20-hours.html",
@@ -1330,8 +1450,7 @@
       "summary": "Tesla’s official Robotaxi account says rides now run 6am to 2am, nine days after Tesla said 2am was coming “pretty soon.” The post also adds Calm Mode and Grok in Model Y.",
       "pinned": false,
       "imageAlt": "A silver current-generation Tesla Model Y parked under trees, with its number plate blurred",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/starlink-dynamic-pricing-map.html",
@@ -1344,8 +1463,7 @@
       "summary": "Starlink is moving some US Residential customers to local prices reviewed roughly quarterly. Every price checked so far is 10% or 20% above or below list.",
       "pinned": false,
       "imageAlt": "Two Starlink flat-panel dishes on a white mount against a clear blue sky",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/grok-bot-600k-dau-no-free-tier.html",
@@ -1358,8 +1476,7 @@
       "summary": "Similarweb estimates Grok Bot's daily users grew 16 days straight to about 600,000 on iPhone and Android as of 26 Oct. Musk notes there's no free tier.",
       "pinned": false,
       "imageAlt": "An iPhone showing Grok Bot in a live call on the Dynamic Island, with Calendar, Messages and other app icons below",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/spacex-dragon-falcon-nasa-retreat.html",
@@ -1372,8 +1489,7 @@
       "summary": "Ars Technica reports SpaceX told NASA's Moon lander companies it won't launch them, on top of ending Crew Dragon by 2030 and Falcon 9 sales after 2028.",
       "pinned": false,
       "imageAlt": "Crew Dragon Endeavour approaching the International Space Station above Earth",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/tesla-the-plan-complete-story.html",
@@ -1385,8 +1501,7 @@
       "summary": "The whole Tesla story, from the 2006 'secret' master plan to robotaxis, Optimus and the new Roadster, with our 12-minute film.",
       "pinned": false,
       "imageAlt": "Title card from the film: The Secret Tesla Motors Master Plan, Elon Musk, Tesla blog, 2 Aug 2006",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/roadster-hawthorne-falcon-9.html",
@@ -1399,8 +1514,7 @@
       "summary": "Tesla brought the next-gen Roadster to SpaceX's Hawthorne headquarters on 28 Oct, parking it under the first Falcon 9 stage to land after an orbital launch.",
       "pinned": false,
       "imageAlt": "The SpaceX headquarters building in Hawthorne, California, with the SpaceX logo on its white facade",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/fcc-d2d-482mhz-vote.html",
@@ -1413,8 +1527,7 @@
       "summary": "The FCC voted 3-0 on 29 Oct 2026 to propose 482 MHz more spectrum for direct-to-device services like Starlink Mobile, raising eligible bands from 5 to 13. Public comment comes next.",
       "pinned": false,
       "imageAlt": "A tall steel lattice cell tower over a harvested field",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/ship-42-first-tower-catch.html",
@@ -1427,8 +1540,7 @@
       "summary": "SpaceX says Ship 42 finished its static fires for Flight 15, and Musk says it will be the first Starship caught by the tower. No launch date or FAA licence yet.",
       "pinned": false,
       "imageAlt": "A Super Heavy booster descends toward the Starbase launch tower with its catch arms open",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/grok-bot-shop-pay-vs-amazon.html",
@@ -1441,8 +1553,7 @@
       "summary": "Grok Bot 0.78.1 adds product cards and Shop Pay in the Vault. Shopify now names it one of three AI agents with Shop Pay for brands off Shopify, two weeks after Amazon users saw a block notice.",
       "pinned": false,
       "imageAlt": "An iPhone showing Grok Bot in a live call on the Dynamic Island, with Calendar, Messages and other app icons below",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/anthropic-spacex-compute-3-1b.html",
@@ -1573,8 +1684,7 @@
       "summary": "Latvia’s CSDD accepted the Dutch approval on 26 Oct, with tighter speed and driver-monitoring rules. Tesla says rollout begins soon; no date or Latvian price yet.",
       "pinned": false,
       "imageAlt": "Frame from Tesla Europe's FSD (Supervised) winter-driving video, with snowy mountains and an FSD overlay",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/grok-bot-phone-calls.html",
@@ -1586,8 +1696,7 @@
       "summary": "Musk says the Bot can call a person or business and send you a summary. Prerelease builds show a Calls panel; the official changelog doesn’t mention calling yet.",
       "pinned": false,
       "imageAlt": "An iPhone showing Grok Bot in a live call on the Dynamic Island, with a microphone button and hang-up control",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/booster-22-static-fire.html",
@@ -1599,8 +1708,7 @@
       "summary": "SpaceX confirmed a full-duration 33-engine static fire for Flight 15’s booster on 25 Oct. Ship 42, the FAA licence and a launch date are still open.",
       "pinned": false,
       "imageAlt": "An earlier Starship static fire at Starbase (Ship 20, 2021; photo: Mars Embassy US, CC BY-SA 4.0)",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/starlink-passes-att-fiber.html",
@@ -1612,8 +1720,7 @@
       "summary": "SpaceX’s 10-Q shows 13.6M Starlink consumer subscribers; AT&T reported 13.31M fiber connections. Starlink added 6.4M in a year to AT&T’s 2.5M, with caveats.",
       "pinned": false,
       "imageAlt": "A Starlink flat panel dish on an overlanding truck (photo: Tony Webster, CC BY 2.0)",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/robotaxi-938-f1-cota.html",
@@ -1626,8 +1733,7 @@
       "summary": "135 cars added to the Texas registry in eight days, most of them Cybercabs, and Austin’s map now reaches the F1 track, with rides until 1am.",
       "pinned": false,
       "author": "Alex R",
-      "imageAlt": "Aerial view of Circuit of the Americas near Austin, Texas, with the F1 track laid out in red, white and blue",
-      "minutes": null
+      "imageAlt": "Aerial view of Circuit of the Americas near Austin, Texas, with the F1 track laid out in red, white and blue"
     },
     {
       "url": "/dispatch/grok-imagine-odyssey-episode-1.html",
@@ -1639,8 +1745,7 @@
       "summary": "A 7-minute, 4K first episode is out. Musk’s full-length Odyssey movie is still a pledge with a 31 Dec deadline. The timeline and the math.",
       "pinned": false,
       "author": "Alex R",
-      "imageAlt": "John William Waterhouse’s 1891 painting Ulysses and the Sirens, with Odysseus bound to the mast as winged sirens surround the ship",
-      "minutes": null
+      "imageAlt": "John William Waterhouse’s 1891 painting Ulysses and the Sirens, with Odysseus bound to the mast as winged sirens surround the ship"
     },
     {
       "url": "/dispatch/starship-pushes-orion-to-moon.html",
@@ -1651,8 +1756,7 @@
       "image": "/assets/dispatch/artemis-iv-starship-conops.jpg",
       "summary": "NASA dropped the halo-orbit meetup. Starship will dock with Orion near Earth and fly both to low lunar orbit. Plus Cabin 1, the tanker count and SpaceX’s milestone chart.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/spacex-10q-customer-b.html",
@@ -1663,8 +1767,7 @@
       "image": "/assets/dispatch/spacex-hq-hawthorne.jpg",
       "summary": "SpaceX’s 10-Q shows one unnamed customer was 34.5% of Q3 revenue, and about $1 billion of the profit came from one-off items.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/starshield-cap-still-on.html",
@@ -1676,8 +1779,7 @@
       "image": "/assets/dispatch/starlink-antenna-ukraine.jpg",
       "summary": "Trump said Musk had restored Ukraine’s service. Ukraine’s drone pilots and Zelenskyy say the cap is still in place. What was claimed, what was tested and what’s unanswered.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/starlink-mobile-80000-towers.html",
@@ -1688,8 +1790,7 @@
       "image": "/assets/dispatch/cell-tower-jefferson-wi.jpg",
       "summary": "Bloomberg says SpaceX is in talks for at least 80,000 US cell sites, including with Crown Castle. What’s signed, what’s only talks, and the numbers behind it.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/starship-moon-refuel-22-vs-8.html",
@@ -1703,8 +1804,7 @@
       "pinned": false,
       "author": "Alex R",
       "homeTitle": "Starship’s Moon landing: 22 launches versus 6–8",
-      "homeSummary": "NASA’s adviser and Musk give different estimates. Here’s what each assumes about refuelling and launch cadence.",
-      "minutes": null
+      "homeSummary": "NASA’s adviser and Musk give different estimates. Here’s what each assumes about refuelling and launch cadence."
     },
     {
       "url": "/dispatch/grok-bot-phone-apps.html",
@@ -1717,8 +1817,7 @@
       "summary": "Rolling out on iOS and Android: the six phone permissions in @bot’s screen, from Calendar to door locks, and what hasn’t been said yet.",
       "pinned": false,
       "imageAlt": "An iPhone home screen with Calendar, Notes, Mail and Safari icons under a Grok Bot live-call pill",
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/space-force-no-bids.html",
@@ -1730,8 +1829,7 @@
       "image": "/assets/dispatch/falcon9-ussf36-hero.jpg",
       "summary": "Politico says SpaceX declined to bid and no rival offered a rocket. Vulcan was grounded this year, New Glenn lost its pad, and the newer rockets haven’t flown yet.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/tesla-10q-spacex-committee.html",
@@ -1744,8 +1842,7 @@
       "pinned": false,
       "author": "Alex R",
       "homeTitle": "Tesla puts a possible SpaceX deal in an SEC filing",
-      "homeSummary": "A board committee is exploring a deeper relationship. The filing also details Tesla’s SpaceX stake and Megapack sales.",
-      "minutes": null
+      "homeSummary": "A board committee is exploring a deeper relationship. The filing also details Tesla’s SpaceX stake and Megapack sales."
     },
     {
       "url": "/dispatch/starlink-south-africa-schools.html",
@@ -1757,8 +1854,7 @@
       "image": "/assets/dispatch/starlink-dish-hero.jpg",
       "summary": "The 30% rule covers a local licensee, not “the company.” And Starlink has never applied for a licence.",
       "pinned": false,
-      "author": "Alex R",
-      "minutes": null
+      "author": "Alex R"
     },
     {
       "url": "/dispatch/tesla-ai-maps-v15.html",

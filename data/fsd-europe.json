@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-20",
-  "revision": "2026-11-20.1",
+  "updated": "2026-11-25",
+  "revision": "2026-11-25.1",
   "note": "National recognition, Tesla-listed availability and customer observations are separate facts. Market availability does not establish eligibility for every car. Driver supervision remains required.",
   "thresholds": {
     "euPopulationM": 448.9,
@@ -2372,6 +2372,14 @@
   ],
   "sources": [
     {
+      "id": "s-cna-tad-postpone-20261125",
+      "url": "https://www.channelnewsasia.com/business/eu-postpones-discussion-approve-teslas-self-driving-tech-6581441",
+      "label": "CNA / Reuters, 25 Nov 2026: Commission spokesperson says the TCMV meeting is postponed to 15 Dec 2026. A vote is not guaranteed.",
+      "type": "media",
+      "checkedAt": "2026-11-25",
+      "publishedAt": "2026-11-25"
+    },
+    {
       "id": "s-teslaeurope-20261120",
       "url": "https://x.com/teslaeurope/status/2123723334542332026",
       "label": "Tesla Europe on X, 20 Nov 2026: Now approved in Italy; rollout begins soon. No date.",
@@ -3183,6 +3191,19 @@
       ],
       "sourceType": "authority",
       "reviewedAt": "2026-11-20"
+    },
+    {
+      "id": "event-tcmv-postponed-2026-12-15",
+      "date": "2026-11-25",
+      "precision": "day",
+      "country": null,
+      "type": "committee",
+      "summary": "Commission spokesperson says the TCMV meeting is postponed to 15 Dec 2026. A vote or decision is not guaranteed.",
+      "evidence": [
+        "s-cna-tad-postpone-20261125"
+      ],
+      "sourceType": "media",
+      "reviewedAt": "2026-11-25"
     }
   ],
   "changelog": [
@@ -3441,6 +3462,14 @@
       "text": "RDW approves rename to Tesla Assisted Driving and a +10% speed-margin cap (from +50%), with a 0% default at each start.",
       "source": "https://www.rdw.nl/over-rdw/nieuws/2026/rdw-keurt-wijzigingen-aan-tesla-rijhulpsysteem-goed",
       "evidence": "authority"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "EU",
+      "type": "committee",
+      "text": "A European Commission spokesperson told Reuters the TCMV meeting expected to consider Tesla Assisted Driving has been postponed to 15 December 2026. Two earlier meetings ended without a vote. A decision is not guaranteed, and a rejection at EU level would invalidate national approvals already granted.",
+      "source": "https://www.channelnewsasia.com/business/eu-postpones-discussion-approve-teslas-self-driving-tech-6581441",
+      "evidence": "media"
     }
   ],
   "process": {
@@ -3452,12 +3481,21 @@
         "s-eae2f83674a8"
       ]
     },
-    "summary": "December is a reported opportunity, not an officially confirmed vote date. National recognitions are not committee votes.",
+    "summary": "A European Commission spokesperson told Reuters on 25 Nov 2026 that the TCMV meeting has been postponed to 15 December 2026. That is a reported meeting date, not a confirmed vote. National recognitions are not committee votes.",
     "evidence": [
+      "s-cna-tad-postpone-20261125",
       "s-a15bc6e10960",
       "s-3ff445463a7c",
       "s-eae2f83674a8"
-    ]
+    ],
+    "reportedMeeting": {
+      "date": "2026-12-15",
+      "confirmed": false,
+      "note": "A European Commission spokesperson told Reuters on 25 Nov 2026 that the TCMV meeting has been postponed to 15 December 2026. A decision or vote is not guaranteed.",
+      "evidence": [
+        "s-cna-tad-postpone-20261125"
+      ]
+    }
   },
   "recognitionShare": {
     "pct": 28.6,
