@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T12:52:09Z",
+ "updated": "2026-11-26T22:26:15Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-11-26T12:52:09Z",
+  "fetched": "2026-11-26T22:26:15Z",
   "fleet": 12331,
   "versions": [
    {
@@ -14,13 +14,13 @@
    },
    {
     "id": "2026.44.1",
-    "installs": 5360,
-    "percent": 43.5,
-    "pending": 665
+    "installs": 5399,
+    "percent": 43.8,
+    "pending": 625
    },
    {
     "id": "2026.39.100",
-    "installs": 304,
+    "installs": 303,
     "percent": 2.5,
     "pending": 14
    },
@@ -38,7 +38,7 @@
    },
    {
     "id": "2026.38.6.11",
-    "installs": 81,
+    "installs": 82,
     "percent": 0.7,
     "pending": 11
    },
@@ -56,15 +56,15 @@
    },
    {
     "id": "2026.38.6",
-    "installs": 1985,
-    "percent": 16.1,
-    "pending": 300
+    "installs": 1959,
+    "percent": 15.9,
+    "pending": 295
    },
    {
     "id": "2026.38.5.13",
-    "installs": 1961,
+    "installs": 1966,
     "percent": 15.9,
-    "pending": 53
+    "pending": 52
    },
    {
     "id": "2026.38.5.12",
@@ -74,8 +74,8 @@
    },
    {
     "id": "2026.38.5.11",
-    "installs": 612,
-    "percent": 5.0,
+    "installs": 606,
+    "percent": 4.9,
     "pending": 39
    },
    {
@@ -86,7 +86,7 @@
    },
    {
     "id": "2026.38.5.1",
-    "installs": 60,
+    "installs": 57,
     "percent": 0.5,
     "pending": 1
    },
@@ -104,13 +104,13 @@
    },
    {
     "id": "2026.38.3.2",
-    "installs": 238,
+    "installs": 237,
     "percent": 1.9,
     "pending": 24
    },
    {
     "id": "2026.38.3.1",
-    "installs": 66,
+    "installs": 65,
     "percent": 0.5,
     "pending": 9
    },
@@ -134,7 +134,7 @@
    },
    {
     "id": "2026.33.5",
-    "installs": 2,
+    "installs": 1,
     "percent": 0.0,
     "pending": 0
    },
@@ -152,13 +152,13 @@
    },
    {
     "id": "2026.32.7",
-    "installs": 62,
+    "installs": 60,
     "percent": 0.5,
     "pending": 2
    },
    {
     "id": "2026.32.3",
-    "installs": 55,
+    "installs": 54,
     "percent": 0.4,
     "pending": 5
    },
@@ -182,8 +182,8 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 44,
-    "percent": 0.4,
+    "installs": 43,
+    "percent": 0.3,
     "pending": 0
    },
    {
@@ -200,7 +200,7 @@
    },
    {
     "id": "2026.26.6.1",
-    "installs": 58,
+    "installs": 56,
     "percent": 0.5,
     "pending": 2
    },
@@ -428,13 +428,13 @@
    },
    {
     "id": "2025.38.14",
-    "installs": 168,
+    "installs": 169,
     "percent": 1.4,
-    "pending": 18
+    "pending": 17
    },
    {
     "id": "2025.38.13",
-    "installs": 26,
+    "installs": 25,
     "percent": 0.2,
     "pending": 0
    },
@@ -491,8 +491,32 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-11-26T12:52:09Z",
+  "fetched": "2026-11-26T22:26:15Z",
   "items": [
+   {
+    "t": "2026-11-26T21:47:53Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model Y AWD LR (2023)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-26T21:46:22Z",
+    "to": "2026.44.1",
+    "from": "2026.38.5.11",
+    "model": "Model 3 RWD LR (2018)",
+    "hw": "0.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-26T17:52:45Z",
+    "to": "2026.44.1",
+    "from": "2026.38.6",
+    "model": "Model Y AWD LR (2023)",
+    "hw": "3.0",
+    "country": "Austria"
+   },
    {
     "t": "2026-11-26T10:38:40Z",
     "to": "2026.38.5.13",
@@ -548,30 +572,6 @@
     "model": "Model 3 SR (2021)",
     "hw": "3.0",
     "country": "United States"
-   },
-   {
-    "t": "2026-11-26T01:41:57Z",
-    "to": "2026.44.1",
-    "from": "2026.38.6",
-    "model": "Model 3 SR (2021)",
-    "hw": "3.0",
-    "country": "Switzerland"
-   },
-   {
-    "t": "2026-11-26T01:34:49Z",
-    "to": "2026.44.1",
-    "from": "2026.38.6",
-    "model": "Model 3 AWD LR (2024)",
-    "hw": "4.0",
-    "country": "Austria"
-   },
-   {
-    "t": "2026-11-25T23:18:19Z",
-    "to": "2026.44.1",
-    "from": "2026.38.6",
-    "model": "Model Y RWD LR (2025)",
-    "hw": "4.0",
-    "country": "Spain"
    }
   ]
  }
