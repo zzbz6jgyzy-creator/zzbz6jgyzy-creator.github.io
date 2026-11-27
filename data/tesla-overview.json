@@ -173,6 +173,24 @@
   },
   "stories": [
     {
+      "url": "/dispatch/tesla-robotaxi-dallas-150-square-miles.html",
+      "image": "/assets/dispatch/dallas-skyline-2025.jpg",
+      "title": "Tesla's Dallas Robotaxi zone grows to about 150 square miles, three times Waymo's. Its eight-city map is up 65% this month",
+      "summary": "Tesla's @robotaxi account posted a bigger Dallas map on 25 Nov that crosses I-635 into Farmers Branch and up to Addison and Richardson. Trackers put it at about 150 square miles. Tesla's eight Robotaxi cities now cover about 1,374 square miles, up from 831 on 2 Nov.",
+      "tag": "Robotaxi",
+      "date": "2026-11-27T17:30:00Z",
+      "thumb": "/assets/dispatch/dallas-skyline-2025-480w.webp"
+    },
+    {
+      "url": "/dispatch/cybertruck-fastest-selling-used-truck.html",
+      "image": "/assets/dispatch/cybertruck-moab-cc0.jpg",
+      "title": "Tesla is ending the Cybertruck, and used ones now sell faster than any other pickup in America",
+      "summary": "A used Cybertruck sold in 39.1 days on average in October, the fastest of any pickup in iSeeCars' study of 1.1 million sales and 33 days quicker than a used F-150. The data predates Tesla's wind-down news. How it compares, and why the only new Cybertruck left costs $109,990.",
+      "tag": "Cybertruck",
+      "date": "2026-11-27T17:24:00Z",
+      "thumb": "/assets/dispatch/cybertruck-moab-cc0-480w.webp"
+    },
+    {
       "url": "/dispatch/tesla-spacex-merger-52-percent.html",
       "image": "/assets/dispatch/nasdaq-marketsite-times-square.jpg",
       "title": "\"52% dilution\" in a SpaceX-Tesla deal doesn't mean 52% more shares. I ran the math from both companies' filings",
@@ -207,25 +225,7 @@
       "tag": "FSD",
       "date": "2026-11-24T17:14:00Z",
       "thumb": "/assets/dispatch/tesla-nav-screen-hero-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-ai5-optimus-cars-stay-ai4.html",
-      "image": "/assets/dispatch/optimus-stockholm-ulkl.jpg",
-      "title": "Musk: AI5 goes to Optimus and cars stay on AI4. AI4.5 loses 8GB of planned RAM because memory got expensive",
-      "summary": "Over one Sunday of replies on X, Elon Musk said Tesla's AI5 chip is going to Optimus, cars will remain on AI4, AI4 now costs twice as much because of memory prices, and the planned AI4.5 board was cut from 32GB to 24GB of RAM. Here's how that fits what Tesla said on its last two earnings calls.",
-      "tag": "AI hardware",
-      "date": "2026-11-24T17:12:00Z",
-      "thumb": "/assets/dispatch/optimus-stockholm-ulkl-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-polysilicon-robstown-3-1b.html",
-      "image": "/assets/dispatch/polysilicon-rod-roonguthai.jpg",
-      "title": "Tesla wants a Texas tax break for a $3.1 billion polysilicon plant near Corpus Christi. Here's what its application says",
-      "summary": "Tesla has applied under Texas's JETI program for a school-tax limit on a proposed $3.1 billion polysilicon refinery near Robstown in Nueces County. The filing promises 515 jobs by 2032 and says Tesla may build elsewhere without the incentive. I went through the numbers.",
-      "tag": "Tesla / Energy",
-      "date": "2026-11-24T17:10:00Z",
-      "thumb": "/assets/dispatch/polysilicon-rod-roonguthai-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-25T17:16:00Z"
+  "articlesUpdated": "2026-11-27T17:30:00Z"
 }

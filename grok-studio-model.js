@@ -45,7 +45,7 @@
       if (!sourceOK(m.source) || !m.name || !Number.isInteger(m.context) || m.context <= 0 || m.threshold >= m.context || ['input','cached','output','long_input','long_cached','long_output','threshold'].some(k => !Number.isFinite(m[k]) || m[k] < 0)) throw Error('Invalid model rates');
     }
     for (const p of d.plans) if (![p.monthly, p.annual].every(n => Number.isFinite(n) && n >= 0) || typeof p.bot !== 'boolean') throw Error('Invalid subscription');
-    for (const r of d.releases) if (!sourceOK(r.source) || !/^\d{4}-\d{2}-\d{2}$/.test(r.date || '') || r.date > d.checked) throw Error('Invalid release');
+    for (const r of d.releases) if (!sourceOK(r.source) || !/^\d{4}-\d{2}-\d{2}$/.test(r.date || '') || r.date > d.checked || (r.dispatch && !internal(r.dispatch))) throw Error('Invalid release');
     for (const m of d.media) if (!internal(m.poster) || !internal(m.src) || !m.src.endsWith('.mp4') || !sourceOK(m.source)) throw Error('Invalid local media');
     return d;
   }

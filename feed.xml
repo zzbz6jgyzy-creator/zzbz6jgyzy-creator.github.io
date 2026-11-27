@@ -6,7 +6,43 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 25 Nov 2026 17:16:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 17:30:00 +0000</lastBuildDate>
+    <item>
+      <title>Tesla's Dallas Robotaxi zone grows to about 150 square miles, three times Waymo's. Its eight-city map is up 65% this month</title>
+      <link>https://superchargeddaily.com/dispatch/tesla-robotaxi-dallas-150-square-miles.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-robotaxi-dallas-150-square-miles.html</guid>
+      <pubDate>Fri, 27 Nov 2026 17:30:00 +0000</pubDate>
+      <category>Robotaxi</category>
+      <description>Tesla's @robotaxi account posted a bigger Dallas map on 25 Nov that crosses I-635 into Farmers Branch and up to Addison and Richardson. Trackers put it at about 150 square miles. Tesla's eight Robotaxi cities now cover about 1,374 square miles, up from 831 on 2 Nov.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/dallas-skyline-2025.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Grok Bot 1.3.0 can watch a sold-out item and buy from your phone. Plans also stretch 11% further, the harness team says</title>
+      <link>https://superchargeddaily.com/dispatch/grok-bot-1-3-restock-alerts-usage.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-bot-1-3-restock-alerts-usage.html</guid>
+      <pubDate>Fri, 27 Nov 2026 17:28:00 +0000</pubDate>
+      <category>Grok</category>
+      <description>Grok Bot 1.3.0 (24 Nov) adds restock alerts, Buy now on phones, bot-to-bot Slack answers and org account limits. On 26 Nov the harness team said plans now give 11% more usage and up to 50% more for routines. What changed, and what the usage math adds up to.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/twenty-air-street-spacexsi-2026.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Starlink says 3 million Kazakh phone users. Beeline's CEO says 130,000 have switched it on. What each number measures</title>
+      <link>https://superchargeddaily.com/dispatch/starlink-mobile-kazakhstan-3-million.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-mobile-kazakhstan-3-million.html</guid>
+      <pubDate>Fri, 27 Nov 2026 17:26:00 +0000</pubDate>
+      <category>Starlink</category>
+      <description>Starlink posted on 25 Nov that 3M+ Beeline customers in Kazakhstan are staying connected in dead zones. At a government briefing the day before, Beeline's CEO said the signal covers about 3 million subscribers and 130,000 have activated the service. The two numbers, the prices, and what the traffic works out to.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/kazakhstan-steppe-highway-zhambyl.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Tesla is ending the Cybertruck, and used ones now sell faster than any other pickup in America</title>
+      <link>https://superchargeddaily.com/dispatch/cybertruck-fastest-selling-used-truck.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/cybertruck-fastest-selling-used-truck.html</guid>
+      <pubDate>Fri, 27 Nov 2026 17:24:00 +0000</pubDate>
+      <category>Cybertruck</category>
+      <description>A used Cybertruck sold in 39.1 days on average in October, the fastest of any pickup in iSeeCars' study of 1.1 million sales and 33 days quicker than a used F-150. The data predates Tesla's wind-down news. How it compares, and why the only new Cybertruck left costs $109,990.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/cybertruck-moab-cc0.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>SpaceXSI credits Grok Voice with 5 million patient calls at Innovaccer. Innovaccer's own release says those came first</title>
       <link>https://superchargeddaily.com/dispatch/grok-voice-innovaccer-5-million.html</link>
@@ -690,42 +726,6 @@
       <category>SpaceX AI</category>
       <description>AP called Texas for Gina Hinojosa, who backs a data center moratorium. SpaceX aims for 3 GW by year-end and 13 GW next year, some of it in Texas (as of 4 Nov 2026).</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/nvidia-gb200-rack.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Starlink on airlines: what the numbers actually show</title>
-      <link>https://superchargeddaily.com/dispatch/starlink-airlines-scorecard.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-airlines-scorecard.html</guid>
-      <pubDate>Tue, 03 Nov 2026 20:37:00 +0000</pubDate>
-      <category>Starlink</category>
-      <description>JAL says Starlink and pricing helped lift ZIPAIR's passenger revenue 12.3%. What United, Alaska, Qatar, Virgin and airBaltic report about in-flight Starlink (as of 3 Nov 2026).</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/easyjet-a320neo-g-uzhm.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>A SpaceX–Tesla merger could hand Musk Tesla control without hitting a single Mars or robotaxi goal</title>
-      <link>https://superchargeddaily.com/dispatch/musk-pay-spacex-tesla-merger-control.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/musk-pay-spacex-tesla-merger-control.html</guid>
-      <pubDate>Tue, 03 Nov 2026 14:41:00 +0000</pubDate>
-      <category>Governance</category>
-      <description>No deal exists yet, but a Reuters analysis and Tesla's filings show a SpaceX takeover could give Musk Tesla voting control while skipping his pay plan's robotaxi and robot goals.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/musk-royal-society-2018.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas</title>
-      <link>https://superchargeddaily.com/dispatch/tesla-robotaxi-fort-worth.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-robotaxi-fort-worth.html</guid>
-      <pubDate>Mon, 02 Nov 2026 20:41:00 +0000</pubDate>
-      <category>Robotaxi</category>
-      <description>Tesla Robotaxi opened in Fort Worth from 6am CT on 2 Nov in a zone estimated at 143 sq mi. Texas DMV lists 1,244 Teslas, 15 short of Waymo's 1,259 (as of 2 Nov 2026).</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/fort-worth-skyline.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>SpaceX is in talks to buy Boost Mobile, the Washington Post reports</title>
-      <link>https://superchargeddaily.com/dispatch/spacex-boost-mobile-talks.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacex-boost-mobile-talks.html</guid>
-      <pubDate>Mon, 02 Nov 2026 14:37:00 +0000</pubDate>
-      <category>Starlink</category>
-      <description>SpaceX is in talks with EchoStar to buy Boost Mobile or use its network, the Washington Post reports. Boost had 7.38M wireless subscribers but leases its network from AT&amp;T and T-Mobile.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/cell-tower-jefferson-wi.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Texas Cybercab count</title>

@@ -1,3 +1,11 @@
+## 27 Nov 2026
+
+- Dispatch: Tesla's official @robotaxi account posted a bigger Dallas map on 25 Nov. Tesla gave no size; Sawyer Merritt measured about 150 square miles (from 82) and an eight-city total of 1,374, up from 831 on 2 Nov. The hero is BullDawg2021's April 2025 Dallas skyline photograph, CC BY 4.0. Tesla's map is shown in the embed and was not re-hosted.
+- Dispatch: Grok Bot 1.3.0 (changelog dated 24 Nov) adds restock alerts, Buy now on phones, bot-to-bot Slack answers and organisation domain limits. On 26 Nov Sam Sokolin of the harness team said plans give 11% more usage and up to 50% more for routines; combined figures in the piece are labelled as our math. Embed-led; the Dispatch card reuses the existing Twenty Air Street Grok section card.
+- Dispatch: Starlink said 3 million-plus Beeline customers in Kazakhstan are staying connected in dead zones. At a 24 Nov government briefing, Beeline CEO Jabbor Kayumov said the signal covers about 3 million subscribers and 130,000 have activated the service (Android only). The hero is Radosław Botev's 2017 Zhambyl steppe highway photograph, CC BY 3.0 PL.
+- Dispatch: iSeeCars' October study of 1.1 million used-vehicle sales found the Cybertruck the fastest-selling used pickup, at 39.1 days versus 65.5 for trucks overall and 72.1 for the F-150. The data predates Tesla's November wind-down news. The hero is A1C6's December 2023 Moab Cybertruck photograph, CC0; no number plate is visible.
+- Also records the Dallas area expansion on the 19 Nov Cybercab Dallas launch piece, the 1.3.0 usage figures on the Grok Bot weekly-limits piece, a Kazakhstan activation update on the Starlink Direct page, and the Cybercab/Robotaxi tracker Dallas area (about 150 sq mi as of 25 Nov, Sawyer Merritt; Tesla has not published an official square-mileage).
+
 ## 25 Nov 2026
 
 - Dispatch: NTIA published a model “zero outlay” BEAD agreement on 23 Nov, and NTIA’s administrator says SpaceX has agreed to serve its awarded locations without taking the subsidy. Each state still has to sign. The hero is Horacio Cambeiro’s Starlink rooftop photo from Capioví, Argentina, CC BY 4.0; it is not a BEAD location, and a person’s face in the original photograph has been blurred.

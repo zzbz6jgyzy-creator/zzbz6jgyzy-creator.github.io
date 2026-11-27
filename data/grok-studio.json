@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked": "2026-11-13",
+  "checked": "2026-11-27",
   "sources": [
     {
       "id": "grok",
@@ -96,7 +96,7 @@
       "id": "bot-changelog",
       "title": "Grok Bot changelog",
       "url": "https://x.ai/changelog/bot",
-      "note": "Versioned feature changes; checked through v1.0.1 (11 November 2026)."
+      "note": "Versioned feature changes; checked through v1.3.0 (24 November 2026)."
     },
     {
       "id": "grok47-launch",
@@ -783,6 +783,15 @@
     }
   ],
   "releases": [
+    {
+      "id": "bot-130",
+      "date": "2026-11-24",
+      "type": "Bot / v1.3.0",
+      "title": "Restock alerts, mobile Buy now, Slack bot-to-bot answers, and org domain limits",
+      "summary": "The official changelog documents v1.3.0 on 24 November 2026, including restock alerts, Buy now on phones, bot-to-bot Slack answers and organisation domain limits. The Grok Bot harness team later said plans give 11% more usage and up to 50% more for routines. Feature requirements remain in the release notes.",
+      "source": "bot-changelog",
+      "dispatch": "/dispatch/grok-bot-1-3-restock-alerts-usage.html"
+    },
     {
       "id": "bot-101",
       "date": "2026-11-11",

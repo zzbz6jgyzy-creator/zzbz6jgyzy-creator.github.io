@@ -1,6 +1,34 @@
 {
  "cards": [
   {
+   "href": "/dispatch/tesla-robotaxi-dallas-150-square-miles.html",
+   "img": "/assets/dispatch/dallas-skyline-2025.jpg",
+   "tag": "Robotaxi",
+   "h": "Tesla's Dallas Robotaxi zone grows to about 150 square miles, three times Waymo's. Its eight-city map is up 65% this month",
+   "p": "Tesla's @robotaxi account posted a bigger Dallas map on 25 Nov that crosses I-635 into Farmers Branch and up to Addison and Richardson. Trackers put it at about 150 square miles. Tesla's eight Robotaxi cities now cover about 1,374 square miles, up from 831 on 2 Nov."
+  },
+  {
+   "href": "/dispatch/grok-bot-1-3-restock-alerts-usage.html",
+   "img": "/assets/dispatch/twenty-air-street-spacexsi-2026.jpg",
+   "tag": "Grok",
+   "h": "Grok Bot 1.3.0 can watch a sold-out item and buy from your phone. Plans also stretch 11% further, the harness team says",
+   "p": "Grok Bot 1.3.0 (24 Nov) adds restock alerts, Buy now on phones, bot-to-bot Slack answers and org account limits. On 26 Nov the harness team said plans now give 11% more usage and up to 50% more for routines. What changed, and what the usage math adds up to."
+  },
+  {
+   "href": "/dispatch/starlink-mobile-kazakhstan-3-million.html",
+   "img": "/assets/dispatch/kazakhstan-steppe-highway-zhambyl.jpg",
+   "tag": "Starlink",
+   "h": "Starlink says 3 million Kazakh phone users. Beeline's CEO says 130,000 have switched it on. What each number measures",
+   "p": "Starlink posted on 25 Nov that 3M+ Beeline customers in Kazakhstan are staying connected in dead zones. At a government briefing the day before, Beeline's CEO said the signal covers about 3 million subscribers and 130,000 have activated the service. The two numbers, the prices, and what the traffic works out to."
+  },
+  {
+   "href": "/dispatch/cybertruck-fastest-selling-used-truck.html",
+   "img": "/assets/dispatch/cybertruck-moab-cc0.jpg",
+   "tag": "Cybertruck",
+   "h": "Tesla is ending the Cybertruck, and used ones now sell faster than any other pickup in America",
+   "p": "A used Cybertruck sold in 39.1 days on average in October, the fastest of any pickup in iSeeCars' study of 1.1 million sales and 33 days quicker than a used F-150. The data predates Tesla's wind-down news. How it compares, and why the only new Cybertruck left costs $109,990."
+  },
+  {
    "href": "/dispatch/grok-voice-innovaccer-5-million.html",
    "img": "/assets/dispatch/grok-voice-3-spacexsi-poster.jpg",
    "tag": "Grok",
@@ -27,34 +55,6 @@
    "tag": "Starmind",
    "h": "The FCC has authorized SpaceX to deploy up to 1 million Starmind satellites as orbital data centers, the first such authorization in U.S. history",
    "p": "The FCC on 25 Nov 2026 granted SpaceX authorization to deploy up to 1 million Starmind orbital compute modules, the first U.S. authorization for a constellation of data centers in space, according to an official Commission release posted by Chairman Brendan Carr. The grant authorizes deployment. It does not set a launch timetable."
-  },
-  {
-   "href": "/dispatch/space-jellyfish-explained.html",
-   "img": "/assets/dispatch/kevin-gill-iridium4-plume.jpg",
-   "tag": "Explainer",
-   "h": "A space jellyfish is a rocket plume lit by sunlight while the ground is still dark. The best window is 30 to 60 minutes before sunrise or after sunset",
-   "p": "A space jellyfish forms when a rocket's high-altitude exhaust is still in sunlight and the observer is already in darkness. Vandenberg officials, who also call it twilight phenomenon, say it usually appears two to three minutes after a launch 30 to 60 minutes before sunrise or after sunset. USSF-380 this Saturday is a night launch, not a twilight one."
-  },
-  {
-   "href": "/dispatch/eu-tad-postponed-december-15.html",
-   "img": "/assets/dispatch/tesla-nav-screen-hero.jpg",
-   "tag": "FSD in Europe",
-   "h": "The EU has postponed its Tesla Assisted Driving meeting to December 15. A rejection would invalidate national approvals already granted",
-   "p": "A European Commission spokesperson told Reuters on 25 Nov 2026 that the EU meeting expected to consider bloc-wide approval of Tesla Assisted Driving has been postponed until December 15. A rejection at EU level would invalidate the national approvals already granted. No reason was given."
-  },
-  {
-   "href": "/dispatch/grok-virginia-oregon-lawsuits.html",
-   "img": "/assets/dispatch/multnomah-courthouse-2025.jpg",
-   "tag": "Grok",
-   "h": "Virginia and Oregon sue SpaceX over Grok's sexualized images. Here's what the two complaints actually claim",
-   "p": "Two state attorneys general filed consumer-protection suits against SpaceX, SpaceXSI and X over Grok-generated sexual images, including of children. I read both complaints: the claims, the penalties allowed, and what X says in response."
-  },
-  {
-   "href": "/dispatch/tesla-robotaxi-6-million-miles.html",
-   "img": "/assets/dispatch/tesla-cybercab-zurich-blume-2026.jpg",
-   "tag": "Robotaxi",
-   "h": "Tesla's official Robotaxi page now shows more than 6 million autonomous miles. The last dated safety results still stop at 3.1 million on 18 Oct",
-   "p": "On 24 Nov, Tesla's live Robotaxi counter stood at more than 6.01 million autonomous miles. The official safety results still cover 22 Jan to 18 Oct, when the fleet had driven 3.1 million miles."
   }
  ],
  "pins": [
@@ -68,6 +68,30 @@
   }
  ],
  "stories": [
+  {
+   "url": "/dispatch/tesla-robotaxi-dallas-150-square-miles.html",
+   "title": "Tesla's Dallas Robotaxi zone grows to about 150 square miles, three times Waymo's. Its eight-city map is up 65% this month",
+   "tag": "Robotaxi",
+   "date": "2026-11-27T17:30:00Z"
+  },
+  {
+   "url": "/dispatch/grok-bot-1-3-restock-alerts-usage.html",
+   "title": "Grok Bot 1.3.0 can watch a sold-out item and buy from your phone. Plans also stretch 11% further, the harness team says",
+   "tag": "Grok",
+   "date": "2026-11-27T17:28:00Z"
+  },
+  {
+   "url": "/dispatch/starlink-mobile-kazakhstan-3-million.html",
+   "title": "Starlink says 3 million Kazakh phone users. Beeline's CEO says 130,000 have switched it on. What each number measures",
+   "tag": "Starlink",
+   "date": "2026-11-27T17:26:00Z"
+  },
+  {
+   "url": "/dispatch/cybertruck-fastest-selling-used-truck.html",
+   "title": "Tesla is ending the Cybertruck, and used ones now sell faster than any other pickup in America",
+   "tag": "Cybertruck",
+   "date": "2026-11-27T17:24:00Z"
+  },
   {
    "url": "/dispatch/grok-voice-innovaccer-5-million.html",
    "title": "SpaceXSI credits Grok Voice with 5 million patient calls at Innovaccer. Innovaccer's own release says those came first",
