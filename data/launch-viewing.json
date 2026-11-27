@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-26T22:17:28Z",
+ "checked": "2026-11-27T04:59:40Z",
  "editorialUpdated": "2026-11-17T08:45:00+00:00",
  "presets": [
   {
@@ -324,24 +324,19 @@
   },
   {
    "id": "starlink-15-25",
-   "title": "Falcon 9 Block 5 | Starlink Group 15-25",
+   "title": "Falcon 9 · Starlink Group 15-25",
    "group": "spacex",
    "category": "Launch",
    "start": "2026-10-13T00:28:11Z",
    "end": "",
    "date": "2026-10-13",
-   "precision": "datetime",
+   "precision": "day",
    "status": "done",
    "note": "Launched 13 Oct at 00:28 UTC — SpaceX confirmed 27 Starlink satellites from California on X.",
    "where": "Vandenberg · SLC-4E",
    "href": "",
    "sources": [],
-   "origin": "Launch Library 2",
-   "providerId": "97c6f5e1-299e-4652-b72d-9618ac047076",
-   "windowStart": "2026-10-12T23:00:00Z",
-   "windowEnd": "2026-10-13T03:00:00Z",
-   "vehicle": "",
-   "providerStatus": "Launch Successful",
+   "origin": "Editorial calendar",
    "pad": {
     "id": "slc4e",
     "name": "Vandenberg · SLC-4E",
