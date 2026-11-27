@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-26T22:57:23.661Z",
+  "updated": "2026-11-27T01:06:31.728Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "robotaxi:tx-cybercab",
+      "topic": "robotaxi",
+      "tracker": "robotaxi",
+      "field": "tx-cybercab",
+      "previous": "822",
+      "next": "1107",
+      "at": "2026-11-27T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Texas DMV list via fsddb.com",
+      "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
+      "href": "/cybercab.html",
+      "summary": "Texas Cybercab registrations changed from 822 to 1107.",
+      "title": "Texas Cybercab registrations",
+      "id": "changed|robotaxi:tx-cybercab|2026-11-27T00:00:00.000Z|1107"
+    },
     {
       "type": "changed",
       "factId": "starlink:in-orbit",
