@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-27T23:01:09.104Z",
+  "generatedAt": "2026-11-27T23:25:10.111Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -286,21 +286,21 @@
   ],
   "changes": [
     {
-      "type": "changed",
-      "factId": "tesla-software:newest-reporting",
+      "type": "appeared",
+      "factId": "tesla-software:wave:2026.44.3.1",
       "topic": "tesla-software",
       "tracker": "software",
-      "field": "newest-reporting",
-      "previous": "2026.38.6.11",
-      "next": "2026.44.3.1",
+      "field": "wave:2026.44.3.1",
+      "previous": "0",
+      "next": "1",
       "at": "2026-11-27T23:00:56.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample (3351 cars)",
+      "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Newest reporting build changed from 2026.38.6.11 to 2026.44.3.1.",
-      "title": "Newest reporting build",
-      "id": "changed|tesla-software:newest-reporting|2026-11-27T23:00:56.000Z|2026.44.3.1"
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.44.3.1 first appeared in the Teslascope sample with 1 car. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
+      "title": "2026.44.3.1",
+      "id": "appeared|tesla-software:wave:2026.44.3.1|2026-11-27T23:00:56.000Z|1"
     },
     {
       "type": "logged",
@@ -1289,23 +1289,6 @@
       "id": "appeared|tesla-software:wave:2026.39.6|2026-10-30T23:18:01.000Z|4"
     },
     {
-      "type": "appeared",
-      "factId": "tesla-software:wave:2026.38.6.1",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.38.6.1",
-      "previous": "0",
-      "next": "16",
-      "at": "2026-10-30T01:08:18.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.38.6.1 first appeared in the Teslascope sample with 16 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
-      "title": "2026.38.6.1",
-      "id": "appeared|tesla-software:wave:2026.38.6.1|2026-10-30T01:08:18.000Z|16"
-    },
-    {
       "type": "logged",
       "factId": "starship:schedule",
       "topic": "starship",
@@ -2249,14 +2232,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-27T23:01:09.104Z",
+      "lastChecked": "2026-11-27T23:25:10.111Z",
       "lastVerified": "2026-11-17T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-27T23:01:09.104Z",
+      "lastChecked": "2026-11-27T23:25:10.111Z",
       "lastVerified": "2026-11-17T08:45:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -2270,14 +2253,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-27T23:01:09.104Z",
+      "lastChecked": "2026-11-27T23:25:10.111Z",
       "lastVerified": "2026-11-25T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-27T23:01:09.104Z",
+      "lastChecked": "2026-11-27T23:25:10.111Z",
       "lastVerified": "2026-11-27T15:27:51.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -2291,35 +2274,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-27T23:01:09.104Z",
+      "lastChecked": "2026-11-27T23:25:10.111Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-27T23:01:09.104Z",
+      "lastChecked": "2026-11-27T23:25:10.111Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-27T23:01:09.104Z",
+      "lastChecked": "2026-11-27T23:25:10.111Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-27T23:01:09.104Z",
+      "lastChecked": "2026-11-27T23:25:10.111Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-27T23:01:09.104Z",
+      "lastChecked": "2026-11-27T23:25:10.111Z",
       "lastVerified": "2026-11-27T23:00:56.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -2328,87 +2311,87 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-27T23:01:08.734Z",
-      "finished": "2026-11-27T23:01:09.086Z"
+      "started": "2026-11-27T23:25:10.088Z",
+      "finished": "2026-11-27T23:25:10.095Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-27T23:01:09.086Z",
-      "finished": "2026-11-27T23:01:09.086Z"
+      "started": "2026-11-27T23:25:10.095Z",
+      "finished": "2026-11-27T23:25:10.095Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-27T23:01:09.086Z",
-      "finished": "2026-11-27T23:01:09.087Z"
+      "started": "2026-11-27T23:25:10.095Z",
+      "finished": "2026-11-27T23:25:10.095Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-27T23:01:09.087Z",
-      "finished": "2026-11-27T23:01:09.096Z"
+      "started": "2026-11-27T23:25:10.095Z",
+      "finished": "2026-11-27T23:25:10.104Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-27T23:01:09.096Z",
-      "finished": "2026-11-27T23:01:09.099Z"
+      "started": "2026-11-27T23:25:10.104Z",
+      "finished": "2026-11-27T23:25:10.107Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-27T23:01:09.099Z",
-      "finished": "2026-11-27T23:01:09.100Z"
+      "started": "2026-11-27T23:25:10.107Z",
+      "finished": "2026-11-27T23:25:10.108Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-27T23:01:09.100Z",
-      "finished": "2026-11-27T23:01:09.101Z"
+      "started": "2026-11-27T23:25:10.108Z",
+      "finished": "2026-11-27T23:25:10.109Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-27T23:01:09.101Z",
-      "finished": "2026-11-27T23:01:09.101Z"
+      "started": "2026-11-27T23:25:10.109Z",
+      "finished": "2026-11-27T23:25:10.109Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-27T23:01:09.101Z",
-      "finished": "2026-11-27T23:01:09.101Z"
+      "started": "2026-11-27T23:25:10.109Z",
+      "finished": "2026-11-27T23:25:10.109Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-27T23:01:09.101Z",
-      "finished": "2026-11-27T23:01:09.102Z"
+      "started": "2026-11-27T23:25:10.109Z",
+      "finished": "2026-11-27T23:25:10.110Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-27T23:01:09.102Z",
-      "finished": "2026-11-27T23:01:09.103Z"
+      "started": "2026-11-27T23:25:10.110Z",
+      "finished": "2026-11-27T23:25:10.111Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-27T23:01:09.103Z",
-      "finished": "2026-11-27T23:01:09.103Z"
+      "started": "2026-11-27T23:25:10.111Z",
+      "finished": "2026-11-27T23:25:10.111Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-27T23:01:09.103Z",
-      "finished": "2026-11-27T23:01:09.104Z"
+      "started": "2026-11-27T23:25:10.111Z",
+      "finished": "2026-11-27T23:25:10.111Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-27T23:01:09.104Z",
+    "generatedAt": "2026-11-27T23:25:10.111Z",
     "factCount": 20,
-    "changeCount": 113,
+    "changeCount": 112,
     "conflictCount": 2,
     "issues": [
       {
