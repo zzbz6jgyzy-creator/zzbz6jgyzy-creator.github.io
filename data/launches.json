@@ -2,32 +2,9 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-27T04:59:40Z",
- "checked": "2026-11-27T04:59:40Z",
+ "updated": "2026-11-27T14:59:38Z",
+ "checked": "2026-11-27T14:59:38Z",
  "results": [
-  {
-   "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
-   "name": "Falcon 9 Block 5 | Dragon CRS-2 SpX-35",
-   "net": "2026-10-13T10:33:44Z",
-   "window_start": "2026-10-13T10:33:44Z",
-   "window_end": "2026-10-13T10:33:44Z",
-   "url": "https://ll.thespacedevs.com/2.3.0/launches/bf2c3027-a314-403e-a416-2bfd5d165ad1/",
-   "status": {
-    "name": "Launch Successful",
-    "abbrev": "Success"
-   },
-   "net_precision": {
-    "name": "Second",
-    "abbrev": "SEC"
-   },
-   "pad": {
-    "name": null,
-    "location": {
-     "name": null
-    }
-   },
-   "last_updated": "2026-11-22T15:49:40Z"
-  },
   {
    "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
    "name": "Falcon 9 Block 5 | USSF-481",
