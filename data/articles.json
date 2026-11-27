@@ -1,6 +1,106 @@
 {
-  "updated": "2026-11-25T17:16:00Z",
+  "updated": "2026-11-27T17:30:00Z",
   "articles": [
+    {
+      "url": "/dispatch/tesla-robotaxi-dallas-150-square-miles.html",
+      "title": "Tesla's Dallas Robotaxi zone grows to about 150 square miles, three times Waymo's. Its eight-city map is up 65% this month",
+      "date": "2026-11-27T17:30:00Z",
+      "topic": "tesla",
+      "tag": "Robotaxi",
+      "image": "/assets/dispatch/dallas-skyline-2025.jpg",
+      "summary": "Tesla's @robotaxi account posted a bigger Dallas map on 25 Nov that crosses I-635 into Farmers Branch and up to Addison and Richardson. Trackers put it at about 150 square miles. Tesla's eight Robotaxi cities now cover about 1,374 square miles, up from 831 on 2 Nov.",
+      "pinned": false,
+      "imageAlt": "The downtown Dallas skyline under grey clouds, seen from a highway, with Reunion Tower on the right",
+      "author": "Alex R",
+      "picture": {
+        "base": "/assets/dispatch/dallas-skyline-2025",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1600,
+          900
+        ]
+      },
+      "seoTitle": "Tesla's Dallas Robotaxi zone grows to about 150 square miles, three times Waymo's. Its eight-city map is up 65% this month",
+      "minutes": 6
+    },
+    {
+      "url": "/dispatch/grok-bot-1-3-restock-alerts-usage.html",
+      "title": "Grok Bot 1.3.0 can watch a sold-out item and buy from your phone. Plans also stretch 11% further, the harness team says",
+      "date": "2026-11-27T17:28:00Z",
+      "topic": "xai",
+      "tag": "Grok",
+      "image": "/assets/dispatch/twenty-air-street-spacexsi-2026.jpg",
+      "summary": "Grok Bot 1.3.0 (24 Nov) adds restock alerts, Buy now on phones, bot-to-bot Slack answers and org account limits. On 26 Nov the harness team said plans now give 11% more usage and up to 50% more for routines. What changed, and what the usage math adds up to.",
+      "pinned": false,
+      "imageAlt": "The exterior of Twenty Air Street in Soho, London, at night. SpaceXSI is listed among the building's tenants as of October 2026. This is not a screenshot of Grok Bot.",
+      "author": "Alex R",
+      "picture": {
+        "base": "/assets/dispatch/twenty-air-street-spacexsi-2026",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          2048,
+          1152
+        ]
+      },
+      "seoTitle": "Grok Bot 1.3.0 can watch a sold-out item and buy from your phone. Plans also stretch 11% further, the harness team says",
+      "minutes": 6
+    },
+    {
+      "url": "/dispatch/starlink-mobile-kazakhstan-3-million.html",
+      "title": "Starlink says 3 million Kazakh phone users. Beeline's CEO says 130,000 have switched it on. What each number measures",
+      "date": "2026-11-27T17:26:00Z",
+      "topic": "spacex",
+      "tag": "Starlink",
+      "image": "/assets/dispatch/kazakhstan-steppe-highway-zhambyl.jpg",
+      "summary": "Starlink posted on 25 Nov that 3M+ Beeline customers in Kazakhstan are staying connected in dead zones. At a government briefing the day before, Beeline's CEO said the signal covers about 3 million subscribers and 130,000 have activated the service. The two numbers, the prices, and what the traffic works out to.",
+      "pinned": false,
+      "imageAlt": "A highway running through the steppe in Zhambyl Province, Kazakhstan, under a wide sky",
+      "author": "Alex R",
+      "picture": {
+        "base": "/assets/dispatch/kazakhstan-steppe-highway-zhambyl",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1600,
+          900
+        ]
+      },
+      "seoTitle": "Starlink says 3 million Kazakh phone users. Beeline's CEO says 130,000 have switched it on. What each number measures",
+      "minutes": 6
+    },
+    {
+      "url": "/dispatch/cybertruck-fastest-selling-used-truck.html",
+      "title": "Tesla is ending the Cybertruck, and used ones now sell faster than any other pickup in America",
+      "date": "2026-11-27T17:24:00Z",
+      "topic": "tesla",
+      "tag": "Cybertruck",
+      "image": "/assets/dispatch/cybertruck-moab-cc0.jpg",
+      "summary": "A used Cybertruck sold in 39.1 days on average in October, the fastest of any pickup in iSeeCars' study of 1.1 million sales and 33 days quicker than a used F-150. The data predates Tesla's wind-down news. How it compares, and why the only new Cybertruck left costs $109,990.",
+      "pinned": false,
+      "imageAlt": "A Tesla Cybertruck parked on red rock in Moab, Utah, seen from the front three-quarter, with no number plate fitted",
+      "author": "Alex R",
+      "picture": {
+        "base": "/assets/dispatch/cybertruck-moab-cc0",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1600,
+          900
+        ]
+      },
+      "seoTitle": "Tesla is ending the Cybertruck, and used ones now sell faster than any other pickup in America",
+      "minutes": 5
+    },
     {
       "url": "/dispatch/grok-voice-innovaccer-5-million.html",
       "title": "SpaceXSI credits Grok Voice with 5 million patient calls at Innovaccer. Innovaccer's own release says those came first",

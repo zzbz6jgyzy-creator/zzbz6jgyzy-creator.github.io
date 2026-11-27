@@ -94,7 +94,7 @@
   },
   "dallas": {
    "name": "Dallas, TX",
-   "lastExpanded": "2026-08-29",
+   "lastExpanded": "2026-11-25",
    "log": [
     {
      "date": "2026-04-18",
@@ -108,6 +108,16 @@
      "from": 31,
      "kind": "expanded",
      "src": "https://robotracker.app/updates"
+    },
+    {
+     "date": "2026-11-25",
+     "areaSqMi": 150,
+     "from": 81,
+     "kind": "expanded",
+     "src": "https://x.com/SawyerMerritt/status/2125656460759535686",
+     "officialSrc": "https://x.com/robotaxi/status/2125657961242726732",
+     "dispatch": "/dispatch/tesla-robotaxi-dallas-150-square-miles.html",
+     "note": "Tesla\u2019s official @robotaxi account posted a bigger Dallas map on 25 Nov 2026 but gave no square-mileage. Sawyer Merritt measured about 150 sq mi, up from 82 (he also listed an eight-city total of 1,374 that day). Neither figure is a Tesla number. The retained GitHub app-derived outline is still 81.1 mi\u00b2."
     }
    ],
    "status": "ramping",
