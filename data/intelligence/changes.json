@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-28T04:56:37.017Z",
+  "updated": "2026-11-28T13:43:12.834Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "starlink:in-orbit",
+      "topic": "starlink",
+      "tracker": "starlink",
+      "field": "in-orbit",
+      "previous": "11195",
+      "next": "11188",
+      "at": "2026-11-28T01:05:15.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Jonathan McDowell Starlink statistics",
+      "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
+      "href": "/starlink.html",
+      "summary": "Starlink in orbit changed from 11195 to 11188.",
+      "title": "Starlink in orbit",
+      "id": "changed|starlink:in-orbit|2026-11-28T01:05:15.000Z|11188"
+    },
     {
       "type": "appeared",
       "factId": "tesla-software:wave:2026.44.3.1",
