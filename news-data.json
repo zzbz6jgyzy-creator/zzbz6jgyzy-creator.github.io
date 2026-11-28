@@ -1,6 +1,97 @@
 {
-  "updated": "2026-11-27T23:24:07Z",
+  "updated": "2026-11-28T04:55:56Z",
   "items": [
+    {
+      "id": "36dfb08e5eac",
+      "topic": "spacex",
+      "title": "SpaceX Stock Rebounds as Musk Starlink Talk Fuels Hopes of Tesla Merger",
+      "source": "Barron's",
+      "url": "https://www.barrons.com/articles/spacex-stock-musk-starlink-tesla-merger-4fa1b482",
+      "published": "2026-11-28T03:13:32Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "708f7842dd05",
+      "topic": "tesla",
+      "title": "Tesla FSD V15: Vegas Night Clip Unverified, $99 Plan",
+      "source": "shattered.io",
+      "url": "https://shattered.io/tesla-fsd-v15-las-vegas-strip-night-clip-nov-21-rollout-99-plan-nov-28/",
+      "published": "2026-11-28T03:03:55Z",
+      "snippet": "",
+      "kind": "software",
+      "score": 11
+    },
+    {
+      "id": "d9b03e6779bd",
+      "topic": "spacex",
+      "title": "SpaceX Targets Anterix's 900 MHz Spectrum Amid Push into Mobile Service",
+      "source": "Briefs Finance",
+      "url": "https://www.briefs.co/news/spacex-targets-anterix-s-900-mhz-spectrum-amid-push-into-mob/",
+      "published": "2026-11-28T02:29:15Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "15a8a4261872",
+      "topic": "spacex",
+      "title": "Elon Musk says he’s giving 2 SpaceX shares to every American child with an active Trump account",
+      "source": "WGN-TV",
+      "url": "https://wgntv.com/news/elon-musk-says-hes-giving-2-spacex-shares-to-every-american-child-with-an-active-trump-account/",
+      "published": "2026-11-28T01:31:44Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.Zsq7dRiIkfLNBIk3rmunwQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "1c891ee55de2",
+      "topic": "spacex",
+      "title": "SpaceX data center campus in Cochise County named Colossus 3",
+      "source": "AZ Family",
+      "url": "https://www.azfamily.com/2026/11/28/spacex-data-center-campus-cochise-county-named-colossus-3/",
+      "published": "2026-11-28T01:01:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "f789a3110c4c",
+      "topic": "grok",
+      "title": "KrillionBench",
+      "source": "Howl.Link",
+      "url": "https://t.co/6sV6G0LfZR",
+      "published": "2026-11-27T23:48:44Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "ff5ee78de019",
+      "topic": "grok",
+      "title": "Grok Spicy Mode in 2026: Still Live? How to Enable It",
+      "source": "Fello AI",
+      "url": "https://felloai.com/grok-imagine-spicy-mode/",
+      "published": "2026-11-27T23:29:24Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "db2bd6ddbdb3",
+      "topic": "spacex",
+      "title": "Explainer: A million satellites? What SpaceX's Starmind could mean for Earth and space",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/business/environment/million-satellites-what-spacexs-starmind-could-mean-earth-space-2026-11-27/",
+      "published": "2026-11-27T23:23:59Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.yeZKnGlX8AwP6NLo5EFC-A&pid=News&w=640",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": 6
+    },
     {
       "id": "01cb6c095faf",
       "topic": "tesla",
@@ -13,21 +104,9 @@
       "score": 4
     },
     {
-      "id": "ce1bad65ee38",
-      "topic": "spacex",
-      "title": "Elon Musk and SpaceX double stock pledge for children’s Trump Accounts",
-      "source": "KHOU",
-      "url": "https://www.khou.com/video/news/local/elon-musk-and-spacex-double-stock-pledge-for-childrens-trump-accounts/285-4096ce2f-e297-4cac-8c22-30a74c39da7e",
-      "published": "2026-11-27T22:33:07Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.fTlf9pUZUPZ3sjNBWqZMEA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "538c3e01137b",
       "topic": "grok",
-      "title": "Grok Bot: Musk Says a Higher-Usage Plan Is Coming",
+      "title": "Elon Musk Says a Bigger Grok Bot Plan Is Coming",
       "source": "TeslaNorth.com",
       "url": "https://teslanorth.com/2026/11/27/grok-bot-higher-usage-plan-elon-musk/",
       "published": "2026-11-27T22:31:56Z",
@@ -43,7 +122,7 @@
       "url": "https://www.bgr.com/2329752/tesla-cybertruck-receives-second-lease-on-life/",
       "published": "2026-11-27T22:17:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.8RwS8r_1TZtx5XfRwVqbwg&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.vQljMfdm1ZJdiOFEWDcsSg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -59,14 +138,14 @@
       "score": 4
     },
     {
-      "id": "e808aa70917f",
+      "id": "1723120b674b",
       "topic": "tesla",
-      "title": "He Bought a Tesla Cybertruck for $82,735, Sold It for $94,500 a Year Later",
-      "source": "autoevolution",
-      "url": "https://www.autoevolution.com/news/he-bought-a-tesla-cybertruck-for-82735-sold-it-for-94500-a-year-later-279130.html",
-      "published": "2026-11-27T22:02:29Z",
+      "title": "Tesla’s $114,990 Cybertruck Is on Its Way Out, and You Can’t Even Lease It",
+      "source": "Autoblog",
+      "url": "https://www.autoblog.com/news/teslas-114990-cybertruck-is-on-its-way-out-and-you-cant-even-lease-it",
+      "published": "2026-11-27T21:47:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.9CmUzvPO6frWudAGJPzZVA&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.oOi18k-x1vBoo1UFAst89w&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -82,27 +161,16 @@
       "score": 2
     },
     {
-      "id": "c96bd5d1426b",
-      "topic": "spacex",
-      "title": "Sheinbaum to press US on SpaceX launches after Starship debris hits Tamaulipas beaches",
-      "source": "Mexico News Daily",
-      "url": "https://mexiconewsdaily.com/news/sheinbaum-press-us-spacex-launches-after-starship-debris-hits-tamaulipas-beaches/",
-      "published": "2026-11-27T20:52:09Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.AExrDQ8VhPnc7-UCXdGbmw&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "8fca176627c0",
+      "id": "cdb3269dc0e6",
       "topic": "tesla",
-      "title": "Tesla Cybertruck Owners Debate Pushing Their 48-Amp Chargers to Fail Under Warranty, But Waiting Too Long Risks a $2,500 Repair Bill",
-      "source": "Torque News",
-      "url": "https://www.torquenews.com/18013/tesla-cybertruck-owners-debate-pushing-their-48-amp-chargers-fail-under-warranty-waiting-too",
-      "published": "2026-11-27T20:50:54Z",
+      "title": "Tesla aims to bolster Optimus with newest company acquisition",
+      "source": "Teslarati",
+      "url": "https://www.teslarati.com/tesla-bolster-optimus-company-acquisition-emag-germany/",
+      "published": "2026-11-27T20:46:14Z",
       "snippet": "",
-      "kind": "general",
-      "score": 4
+      "image": "https://www.bing.com/th?id=ONUT.jjn9u5bPBpZ8BJckTcbcCg&pid=News&w=640",
+      "kind": "milestone",
+      "score": 21
     },
     {
       "id": "ad58b8deabb3",
@@ -112,9 +180,20 @@
       "url": "https://www.fool.com/investing/2026/11/27/why-shares-in-spacex-popped-higher-today/",
       "published": "2026-11-27T20:27:25Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.2oZzBCd1f-YhonBG2PStCA&pid=News&w=640",
       "kind": "general",
       "score": -2
+    },
+    {
+      "id": "eb8fd5c44d5a",
+      "topic": "tesla",
+      "title": "9 companies trying to be the 'Tesla of China'",
+      "source": "Mashable",
+      "url": "https://mashable.com/article/china-electric-vehicles-tesla-beijing-auto-show",
+      "published": "2026-11-27T20:26:26Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.SCfuQnBZ3y8scnC3gY_3CQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "e78c686246d5",
@@ -175,29 +254,6 @@
       "score": 19
     },
     {
-      "id": "8fe5045baff5",
-      "topic": "spacex",
-      "title": "Elon Musk pledges SpaceX shares to Trump Accounts as contributions hit $1B",
-      "source": "Fox Business",
-      "url": "https://www.foxbusiness.com/video/6408960261112",
-      "published": "2026-11-27T19:20:20Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.uIfRKO_IHxrYUbxNDToMAg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "3fa58f632e18",
-      "topic": "spacex",
-      "title": "AI vs. depopulation; SpaceX and orbital compute; AI transition timeline; Anthropic and ‘Koyaanisqatsi’",
-      "source": "Faster Please!",
-      "url": "https://fasterplease.substack.com/p/ai-vs-depopulation-spacex-and-orbital",
-      "published": "2026-11-27T19:15:50Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "3ac32d5fa3a8",
       "topic": "grok",
       "title": "Grok Build 1.0.92 Adds Timeout and Error Recovery for Headless Runs",
@@ -232,6 +288,29 @@
       "score": 4
     },
     {
+      "id": "9f5828e0fba1",
+      "topic": "spacex",
+      "title": "How Starlink limits force Ukraine to fight with the brakes on",
+      "source": "The Wall Street Journal on MSN",
+      "url": "https://www.msn.com/en-us/technology/general/how-starlink-limits-force-ukraine-to-fight-with-the-brakes-on/ar-AA2iowN3",
+      "published": "2026-11-27T19:00:00Z",
+      "snippet": "Fly a drone too fast and the connection might cut out. Too slow, and it becomes easier to intercept.",
+      "image": "https://www.bing.com/th?id=ONUT.cUbTQ3rHDqtb6rbl71MQag&pid=News&w=640",
+      "kind": "general",
+      "score": 8
+    },
+    {
+      "id": "176b17034422",
+      "topic": "grok",
+      "title": "Ex-xAI Founders Launch Epochal to Build Future-Predicting AI",
+      "source": "TechJuice",
+      "url": "https://www.techjuice.pk/xai-cofounders-launch-epochal-ai-time-portal-predict-future/",
+      "published": "2026-11-27T18:53:14Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "5e18262f2d8c",
       "topic": "spacex",
       "title": "Elon Musk is giving away nearly $18 billion in SpaceX stock. Here’s who can get it",
@@ -256,18 +335,6 @@
       "score": 4
     },
     {
-      "id": "d3561e161a6a",
-      "topic": "tesla",
-      "title": "9 Cars You Have To See If You Love The Tesla Model 3",
-      "source": "CarBuzz",
-      "url": "https://carbuzz.com/tesla-model-3-competitors-2027/",
-      "published": "2026-11-27T18:00:11Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.qSel-cv_q5-zpdD4tlLKXw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "0b967c7fc838",
       "topic": "spacex",
       "title": "Astronomers ‘disheartened’ by decision allowing SpaceX to deploy satellites for space datacenters",
@@ -279,24 +346,45 @@
       "score": 4
     },
     {
-      "id": "b00888117537",
+      "id": "9af06c620715",
       "topic": "tesla",
-      "title": "Tesla Needs Over $20 Billion In Operating Profit To Earn Its Share Price (NASDAQ:TSLA)",
-      "source": "Seeking Alpha",
-      "url": "https://seekingalpha.com/article/4972601-tesla-needs-over-20-billion-in-operating-profit-to-earn-its-share-price",
-      "published": "2026-11-27T17:13:02Z",
+      "title": "Tesla’s U.S. Sales Tanked In Q1. It Still Gained Market Share",
+      "source": "InsideEVs",
+      "url": "https://insideevs.com/news/792679/tesla-us-sales-q1-model-y/",
+      "published": "2026-11-27T17:32:11Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.UfvnT3w59O3MebcrlFS79g&pid=News&w=640",
       "kind": "general",
-      "score": 0
+      "score": 4
     },
     {
-      "id": "66677d4ce96e",
+      "id": "b92c1984bf75",
       "topic": "tesla",
-      "title": "Tesla Adds Kountoupes Denham Carr & Reid for Solar Lobbying",
-      "source": "Legis1",
-      "url": "https://legis1.com/news/tesla-lobbying-adds-kountoupes-denham-carr-reid",
-      "published": "2026-11-27T16:59:04Z",
+      "title": "Tesla Was Supposed To Be Losing Europe. The Data Says Otherwise",
+      "source": "InsideEVs",
+      "url": "https://insideevs.com/news/797093/tesla-sales-europe-april-2026/",
+      "published": "2026-11-27T17:32:10Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "a747f31e7d90",
+      "topic": "grok",
+      "title": "Virginia and Oregon Coordinate Grok Lawsuits Built on a Very Broad Definition of Harm",
+      "source": "Reclaim The Net",
+      "url": "https://reclaimthenet.org/virginia-and-oregon-coordinate-grok-lawsuits-built-on-a-very-broad-definition-of-harm",
+      "published": "2026-11-27T17:22:27Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "64c931870a22",
+      "topic": "spacex",
+      "title": "SpaceX boosted revenue but isn't profitable, first-ever earnings report shows - ABC News",
+      "source": "ABC News - Breaking News, Latest News and Videos",
+      "url": "https://abcnews.com/Business/spacex-report-earnings-tuesday-investors-elon-musk/story?id=135326466",
+      "published": "2026-11-27T16:47:05Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -307,11 +395,22 @@
       "title": "Tesla is rolling out its biggest battery upgrade through a software update",
       "source": "Teslarati",
       "url": "https://www.teslarati.com/tesla-rolling-out-biggest-battery-upgrade-software-update/",
-      "published": "2026-11-27T16:09:35Z",
+      "published": "2026-11-27T16:26:20Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.U7TsYDT0Gij92VpKdjP1sg&pid=News&w=640",
       "kind": "software",
       "score": 21
+    },
+    {
+      "id": "382f5847c54c",
+      "topic": "tesla",
+      "title": "Singer D4vd arrested after teen found dead in his Tesla: Police - ABC News",
+      "source": "ABC News - Breaking News, Latest News and Videos",
+      "url": "https://abcnews.com/US/singer-d4vd-arrested-after-teen-found-dead-tesla/story?id=127687961",
+      "published": "2026-11-27T15:51:53Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "d671b4ac1f40",
@@ -348,6 +447,18 @@
       "score": 4
     },
     {
+      "id": "ec9023abfc33",
+      "topic": "spacex",
+      "title": "Anthropic vs. SpaceX: Which Is the Better Giant IPO Buy?",
+      "source": "The Motley Fool",
+      "url": "https://www.fool.com/investing/2026/11/27/anthropic-vs-spacex-which-is-the-better-giant-ipo-buy/",
+      "published": "2026-11-27T15:05:01Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.eZVQZoUFTxrbMDY6foLZNA&pid=News&w=640",
+      "kind": "general",
+      "score": -2
+    },
+    {
       "id": "371a4ec8362e",
       "topic": "spacex",
       "title": "SpaceX Stock Jumps Thanks to AI Rally. Why It Should Be Rising Even More.",
@@ -355,7 +466,6 @@
       "url": "https://www.barrons.com/articles/spacex-stock-ai-rally-113e9386",
       "published": "2026-11-27T14:52:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.Vi7XjbWxZ97jLLZpag9aYg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -367,41 +477,28 @@
       "url": "https://finance.yahoo.com/technology/article/spacex-stock-rises-after-musk-pledges-annual-share-giveaway-for-kids-140708762.html",
       "published": "2026-11-27T14:35:52Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.dCXsJMuiAgC5_b3wx3KqHw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
     {
-      "id": "d6695d3df75e",
+      "id": "7db9f26821d1",
       "topic": "tesla",
-      "title": "Tesla’s New AI5 Chip May Not Reach Cars Until 2028",
-      "source": "TipRanks",
-      "url": "https://www.tipranks.com/news/teslas-new-ai5-chip-may-not-reach-cars-until-2028",
-      "published": "2026-11-27T14:33:00Z",
-      "snippet": "Electric vehicle maker Tesla ($TSLA) may have to wait until 2028 to install its next-generation AI5 chip in cars at scale because of limited manufacturing ...",
-      "image": "https://www.bing.com/th?id=ONUT.UODTRF0dcp8MEM4xwThF3Q&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "dacd4f18af55",
-      "topic": "tesla",
-      "title": "Elon Musk’s SpaceX-Tesla merger push just got a new twist",
-      "source": "TheStreet",
-      "url": "https://www.thestreet.com/technology/elon-musks-spacex-tesla-merger-push-just-got-a-new-twist",
+      "title": "Elon Musk's SpaceX-Tesla merger push just got a new twist",
+      "source": "TheStreet on MSN",
+      "url": "https://www.msn.com/en-us/news/money/elon-musks-spacex-tesla-merger-push-just-got-a-new-twist/ar-AA2iof3I",
       "published": "2026-11-27T14:04:00Z",
-      "snippet": "Elon Musk has spent years pushing for a bigger say over Tesla. A merger with SpaceX may be the cleanest way to get it, and at least one major Wall Street bank thinks that’s the whole point. “We see ...",
-      "image": "https://www.bing.com/th?id=ONUT.AtjlT1-TsSoKyQjC-LWl7A&pid=News&w=640",
+      "snippet": "SpaceX and Tesla have deal teams in place and a possible December deadline. Here is what the merger math reveals about Elon Musk's real motivation for the deal.",
+      "image": "https://www.bing.com/th?id=ONUT.PCJz0dR9oJ_XtpTSrSQZRg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
     {
-      "id": "176b17034422",
-      "topic": "grok",
-      "title": "Ex-xAI Founders Launch Epochal to Build Future-Predicting AI",
-      "source": "TechJuice",
-      "url": "https://www.techjuice.pk/xai-cofounders-launch-epochal-ai-time-portal-predict-future/",
-      "published": "2026-11-27T12:53:14Z",
+      "id": "803381f146a7",
+      "topic": "spacex",
+      "title": "Elon Musk Says All American Kids Will Get Another SpaceX Share Every Year",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/elon-musk-says-american-kids-135301609.html",
+      "published": "2026-11-27T13:53:01Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -441,25 +538,13 @@
       "score": 12
     },
     {
-      "id": "7060feaf9900",
+      "id": "b1b7ed72f600",
       "topic": "grok",
       "title": "Prediction: These Will Be Anthropic’s and SpaceX’s Stock Prices by the End of 2027 (Hint: Both Are Buys)",
       "source": "The Globe and Mail",
-      "url": "https://www.theglobeandmail.com/investing/markets/stocks/NVDA/pressreleases/9030590/prediction-these-will-be-anthropics-and-spacexs-stock-prices-by-the-end-of-2027-hint-both-are-buys/",
-      "published": "2026-11-27T11:35:52Z",
+      "url": "https://www.theglobeandmail.com/investing/markets/stocks/SPCX-Q/pressreleases/9030590/prediction-these-will-be-anthropics-and-spacexs-stock-prices-by-the-end-of-2027-hint-both-are-buys/",
+      "published": "2026-11-27T11:29:09Z",
       "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "1bb2d0030293",
-      "topic": "spacex",
-      "title": "SpaceX Wants A Million AI Satellites. What Happens To The Night Sky?",
-      "source": "Forbes",
-      "url": "https://www.forbes.com/sites/jamiecartereurope/2026/11/27/spacex-wants-a-million-ai-satellites-what-happens-to-the-night-sky/",
-      "published": "2026-11-27T11:25:00Z",
-      "snippet": "SpaceX faces criticism from astronomers after U.S. regulators approve plans for one million orbital AI data centers that could disrupt the night sky.",
-      "image": "https://www.bing.com/th?id=ONUT.kaK7_H1N5uZBZgUOpLLhzw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -476,18 +561,6 @@
       "score": 11
     },
     {
-      "id": "bbada7ef6b74",
-      "topic": "spacex",
-      "title": "Why does Elon Musk want to put a million satellite data centres in space?",
-      "source": "Al Jazeera",
-      "url": "https://www.aljazeera.com/news/2026/11/27/why-does-elon-musk-want-to-put-a-million-satellite-data-centres-in-space",
-      "published": "2026-11-27T10:24:40Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.XGDpaYE4wRaylVw7irPPwQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "f3997b5cb211",
       "topic": "tesla",
       "title": "Tesla plans to acquire German manufacturing systems group EMAG",
@@ -495,21 +568,9 @@
       "url": "https://www.reuters.com/world/tesla-plans-acquire-german-manufacturing-systems-group-emag-2026-11-27/",
       "published": "2026-11-27T10:13:51Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.LQvI3vrH84YxUQ8KwuqhrA&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.a8X2427iKGBTVGrrzqt3vw&pid=News&w=640",
       "kind": "general",
       "score": 9
-    },
-    {
-      "id": "242d21404d4c",
-      "topic": "spacex",
-      "title": "Europe Opens Massive Satellite Factory to Challenge Elon Musk’s Starlink and Starshield",
-      "source": "ZME Science",
-      "url": "https://www.zmescience.com/space/europe-starshield-alternative-factory-belgium/",
-      "published": "2026-11-27T10:12:00Z",
-      "snippet": "Belgium’s new satellite megafactory will help Europe break its dependence on Elon Musk’s space network.",
-      "image": "https://www.bing.com/th?id=ONUT.qXKwiFaflZzhewBOZOsGdw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "887e9f22193c",
@@ -547,99 +608,6 @@
       "score": 4
     },
     {
-      "id": "ab8b05f1c036",
-      "topic": "tesla",
-      "title": "‘It Feels Like It Can Do Another 250,000 Miles’: High-Mileage Tesla Model 3 Needed Only One Minor Part Replacement",
-      "source": "InsideEVs",
-      "url": "https://insideevs.com/news/807916/250000-miles-tesla-model-3-costs-maintenance-owner-review/",
-      "published": "2026-11-27T08:39:02Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "70d8a5618722",
-      "topic": "tesla",
-      "title": "Tesla aims to bolster Optimus with newest company acquisition",
-      "source": "TESLARATI",
-      "url": "https://www.teslarati.com/tesla-bolster-optimus-company-acquisition-emag-germany/",
-      "published": "2026-11-27T08:36:00Z",
-      "snippet": "Tesla is set to make a major acquisition as it plans to buy a more than a century-old German manufacturing systems supplier. The move targets EMAG, a specialist in precision machines used to produce ...",
-      "image": "https://www.bing.com/th?id=ONUT.jjn9u5bPBpZ8BJckTcbcCg&pid=News&w=640",
-      "kind": "milestone",
-      "score": 21
-    },
-    {
-      "id": "75a687355287",
-      "topic": "spacex",
-      "title": "Starship’s triumph and Vulcan’s failure",
-      "source": "The Planetary Society",
-      "url": "https://www.planetary.org/articles/starships-triumph-and-vulcans-failure",
-      "published": "2026-11-27T07:14:41Z",
-      "snippet": "",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "64c931870a22",
-      "topic": "spacex",
-      "title": "SpaceX boosted revenue but isn't profitable, first-ever earnings report shows - ABC News",
-      "source": "ABC News - Breaking News, Latest News and Videos",
-      "url": "https://abcnews.com/Business/spacex-report-earnings-tuesday-investors-elon-musk/story?id=135326466",
-      "published": "2026-11-27T05:25:05Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "4a08836a4967",
-      "topic": "spacex",
-      "title": "SpaceX shares jump over 4% amid tech rally and after Musk says he will expand on Trump Account share donations",
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/11/27/spacex-shares-musk-donations.html",
-      "published": "2026-11-27T04:20:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.w_MWZPBJruE6Tu9GkBmCBw&pid=News&w=640",
-      "kind": "general",
-      "score": 7
-    },
-    {
-      "id": "2c6ab40d5a2d",
-      "topic": "spacex",
-      "title": "How to watch SpaceX watch classified satellites after Thanksgiving",
-      "source": "USA TODAY",
-      "url": "https://www.usatoday.com/story/news/local/2026/11/27/spacex-saturday-night-launch-how-to-watch-california/92924521007/",
-      "published": "2026-11-27T03:39:00Z",
-      "snippet": "SpaceX plans to launch its Falcon 9 rocket Saturday night on a mission that may put on a show across a dark sky in California. Here's how to watch.",
-      "image": "https://www.bing.com/th?id=ONUT.BS6Z8Szlj78fE25I0PZEWA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "92b38c4eb098",
-      "topic": "spacex",
-      "title": "Elon Musk Hopes All Teslas Will Get SpaceX’s Starlink Connectivity—Except in China, Where It’s ‘Illegal’: Says It Will Be Key for Unsupervised FSD",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/technology/articles/elon-musk-hopes-teslas-spacex-104507393.html",
-      "published": "2026-11-27T02:45:00Z",
-      "snippet": "Tesla Inc. CEO Elon Musk said on Sunday he hopes that the automaker can integrate Space Exploration Technologies Corp.’s Starlink satellite internet connectivity across its entire vehicle lineup by ...",
-      "image": "https://www.bing.com/th?id=ONUT.eTq9xOnslkorBTpJVIJqQg&pid=News&w=640",
-      "kind": "software",
-      "score": 11
-    },
-    {
-      "id": "ab5a40e91112",
-      "topic": "tesla",
-      "title": "Tesla plans to kill the Cybertruck—but no used pickup in America is selling faster",
-      "source": "AUTOPOST on MSN",
-      "url": "https://www.msn.com/en-us/autos/electric-cars/tesla-plans-to-kill-the-cybertruck-but-no-used-pickup-in-america-is-selling-faster/ar-AA2im9Y7",
-      "published": "2026-11-27T01:58:00Z",
-      "snippet": "The Cybertruck may be on its way out, but on the used market, it's suddenly one of the hottest trucks in America. New Cybertruck sales have been weak, and Tesla plans to end production. Yet according ...",
-      "image": "https://www.bing.com/th?id=ONUT.T8TOPR2-s13Zeas8B5LcQA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "faf73d174f97",
       "topic": "spacex",
       "title": "Starlink Mobile Reached 3M+ Kazakh Users in “Cellular Dead Zones” in Under Two Months. Bad News for AST SpaceMobile",
@@ -648,42 +616,6 @@
       "published": "2026-11-26T22:46:00Z",
       "snippet": "Key TakeawaysStarlink said more than 3 million Beeline Kazakhstan customers are using Starlink Mobile in cellular dead zones less than two months after launch. SpaceX is showing that a carrier partner ...",
       "image": "https://www.bing.com/th?id=ONUT.ZISrNkR7OkgyrzGERz_-Vg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "53165bceaded",
-      "topic": "tesla",
-      "title": "Tesla archrival BYD just launched its Rolls-Royce competitor in China, and it packs some crazy perks",
-      "source": "Digital Trends",
-      "url": "https://www.digitaltrends.com/cars/tesla-archrival-byd-just-launched-its-rolls-royce-competitor-in-china-and-it-packs-some-crazy-perks/",
-      "published": "2026-11-26T22:07:00Z",
-      "snippet": "BYD's ultra-luxurious Yangwang Altior has made its public debut in China, flaunting a gold emblem, 39-speaker sound system, reclining massage seats, and unusual tricks including tank turns and ...",
-      "image": "https://www.bing.com/th?id=ONUT.q291YTqrZE9ujfcClQOosA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "aab6c4a7a1ee",
-      "topic": "spacex",
-      "title": "SpaceX's orbital data centers will be a 'great compliment' to terrestrial ones, FCC chairman says",
-      "source": "Fox News",
-      "url": "https://www.foxnews.com/video/6408966423112",
-      "published": "2026-11-26T21:27:00Z",
-      "snippet": "FCC Chairman Brendan Carr breaks down SpaceX's deployment of 1 million satellites following the federal agency's approval on 'Varney & Co.' ...",
-      "image": "https://www.bing.com/th?id=ONUT.yusmPtTOHpNUV9ub2GAuHA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "5b0254c2e696",
-      "topic": "spacex",
-      "title": "Elon Musk pledges SpaceX shares to every child in America",
-      "source": "Fox News",
-      "url": "https://www.foxnews.com/video/6408965285112",
-      "published": "2026-11-26T18:59:00Z",
-      "snippet": "Heritage Foundation chief economist E.J. Antoni joins 'The Will Cain Show' to discuss Elon Musk's pledge to donate two SpaceX shares to every child in America.",
-      "image": "https://www.bing.com/th?id=ONUT.HklcSg8F0x8inIyTUa9lew&pid=News&w=640",
       "kind": "general",
       "score": 4
     }
